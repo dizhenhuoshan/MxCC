@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MxCompiler.iml" filepath="$PROJECT_DIR$/MxCompiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Paser/Paser.iml" filepath="$PROJECT_DIR$/Paser/Paser.iml" />
     </modules>
   </component>
 </project>
