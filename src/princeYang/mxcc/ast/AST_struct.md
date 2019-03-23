@@ -1,0 +1,26 @@
+- MxProgNode: Location
+    - DeclNode: ID-name
+        - VarDeclNode: VarType
+        - FuncDeclNode: RetType, ParaList, FuncBlock
+        - ClassDeclNode: VarDeclList, FunDeclList
+    - StateNode
+        - ForStateNode: StartExpr, StopExpr, StepExpr, ForStatement
+        - WhileStateNode: ConditionExpr, ForStatement
+        - ContinueStateNode
+        - BreakStateNode
+        - ReturnStateNode: RetExpr
+        - IfStateNode: ConditionExpr, thenState, elseState
+        - FuncBlockNode: FuncStateList, VarDeclList
+    - ExprNode: Type, AssocType
+        - MemoryAccessExprNode: HostExpr, MemberStr
+        - FunctionCallExprNode: FuncExpr, paraList
+        - ArrayAccessExprNode: arrExpr, subExpr
+        - PostFixExprNode: PreExpr, op
+        - PreFixExprNode: op, PostExpr
+        - NewExprNode: newType, totalDim, knownDims
+        - BinaryExprNode: lhs, op, rhs
+        - AssignExprNode: lhs, rhs
+        - ThisExprNode: 
+        - IdentExprNode: name, type
+        - ConstNode: Type, intValue, boolValue, strValue
+- Type: BasicType
