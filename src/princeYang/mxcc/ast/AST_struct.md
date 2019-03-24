@@ -22,7 +22,10 @@
         - AssignExprNode: lhs, rhs
         - ThisExprNode: 
         - IdentExprNode: name, type
-        - ConstNode: Type, intValue, boolValue, strValue
+        - ConstNode: Type
+            - IntConstNode: value
+            - StringConstNode: value
+            - BoolConstNode: value
 - TypeNode: Type
 - Type: BaseType
     - ArrayType: arrType(数组元素的类型)

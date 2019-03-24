@@ -8,7 +8,7 @@ public class VarDeclNode extends DeclNode
     public VarDeclNode(Location location, String name, TypeNode varType, ExprNode initValue)
     {
         this.location = location;
-        this.name = name;
+        this.identName = name;
         this.VarType = varType;
         this.InitValue = initValue;
     }

@@ -2,10 +2,10 @@ package princeYang.mxcc.ast;
 
 abstract public class DeclNode extends Node
 {
-    public String name;
+    public String identName;
 
-    public String getName()
+    public String getIdentName()
     {
-        return name;
+        return identName;
     }
 }

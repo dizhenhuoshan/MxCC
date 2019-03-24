@@ -113,7 +113,6 @@ expression
     | lhs = expression op = '|' rhs = expression                    # BinaryExpr
     | lhs = expression op = '&&' rhs = expression                   # BinaryExpr
     | lhs = expression op = '||' rhs = expression                   # BinaryExpr
-    | lhs = expression op = '&&' rhs = expression                   # BinaryExpr
 
     | <assoc = right> lhs = expression '=' rhs = expression         # AssignExpr
 

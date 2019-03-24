@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class IntType extends Type
 {
-    IntType()
+    public IntType()
     {
         this.baseType = BaseType.DTYPE_INT;
     }

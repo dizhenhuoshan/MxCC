@@ -3,16 +3,15 @@ import java.util.List;
 
 public class FuncDeclNode extends DeclNode
 {
-    enum ConstructType{NORMAL, CONSTRUCT};
     ConstructType constructType;
     TypeNode retType;
     List<VarDeclNode> paraDeclList;
     FuncBlockNode funcBlock;
 
-    public FuncDeclNode(Location location, String name, TypeNode retType, List<VarDeclNode> paraDeclList, FuncBlockNode funcBlock)
+    public FuncDeclNode(Location location, String identName, TypeNode retType, List<VarDeclNode> paraDeclList, FuncBlockNode funcBlock)
     {
         this.location = location;
-        this.name = name;
+        this.identName = identName;
         this.paraDeclList = paraDeclList;
         this.funcBlock = funcBlock;
         if (retType == null)
