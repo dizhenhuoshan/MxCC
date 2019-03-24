@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4b03eb3-534e-4446-9710-ad24d9f97fba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BaseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/TypeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VoidType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BasicType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BreakStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BreakStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassDeclNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ContinueStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ContinueStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ForStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ForStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IfStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IfStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/Mx.g4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/Mx.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/Mx.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/paser/MxVisitor.java" beforeDir="false" />
-    </list>
+    <list default="true" id="c4b03eb3-534e-4446-9710-ad24d9f97fba" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,10 +33,9 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="372">
-                  <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+                <state relative-caret-position="393">
+                  <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
                   <folding>
-                    <element signature="e#449#450#0" expanded="true" />
                     <element signature="e#483#484#0" expanded="true" />
                     <element signature="e#536#537#0" expanded="true" />
                     <element signature="e#572#573#0" expanded="true" />
@@ -253,7 +213,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553400889286" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553401096267" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -305,7 +265,7 @@
       <workItem from="1553328813735" duration="4895000" />
       <workItem from="1553344411023" duration="4701000" />
       <workItem from="1553349932527" duration="7736000" />
-      <workItem from="1553387486006" duration="12320000" />
+      <workItem from="1553387486006" duration="12532000" />
     </task>
     <task id="LOCAL-00001" summary="g4 passed">
       <created>1553357310099</created>
@@ -314,11 +274,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553357310100</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="node: expr left">
+      <created>1553400907996</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553400907996</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55103000" />
+    <option name="totallyTimeSpent" value="55315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -331,7 +298,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16546762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -371,7 +337,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="g4 passed" />
-    <option name="LAST_COMMIT_MESSAGE" value="g4 passed" />
+    <MESSAGE value="node: expr left" />
+    <option name="LAST_COMMIT_MESSAGE" value="node: expr left" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/paser/MxListener.java" />
@@ -819,10 +786,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        <state relative-caret-position="393">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
-            <element signature="e#449#450#0" expanded="true" />
             <element signature="e#483#484#0" expanded="true" />
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#572#573#0" expanded="true" />
