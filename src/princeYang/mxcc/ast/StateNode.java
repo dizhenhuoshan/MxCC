@@ -1,4 +1,6 @@
 package princeYang.mxcc.ast;
 
-public class StateNode {
+abstract public class StateNode extends Node
+{
+    // An empty abstract node
 }

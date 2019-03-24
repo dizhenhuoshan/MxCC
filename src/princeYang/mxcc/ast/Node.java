@@ -2,10 +2,10 @@ package princeYang.mxcc.ast;
 
 abstract public class Node
 {
-    public Location location;
+    Location location;
 
-    public Location getLocation() {
+    public Location getLocation()
+    {
         return location;
     }
-
 }

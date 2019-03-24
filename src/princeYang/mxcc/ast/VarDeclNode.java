@@ -2,15 +2,15 @@ package princeYang.mxcc.ast;
 
 public class VarDeclNode extends DeclNode
 {
-    public Type VarType;
-    public ExprNode InitValue;
+    private TypeNode VarType;
+    private ExprNode InitValue;
 
-    public VarDeclNode(Location location, String name, Type varType, ExprNode initValue)
+    public VarDeclNode(Location location, String name, TypeNode varType, ExprNode initValue)
     {
         this.location = location;
         this.name = name;
-        this.VarType = VarType;
-        this. InitValue = initValue;
+        this.VarType = varType;
+        this.InitValue = initValue;
     }
 
     public ExprNode getInitValue()
@@ -18,7 +18,7 @@ public class VarDeclNode extends DeclNode
         return InitValue;
     }
 
-    public Type getVarType()
+    public TypeNode getVarType()
     {
         return VarType;
     }

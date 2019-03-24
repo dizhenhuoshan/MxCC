@@ -2,10 +2,10 @@ package princeYang.mxcc.ast;
 
 public class Type
 {
-    BasicType baseTYpe;
+    BaseType baseType;
 
-    public BasicType getBaseTYpe()
+    public BaseType getBaseType()
     {
-        return baseTYpe;
+        return baseType;
     }
 }

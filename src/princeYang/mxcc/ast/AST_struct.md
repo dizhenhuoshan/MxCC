@@ -5,7 +5,7 @@
         - ClassDeclNode: VarDeclList, FunDeclList
     - StateNode
         - ForStateNode: StartExpr, StopExpr, StepExpr, ForStatement
-        - WhileStateNode: ConditionExpr, ForStatement
+        - WhileStateNode: ConditionExpr, WhileStatement
         - ContinueStateNode
         - BreakStateNode
         - ReturnStateNode: RetExpr
@@ -23,4 +23,13 @@
         - ThisExprNode: 
         - IdentExprNode: name, type
         - ConstNode: Type, intValue, boolValue, strValue
-- Type: BasicType
+- TypeNode: Type
+- Type: BaseType
+    - ArrayType: arrType(数组元素的类型)
+    - FuncType: funcName
+    - ClassType: className
+    - IntType
+    - StringType
+    - BoolType
+    - NullType
+    - VoidType
