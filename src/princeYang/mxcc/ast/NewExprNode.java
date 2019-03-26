@@ -31,4 +31,11 @@ public class NewExprNode extends ExprNode
     {
         return knownDims;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
+
 }

@@ -23,4 +23,10 @@ public class ClassDeclNode extends DeclNode
     {
         return varDeclList;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

@@ -22,4 +22,10 @@ public class PreFixExprNode extends ExprNode
     {
         return preFixOp;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

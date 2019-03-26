@@ -15,4 +15,10 @@ public class StringConstNode extends ConstNode
     {
         return value;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

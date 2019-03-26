@@ -35,4 +35,10 @@ public class ForStateNode extends StateNode
     {
         return loopState;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

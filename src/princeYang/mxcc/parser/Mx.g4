@@ -9,7 +9,11 @@ grammar Mx;
 
 // Declaration:
 mxprogram
-    : (variableDeclaration | functionDeclaration | classDeclaration)* EOF
+    : (declarations)* EOF
+    ;
+
+declarations
+    : variableDeclaration | functionDeclaration | classDeclaration
     ;
 
 variableDeclaration

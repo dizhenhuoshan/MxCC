@@ -1,4 +1,5 @@
 - MxProgNode: Location
+- DeclarationsNode
     - DeclNode: ID-name
         - VarDeclNode: VarType
         - FuncDeclNode: RetType, ParaList, FuncBlock

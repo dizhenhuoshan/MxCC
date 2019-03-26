@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class BoolType extends Type
 {
-    BoolType()
+    public BoolType()
     {
         this.baseType = BaseType.DTYPE_BOOL;
     }

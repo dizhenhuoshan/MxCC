@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class StringType extends Type
 {
-    StringType()
+    public StringType()
     {
         this.baseType = BaseType.DTYPE_STRING;
     }

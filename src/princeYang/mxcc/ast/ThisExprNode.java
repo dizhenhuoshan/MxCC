@@ -6,4 +6,10 @@ public class ThisExprNode extends ExprNode
     {
         this.location = location;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

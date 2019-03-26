@@ -21,4 +21,10 @@ public class WhileStateNode extends StateNode
     {
         return loopState;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

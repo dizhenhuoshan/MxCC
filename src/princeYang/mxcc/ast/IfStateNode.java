@@ -28,4 +28,10 @@ public class IfStateNode extends StateNode
     {
         return elseState;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

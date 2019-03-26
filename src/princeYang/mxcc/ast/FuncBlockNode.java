@@ -4,16 +4,16 @@ import java.util.List;
 public class FuncBlockNode extends StateNode
 {
     List<StateNode> funcStateList;
-    List<DeclNode> varDeclList;
+    List<VarDeclNode> varDeclList;
 
-    public FuncBlockNode(Location location, List<StateNode> funcStateList, List<DeclNode> varDeclList)
+    public FuncBlockNode(Location location, List<StateNode> funcStateList, List<VarDeclNode> varDeclList)
     {
         this.location = location;
         this.funcStateList = funcStateList;
         this.varDeclList = varDeclList;
     }
 
-    public List<DeclNode> getVarDeclList()
+    public List<VarDeclNode> getVarDeclList()
     {
         return varDeclList;
     }
@@ -21,5 +21,11 @@ public class FuncBlockNode extends StateNode
     public List<StateNode> getFuncStateList()
     {
         return funcStateList;
+    }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

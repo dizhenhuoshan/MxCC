@@ -22,4 +22,10 @@ public class PostFixExprNode extends ExprNode
     {
         return postFixOp;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

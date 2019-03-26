@@ -8,4 +8,6 @@ abstract public class Node
     {
         return location;
     }
+
+    abstract public void accept(AstVisitor visitor);
 }

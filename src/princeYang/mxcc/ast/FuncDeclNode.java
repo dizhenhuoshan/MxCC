@@ -45,4 +45,10 @@ public class FuncDeclNode extends DeclNode
     {
         return retType;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

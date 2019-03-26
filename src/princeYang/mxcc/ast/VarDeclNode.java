@@ -22,4 +22,10 @@ public class VarDeclNode extends DeclNode
     {
         return VarType;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

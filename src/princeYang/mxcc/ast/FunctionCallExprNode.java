@@ -23,4 +23,10 @@ public class FunctionCallExprNode extends ExprNode
     {
         return paraList;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

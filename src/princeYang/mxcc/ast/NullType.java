@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class NullType extends Type
 {
-    NullType()
+    public NullType()
     {
         this.baseType = BaseType.DTYPE_NULL;
     }

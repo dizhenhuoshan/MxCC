@@ -5,7 +5,7 @@ public class ArrayAccessExprNode extends ExprNode
     ExprNode arrExpr;
     ExprNode subExpr;
 
-    public  ArrayAccessExprNode(Location location, AssocType assocType, ExprNode arrExpr, ExprNode subExpr)
+    public ArrayAccessExprNode(Location location, AssocType assocType, ExprNode arrExpr, ExprNode subExpr)
     {
         this.location = location;
         this.assocType = assocType;
@@ -21,5 +21,11 @@ public class ArrayAccessExprNode extends ExprNode
     public ExprNode getSubExpr()
     {
         return subExpr;
+    }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

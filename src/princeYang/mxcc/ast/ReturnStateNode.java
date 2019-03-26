@@ -14,4 +14,10 @@ public class ReturnStateNode extends StateNode
     {
         return retExpr;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

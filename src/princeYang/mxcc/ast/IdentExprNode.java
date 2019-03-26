@@ -22,4 +22,10 @@ public class IdentExprNode extends ExprNode
     {
         return identType;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

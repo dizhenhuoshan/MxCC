@@ -29,4 +29,10 @@ public class BinaryExprNode extends ExprNode
     {
         return rhs;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

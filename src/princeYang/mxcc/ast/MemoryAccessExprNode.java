@@ -22,4 +22,10 @@ public class MemoryAccessExprNode extends ExprNode
     {
         return memberStr;
     }
+
+    @Override
+    public void accept(AstVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

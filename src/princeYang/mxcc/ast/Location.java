@@ -20,9 +20,8 @@ public class Location
 
     public Location(ParserRuleContext ctx)
     {
-        Token tmptok = ctx.getStart();
-        this.line = tmptok.getLine();
-        this.column = tmptok.getCharPositionInLine() + 1;
+        this.line = ctx.getStart().getLine();
+        this.column = ctx.getStart().getCharPositionInLine() + 1;
     }
 
     public int getLine()
