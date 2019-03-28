@@ -7,6 +7,7 @@ public interface AstVisitor
     public void visit(VarDeclNode node);
     public void visit(FuncDeclNode node);
     public void visit(ClassDeclNode node);
+    public void visit(ExprStateNode node);
     public void visit(ForStateNode node);
     public void visit(WhileStateNode node);
     public void visit(ContinueStateNode node);
@@ -27,5 +28,6 @@ public interface AstVisitor
     public void visit(IntConstNode node);
     public void visit(StringConstNode node);
     public void visit(BoolConstNode node);
+    public void visit(NullConstNode node);
     public void visit(TypeNode node);
 }

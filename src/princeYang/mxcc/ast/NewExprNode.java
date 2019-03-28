@@ -6,14 +6,16 @@ public class NewExprNode extends ExprNode
 {
     Type newType;
     int totalDim;
+    int knownDim;
     List<ExprNode> knownDims;
 
-    public NewExprNode(Location location, AssocType assocType, Type newType, int totalDim, List<ExprNode> knownDims)
+    public NewExprNode(Location location, Type newType, int totalDim, int knownDim, List<ExprNode> knownDims)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.LEFT;
         this.newType = newType;
         this.totalDim = totalDim;
+        this.knownDim = knownDim;
         this.knownDims = knownDims;
     }
 
@@ -25,6 +27,11 @@ public class NewExprNode extends ExprNode
     public int getTotalDim()
     {
         return totalDim;
+    }
+
+    public int getKnownDim()
+    {
+        return knownDim;
     }
 
     public List<ExprNode> getKnownDims()

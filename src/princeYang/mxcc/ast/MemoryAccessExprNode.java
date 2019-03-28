@@ -5,10 +5,10 @@ public class MemoryAccessExprNode extends ExprNode
     ExprNode hostExpr;
     String memberStr;
 
-    public MemoryAccessExprNode(Location location, AssocType assocType, ExprNode hostExpr, String memberStr)
+    public MemoryAccessExprNode(Location location, ExprNode hostExpr, String memberStr)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.LEFT;
         this.hostExpr = hostExpr;
         this.memberStr = memberStr;
     }

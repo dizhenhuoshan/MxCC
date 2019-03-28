@@ -9,7 +9,11 @@ grammar Mx;
 
 // Declaration:
 mxprogram
-    : (variableDeclaration | functionDeclaration | classDeclaration)* EOF
+    : (declarations)* EOF
+    ;
+
+declarations
+    : variableDeclaration | functionDeclaration | classDeclaration
     ;
 
 variableDeclaration
@@ -22,8 +26,8 @@ variableDeclaration
         ;
 
     nonVoidType
-        : nonVoidType '[' ']'   # ArrayType
-        | nonVoidnonArrayType   # NonArrayType
+        : nonVoidType '[' ']'               # ArrayType
+        | nonVoidnonArrayType               # NonArrayType
         ;
 
     nonVoidnonArrayType
@@ -92,7 +96,7 @@ statement
 // expression
 
 expression
-    : expression '.' (Identifier | '(' Identifier ')')                                     # MemeryAccessExpr
+    : expression '.' (Identifier | '(' Identifier ')')              # MemeryAccessExpr
     | expression '(' paramentList? ')'                              # FunctionCallExpr
     | array = expression '[' sub = expression ']'                   # ArrayAccessExpr
     | expression op = ('++' | '--')                                 # PostFixExpr
@@ -134,8 +138,8 @@ expression
         ;
 
     creator
-        : nonVoidnonArrayType ('[' expression ']')+ ('['']')*   # ArrayCreator
-        | nonVoidnonArrayType                                   # NonArrayCreator
+        : nonVoidnonArrayType ('[' expression ']')+ (Lbracket Rbracket)*    # ArrayCreator
+        | nonVoidnonArrayType                                           # NonArrayCreator
         ;
 // ===Lexer===
 
@@ -156,6 +160,8 @@ Return: 'return';
 New: 'new';
 Class: 'class';
 This: 'this';
+Lbracket: '[';
+Rbracket: ']';
 
 ConstBool
     : True

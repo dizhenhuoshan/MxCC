@@ -34,6 +34,15 @@ public class Location
         return column;
     }
 
+    public int compare(Location other)
+    {
+        if (line < other.getLine())
+            return -1;
+        else if (line > other.getLine())
+            return 1;
+        else return Integer.compare(column, other.getColumn());
+    }
+
     @Override
     public String toString()
     {

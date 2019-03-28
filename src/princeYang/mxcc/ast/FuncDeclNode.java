@@ -46,6 +46,11 @@ public class FuncDeclNode extends DeclNode
         return retType;
     }
 
+    public ConstructType getConstructType()
+    {
+        return constructType;
+    }
+
     @Override
     public void accept(AstVisitor visitor)
     {

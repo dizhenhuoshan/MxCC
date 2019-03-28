@@ -6,10 +6,10 @@ public class FunctionCallExprNode extends ExprNode
     ExprNode funcExpr;
     List<ExprNode> paraList;
 
-    public FunctionCallExprNode(Location location, AssocType assocType, ExprNode funcExpr, List<ExprNode> paraList)
+    public FunctionCallExprNode(Location location, ExprNode funcExpr, List<ExprNode> paraList)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.LEFT;
         this.funcExpr = funcExpr;
         this.paraList = paraList;
     }

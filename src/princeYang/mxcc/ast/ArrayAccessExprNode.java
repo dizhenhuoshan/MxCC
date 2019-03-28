@@ -5,10 +5,10 @@ public class ArrayAccessExprNode extends ExprNode
     ExprNode arrExpr;
     ExprNode subExpr;
 
-    public ArrayAccessExprNode(Location location, AssocType assocType, ExprNode arrExpr, ExprNode subExpr)
+    public ArrayAccessExprNode(Location location, ExprNode arrExpr, ExprNode subExpr)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.LEFT;
         this.arrExpr = arrExpr;
         this.subExpr = subExpr;
     }

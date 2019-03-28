@@ -6,10 +6,10 @@ public class BinaryExprNode extends ExprNode
     Operators.BinaryOp bop;
     ExprNode rhs;
 
-    public BinaryExprNode(Location location, AssocType assocType, ExprNode lhs, Operators.BinaryOp bop, ExprNode rhs)
+    public BinaryExprNode(Location location, ExprNode lhs, Operators.BinaryOp bop, ExprNode rhs)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.LEFT;
         this.lhs = lhs;
         this.bop = bop;
         this.rhs = rhs;

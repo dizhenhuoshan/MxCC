@@ -5,6 +5,7 @@
         - FuncDeclNode: RetType, ParaList, FuncBlock
         - ClassDeclNode: VarDeclList, FunDeclList
     - StateNode
+        - ExprStateNode
         - ForStateNode: StartExpr, StopExpr, StepExpr, ForStatement
         - WhileStateNode: ConditionExpr, WhileStatement
         - ContinueStateNode
@@ -27,6 +28,7 @@
             - IntConstNode: value
             - StringConstNode: value
             - BoolConstNode: value
+            - NullConstNode
 - TypeNode: Type
 - Type: BaseType
     - ArrayType: arrType(数组元素的类型)

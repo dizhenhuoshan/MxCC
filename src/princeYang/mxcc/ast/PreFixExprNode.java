@@ -5,10 +5,10 @@ public class PreFixExprNode extends ExprNode
     ExprNode postExpr;
     Operators.PreFixOp preFixOp;
 
-    public PreFixExprNode(Location location, AssocType assocType, ExprNode postExpr, Operators.PreFixOp preFixOp)
+    public PreFixExprNode(Location location, ExprNode postExpr, Operators.PreFixOp preFixOp)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.RIGHT;
         this.postExpr = postExpr;
         this.preFixOp = preFixOp;
     }

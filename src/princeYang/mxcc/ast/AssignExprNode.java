@@ -5,10 +5,10 @@ public class AssignExprNode extends ExprNode
     ExprNode lhs;
     ExprNode rhs;
 
-    public AssignExprNode(Location location, AssocType assocType, ExprNode lhs, ExprNode rhs)
+    public AssignExprNode(Location location, ExprNode lhs, ExprNode rhs)
     {
         this.location = location;
-        this.assocType = assocType;
+        this.assocType = AssocType.RIGHT;
         this.lhs = lhs;
         this.rhs = rhs;
     }
