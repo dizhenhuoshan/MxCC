@@ -13,6 +13,7 @@ public class FuncEntity extends Entity
     private ConstructType constructType = ConstructType.NORMAL;
     private boolean inClass = false, isBuildIn = false;
     private Scope funcScope;
+    private List<VarEntity> funcParas; // for function call
 
     private void constructByNode(FuncDeclNode funcDeclNode, Scope father)
     {
@@ -20,8 +21,13 @@ public class FuncEntity extends Entity
             this.retType = funcDeclNode.getRetType().getType();
         else this.retType = null;
         funcScope = new Scope(father);
+        funcParas = new ArrayList<VarEntity>();
         for (VarDeclNode varDeclNode : funcDeclNode.getParaDeclList())
-            funcScope.insertVar(new VarEntity(varDeclNode));
+        {
+            VarEntity varEntity = new VarEntity(varDeclNode);
+            funcScope.insertVar(varEntity);
+            funcParas.add(varEntity);
+        }
     }
 
     public FuncEntity(String ident, Type type)
@@ -59,6 +65,11 @@ public class FuncEntity extends Entity
         return classIdent;
     }
 
+    public List<VarEntity> getFuncParas()
+    {
+        return funcParas;
+    }
+
     public boolean isBuildIn()
     {
         return isBuildIn;
@@ -92,5 +103,10 @@ public class FuncEntity extends Entity
     public void setInClass(boolean inClass)
     {
         this.inClass = inClass;
+    }
+
+    public void setFuncParas(List<VarEntity> funcParas)
+    {
+        this.funcParas = funcParas;
     }
 }

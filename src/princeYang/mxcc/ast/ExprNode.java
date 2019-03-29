@@ -4,7 +4,7 @@ abstract public class ExprNode extends Node
 {
     Type type;
     AssocType assocType;
-    boolean isLeftValue;
+    private boolean isLeftValue;
 
     public Type getType()
     {

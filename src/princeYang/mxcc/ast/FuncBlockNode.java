@@ -1,26 +1,32 @@
 package princeYang.mxcc.ast;
+import princeYang.mxcc.scope.Scope;
+
 import java.util.List;
 
 public class FuncBlockNode extends StateNode
 {
-    List<StateNode> funcStateList;
-    List<VarDeclNode> varDeclList;
+    List<Node> stateList;
+    Scope scope;
 
-    public FuncBlockNode(Location location, List<StateNode> funcStateList, List<VarDeclNode> varDeclList)
+    public FuncBlockNode(Location location, List<Node> stateList)
     {
         this.location = location;
-        this.funcStateList = funcStateList;
-        this.varDeclList = varDeclList;
+        this.stateList = stateList;
     }
 
-    public List<VarDeclNode> getVarDeclList()
+    public List<Node> getStateList()
     {
-        return varDeclList;
+        return stateList;
     }
 
-    public List<StateNode> getFuncStateList()
+    public Scope getScope()
     {
-        return funcStateList;
+        return scope;
+    }
+
+    public void setScope(Scope scope)
+    {
+        this.scope = scope;
     }
 
     @Override

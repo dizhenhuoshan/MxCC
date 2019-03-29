@@ -21,7 +21,7 @@ public class ClassEntity extends Entity
         classScope = new Scope(father);
         for (FuncDeclNode funcDeclNode : classDeclNode.getFuncDeclList())
         {
-            FuncEntity funcEntity = new FuncEntity(funcDeclNode, classScope);
+            FuncEntity funcEntity = new FuncEntity(classDeclNode.getIdentName(), funcDeclNode, classScope);
             classScope.insertFunc(funcEntity);
         }
     }

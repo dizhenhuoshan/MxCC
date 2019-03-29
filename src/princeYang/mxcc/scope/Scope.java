@@ -1,5 +1,6 @@
 package princeYang.mxcc.scope;
 
+import princeYang.mxcc.ast.StringType;
 import princeYang.mxcc.errors.MxError;
 
 import java.util.HashMap;
@@ -12,7 +13,6 @@ public class Scope
     static private String varPrefix = "__var__";
     static private String funcPrefix = "__func__";
     static private String classPrefix = "__class__";
-    static private String thisPrefix = "__this__";
 
     public Scope()
     {
@@ -58,38 +58,44 @@ public class Scope
 
     public VarEntity getVar(String ident)
     {
-        String key;
-        if (!ident.startsWith(varPrefix))
-            key = varPrefix + ident;
-        else key = ident;
+        String key = varPrefix + ident;
         VarEntity entity = (VarEntity) entityMap.get(key);
         if (entity != null || isTop)
             return entity;
-        else return father.getVar(key);
+        else return father.getVar(ident);
     }
 
     public FuncEntity getFunc(String ident)
     {
-        String key;
-        if (!ident.startsWith(funcPrefix))
-            key = funcPrefix + ident;
-        else key = ident;
+        String key = funcPrefix + ident;
         FuncEntity entity = (FuncEntity) entityMap.get(key);
         if (entity != null || isTop)
             return entity;
-        else return father.getFunc(key);
+        else return father.getFunc(ident);
     }
 
     public ClassEntity getClass(String ident)
     {
-        String key;
-        if (!ident.startsWith(classPrefix))
-            key = classPrefix + ident;
-        else key = ident;
+        String key = classPrefix + ident;
         ClassEntity entity = (ClassEntity) entityMap.get(key);
         if (entity != null || isTop)
             return entity;
-        else return father.getClass(key);
+        else return father.getClass(ident);
+    }
+
+    public Entity getVarOrFunc(String ident)
+    {
+        String varKey, funcKey;
+        varKey = varPrefix + ident;
+        funcKey = funcPrefix + ident;
+        Entity varEntity = entityMap.get(varKey);
+        Entity funcEntity = entityMap.get(funcKey);
+        if (varEntity == null && funcEntity == null && !isTop)
+            return father.getVarOrFunc(ident);
+        else if (varEntity != null)
+            return varEntity;
+        else
+            return funcEntity;
     }
 
     public boolean checkID(String ident)
@@ -113,6 +119,18 @@ public class Scope
     public Entity getSelfClass(String ident)
     {
         return entityMap.get(classPrefix + ident);
+    }
+
+    public Entity getSelfVarOrFunc(String ident)
+    {
+        String varKey = varPrefix + ident;
+        String funcKey = funcPrefix + ident;
+        Entity varEntity = entityMap.get(varKey);
+        Entity funcEntity = entityMap.get(funcKey);
+        if (varEntity != null)
+            return varEntity;
+        else
+            return funcEntity;
     }
 
     public Scope getFather()

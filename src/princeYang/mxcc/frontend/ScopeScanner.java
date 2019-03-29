@@ -8,6 +8,11 @@ abstract public class ScopeScanner implements AstVisitor
 {
 
     Scope globalScope;
+    public Type voidType = new VoidType();
+    public Type intType = new IntType();
+    public Type stringType = new StringType();
+    public Type boolType = new BoolType();
+    public Type nullType = new NullType();
 
     @Override
     public void visit(MxProgNode node)

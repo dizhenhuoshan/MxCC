@@ -33,7 +33,7 @@
 - Type: BaseType
     - ArrayType: arrType(数组元素的类型)
     - FuncType: funcName
-    - ClassType: className
+    - ClassType: classIdent
     - IntType
     - StringType
     - BoolType

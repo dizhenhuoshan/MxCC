@@ -2,29 +2,29 @@ package princeYang.mxcc.ast;
 
 public class ClassType extends Type
 {
-    String className;
+    String classIdent;
 
-    public ClassType(String className)
+    public ClassType(String classIdent)
     {
         this.baseType = BaseType.STYPE_CLASS;
-        this.className = className;
+        this.classIdent = classIdent;
     }
 
-    public String getClassName()
+    public String getClassIdent()
     {
-        return className;
+        return classIdent;
     }
 
     @Override
     public boolean equals(Object obj)
     {
         return (obj.getClass() == ClassType.class) &&
-                (((ClassType) obj).className.equals(className));
+                (((ClassType) obj).classIdent.equals(classIdent));
     }
 
     @Override
     public String toString()
     {
-        return String.format("ClassType(%s)", className);
+        return String.format("ClassType(%s)", classIdent);
     }
 }

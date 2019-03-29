@@ -15,11 +15,11 @@ import java.util.List;
 public class AstBuilder extends MxBaseVisitor<Node>
 {
 
-    Type voidType = new VoidType();
-    Type intType = new IntType();
-    Type stringType = new StringType();
-    Type boolType = new BoolType();
-    Type nullType = new NullType();
+    public Type voidType = new VoidType();
+    public Type intType = new IntType();
+    public Type stringType = new StringType();
+    public Type boolType = new BoolType();
+    public Type nullType = new NullType();
 
     @Override
     public Node visitMxprogram(MxParser.MxprogramContext ctx)
@@ -160,8 +160,7 @@ public class AstBuilder extends MxBaseVisitor<Node>
     public Node visitFunctionBlock(MxParser.FunctionBlockContext ctx)
     {
         Location location = new Location(ctx);
-        List<StateNode> funcStates = new ArrayList<StateNode>();
-        List<VarDeclNode> varDeclas = new ArrayList<VarDeclNode>();
+        List<Node> stateList = new ArrayList<Node>();
         Node funcState;
 
         if (ctx.functionStatement() != null)
@@ -171,13 +170,11 @@ public class AstBuilder extends MxBaseVisitor<Node>
                 funcState = visit(state);
                 if (funcState != null)
                 {
-                    if (funcState instanceof VarDeclNode)
-                        varDeclas.add((VarDeclNode) funcState);
-                    else funcStates.add((StateNode) funcState);
+                    stateList.add(funcState);
                 }
             }
         }
-        return new FuncBlockNode(location, funcStates, varDeclas);
+        return new FuncBlockNode(location, stateList);
     }
 
     @Override
@@ -375,13 +372,14 @@ public class AstBuilder extends MxBaseVisitor<Node>
             for (ParserRuleContext dims : ctx.expression())
             {
                 knownDim++;
-                totalDim++;
                 knownDims.add((ExprNode) visit(dims));
             }
         }
         if (ctx.Lbracket().size() != ctx.Rbracket().size())
             throw new MxError(location, "AstBuilder: Array Creator bracket pairing ERROR! \n");
-        totalDim += ctx.Lbracket().size();
+        totalDim = ctx.Lbracket().size();
+        for (int i = 0; i < totalDim; i++)
+            newType = new ArrayType(newType);
         return new NewExprNode(location, newType, totalDim, knownDim, knownDims);
     }
 

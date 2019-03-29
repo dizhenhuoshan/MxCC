@@ -48,10 +48,12 @@ public class InsideClassPreUseScanner extends ScopeScanner
     @Override
     public void visit(FuncDeclNode funcDeclNode)
     {
-        currentScope = (currentScope.getFunc(funcDeclNode.getIdentName())).getFuncScope();
-        Entity entity = new VarEntity("this", classType);
+        FuncEntity funcEntity = currentScope.getFunc(funcDeclNode.getIdentName());
+        currentScope = funcEntity.getFuncScope();
+        VarEntity entity = new VarEntity("this", classType);
         currentScope.insertVar(entity);
-        if (funcDeclNode.isConstruct() && !(funcDeclNode.getIdentName().equals(classType.getClassName())))
+        funcEntity.getFuncParas().add(entity);
+        if (funcDeclNode.isConstruct() && !(funcDeclNode.getIdentName().equals(classType.getClassIdent())))
             throw new MxError(funcDeclNode.getLocation(), "Only construct function no return! \n");
         currentScope = currentScope.getFather();
     }
@@ -61,11 +63,11 @@ public class InsideClassPreUseScanner extends ScopeScanner
     {
         if (varDeclNode.getVarType().getType() instanceof ClassType)
         {
-            if (currentScope.getClass(((ClassType)(varDeclNode.getVarType().getType())).getClassName()) == null)
+            if (currentScope.getClass(((ClassType)(varDeclNode.getVarType().getType())).getClassIdent()) == null)
                 throw new MxError(varDeclNode.getLocation(), String.format("Scope: class %s is not defined\n",
-                        ((ClassType)varDeclNode.getVarType().getType()).getClassName()));
+                        ((ClassType)varDeclNode.getVarType().getType()).getClassIdent()));
         }
-        Entity entity = new VarEntity(((ClassType)varDeclNode.getVarType().getType()).getClassName() ,varDeclNode);
+        Entity entity = new VarEntity(classType.getClassIdent() ,varDeclNode);
         currentScope.insertVar(entity);
     }
 }

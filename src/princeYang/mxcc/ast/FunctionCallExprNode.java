@@ -1,10 +1,13 @@
 package princeYang.mxcc.ast;
+import princeYang.mxcc.scope.FuncEntity;
+
 import java.util.List;
 
 public class FunctionCallExprNode extends ExprNode
 {
     ExprNode funcExpr;
     List<ExprNode> paraList;
+    FuncEntity funcEntity;
 
     public FunctionCallExprNode(Location location, ExprNode funcExpr, List<ExprNode> paraList)
     {
@@ -22,6 +25,16 @@ public class FunctionCallExprNode extends ExprNode
     public List<ExprNode> getParaList()
     {
         return paraList;
+    }
+
+    public FuncEntity getFuncEntity()
+    {
+        return funcEntity;
+    }
+
+    public void setFuncEntity(FuncEntity funcEntity)
+    {
+        this.funcEntity = funcEntity;
     }
 
     @Override
