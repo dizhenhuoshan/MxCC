@@ -2,10 +2,10 @@ package princeYang.mxcc.ast;
 
 public class ForStateNode extends StateNode
 {
-    ExprNode startExpr;
-    ExprNode stopExpr;
-    ExprNode stepExpr;
-    StateNode loopState;
+    private ExprNode startExpr;
+    private ExprNode stopExpr;
+    private ExprNode stepExpr;
+    private StateNode loopState;
 
     public ForStateNode(Location location, ExprNode startExpr, ExprNode stopExpr, ExprNode stepExpr, StateNode loopState)
     {

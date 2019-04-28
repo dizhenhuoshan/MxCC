@@ -2,8 +2,8 @@ package princeYang.mxcc.ast;
 
 public class ArrayAccessExprNode extends ExprNode
 {
-    ExprNode arrExpr;
-    ExprNode subExpr;
+    private ExprNode arrExpr;
+    private ExprNode subExpr;
 
     public ArrayAccessExprNode(Location location, ExprNode arrExpr, ExprNode subExpr)
     {

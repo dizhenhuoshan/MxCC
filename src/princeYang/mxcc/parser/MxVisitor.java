@@ -272,7 +272,7 @@ public interface MxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssignExpr(MxParser.AssignExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ConstInt}
+	 * Visit a parse tree produced by the {@code Immediate}
 	 * labeled alternative in {@link MxParser#constant}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -1,10 +1,12 @@
 package princeYang.mxcc.ast;
 
+import princeYang.mxcc.scope.Scope;
+
 import java.util.List;
 
 public class MxProgNode extends Node
 {
-    List<DeclNode> declNodesList;
+    private List<DeclNode> declNodesList;
 
     public MxProgNode(Location location, List<DeclNode> declNodesList)
     {

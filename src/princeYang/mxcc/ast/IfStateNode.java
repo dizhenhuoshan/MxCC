@@ -2,9 +2,9 @@ package princeYang.mxcc.ast;
 
 public class IfStateNode extends StateNode
 {
-    ExprNode conditionExpr;
-    StateNode thenState;
-    StateNode elseState;
+    private ExprNode conditionExpr;
+    private StateNode thenState;
+    private StateNode elseState;
 
     public IfStateNode(Location location, ExprNode conditionExpr, StateNode thenState, StateNode elseState)
     {

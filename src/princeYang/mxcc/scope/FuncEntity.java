@@ -7,7 +7,6 @@ import java.util.List;
 
 public class FuncEntity extends Entity
 {
-    private String ident;
     private Type retType;
     private String classIdent = null;
     private ConstructType constructType = ConstructType.NORMAL;
@@ -17,9 +16,11 @@ public class FuncEntity extends Entity
 
     private void constructByNode(FuncDeclNode funcDeclNode, Scope father)
     {
+        this.type = new FuncType(funcDeclNode.getIdentName());
+        this.ident = funcDeclNode.getIdentName();
         if (funcDeclNode.getRetType() != null)
-            this.retType = funcDeclNode.getRetType().getType();
-        else this.retType = null;
+            retType = funcDeclNode.getRetType().getType();
+        else retType = null;
         funcScope = new Scope(father);
         funcParas = new ArrayList<VarEntity>();
         for (VarDeclNode varDeclNode : funcDeclNode.getParaDeclList())

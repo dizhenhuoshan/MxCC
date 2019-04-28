@@ -4,10 +4,10 @@ import java.util.List;
 
 public class NewExprNode extends ExprNode
 {
-    Type newType;
-    int totalDim;
-    int knownDim;
-    List<ExprNode> knownDims;
+    private Type newType;
+    private int totalDim;
+    private int knownDim;
+    private List<ExprNode> knownDims;
 
     public NewExprNode(Location location, Type newType, int totalDim, int knownDim, List<ExprNode> knownDims)
     {

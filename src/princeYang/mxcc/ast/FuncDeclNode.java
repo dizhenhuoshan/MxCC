@@ -3,10 +3,10 @@ import java.util.List;
 
 public class FuncDeclNode extends DeclNode
 {
-    ConstructType constructType;
-    TypeNode retType;
-    List<VarDeclNode> paraDeclList;
-    FuncBlockNode funcBlock;
+    private ConstructType constructType;
+    private TypeNode retType;
+    private List<VarDeclNode> paraDeclList;
+    private FuncBlockNode funcBlock;
 
     public FuncDeclNode(Location location, String identName, TypeNode retType, List<VarDeclNode> paraDeclList, FuncBlockNode funcBlock)
     {

@@ -1,7 +1,6 @@
 package princeYang.mxcc.frontend;
 
 import princeYang.mxcc.ast.*;
-import princeYang.mxcc.errors.MxError;
 import princeYang.mxcc.scope.Scope;
 
 abstract public class ScopeScanner implements AstVisitor
@@ -153,25 +152,25 @@ abstract public class ScopeScanner implements AstVisitor
     }
 
     @Override
-    public void visit(IntConstNode node)
+    public void visit(ConstIntNode node)
     {
 
     }
 
     @Override
-    public void visit(StringConstNode node)
+    public void visit(ConstStringNode node)
     {
 
     }
 
     @Override
-    public void visit(BoolConstNode node)
+    public void visit(ConstBoolNode node)
     {
 
     }
 
     @Override
-    public void visit(NullConstNode node)
+    public void visit(ConstNullNode node)
     {
 
     }

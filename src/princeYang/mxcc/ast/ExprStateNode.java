@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class ExprStateNode extends StateNode
 {
-    ExprNode exprState;
+    private ExprNode exprState;
     public ExprStateNode(Location location, ExprNode exprState)
     {
         this.location = location;

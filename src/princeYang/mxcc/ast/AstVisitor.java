@@ -25,9 +25,9 @@ public interface AstVisitor
     public void visit(AssignExprNode node);
     public void visit(ThisExprNode node);
     public void visit(IdentExprNode node);
-    public void visit(IntConstNode node);
-    public void visit(StringConstNode node);
-    public void visit(BoolConstNode node);
-    public void visit(NullConstNode node);
+    public void visit(ConstIntNode node);
+    public void visit(ConstStringNode node);
+    public void visit(ConstBoolNode node);
+    public void visit(ConstNullNode node);
     public void visit(TypeNode node);
 }

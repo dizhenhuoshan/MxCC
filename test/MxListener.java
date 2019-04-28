@@ -451,13 +451,13 @@ public interface MxListener extends ParseTreeListener {
 	 */
 	void exitAssignExpr(MxParser.AssignExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ConstInt}
+	 * Enter a parse tree produced by the {@code Immediate}
 	 * labeled alternative in {@link MxParser#constant}.
 	 * @param ctx the parse tree
 	 */
 	void enterConstInt(MxParser.ConstIntContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ConstInt}
+	 * Exit a parse tree produced by the {@code Immediate}
 	 * labeled alternative in {@link MxParser#constant}.
 	 * @param ctx the parse tree
 	 */

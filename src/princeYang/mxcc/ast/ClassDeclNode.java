@@ -3,8 +3,8 @@ import java.util.List;
 
 public class ClassDeclNode extends DeclNode
 {
-    List<VarDeclNode> varDeclList;
-    List<FuncDeclNode> funcDeclList;
+    private List<VarDeclNode> varDeclList;
+    private List<FuncDeclNode> funcDeclList;
 
     public ClassDeclNode(Location location, String identName, List<VarDeclNode> varDeclList, List<FuncDeclNode> funcDeclList)
     {

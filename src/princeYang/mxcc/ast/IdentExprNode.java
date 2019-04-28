@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class IdentExprNode extends ExprNode
 {
-    String identName;
+    private String identName;
 
     public IdentExprNode(Location location, String identName)
     {

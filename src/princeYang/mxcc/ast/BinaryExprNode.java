@@ -2,9 +2,9 @@ package princeYang.mxcc.ast;
 
 public class BinaryExprNode extends ExprNode
 {
-    ExprNode lhs;
-    Operators.BinaryOp bop;
-    ExprNode rhs;
+    private ExprNode lhs;
+    private Operators.BinaryOp bop;
+    private ExprNode rhs;
 
     public BinaryExprNode(Location location, ExprNode lhs, Operators.BinaryOp bop, ExprNode rhs)
     {

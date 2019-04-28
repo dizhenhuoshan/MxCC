@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DeclarationsNode extends Node
 {
-    List<DeclNode> declarationNodes;
+    private List<DeclNode> declarationNodes;
 
     public DeclarationsNode(Location location, List<DeclNode> declarationNodes)
     {

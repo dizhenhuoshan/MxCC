@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FuncBlockNode extends StateNode
 {
-    List<Node> stateList;
-    Scope scope;
+    private List<Node> stateList;
+    private Scope scope;
 
     public FuncBlockNode(Location location, List<Node> stateList)
     {

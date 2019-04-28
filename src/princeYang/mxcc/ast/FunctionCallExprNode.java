@@ -5,9 +5,9 @@ import java.util.List;
 
 public class FunctionCallExprNode extends ExprNode
 {
-    ExprNode funcExpr;
-    List<ExprNode> paraList;
-    FuncEntity funcEntity;
+    private ExprNode funcExpr;
+    private List<ExprNode> paraList;
+    private FuncEntity funcEntity;
 
     public FunctionCallExprNode(Location location, ExprNode funcExpr, List<ExprNode> paraList)
     {

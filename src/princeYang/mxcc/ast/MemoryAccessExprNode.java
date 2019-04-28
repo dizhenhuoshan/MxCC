@@ -2,8 +2,8 @@ package princeYang.mxcc.ast;
 
 public class MemoryAccessExprNode extends ExprNode
 {
-    ExprNode hostExpr;
-    String memberStr;
+    private ExprNode hostExpr;
+    private String memberStr;
 
     public MemoryAccessExprNode(Location location, ExprNode hostExpr, String memberStr)
     {

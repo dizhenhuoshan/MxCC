@@ -2,8 +2,8 @@ package princeYang.mxcc.ast;
 
 public class PreFixExprNode extends ExprNode
 {
-    ExprNode postExpr;
-    Operators.PreFixOp preFixOp;
+    private ExprNode postExpr;
+    private Operators.PreFixOp preFixOp;
 
     public PreFixExprNode(Location location, ExprNode postExpr, Operators.PreFixOp preFixOp)
     {

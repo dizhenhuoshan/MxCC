@@ -474,31 +474,31 @@ public class ScopeBuilder extends ScopeScanner
     }
 
     @Override
-    public void visit(IntConstNode intConstNode)
+    public void visit(ConstIntNode constIntNode)
     {
-        intConstNode.setLeftValue(false);
-        intConstNode.setType(intType);
+        constIntNode.setLeftValue(false);
+        constIntNode.setType(intType);
     }
 
     @Override
-    public void visit(BoolConstNode boolConstNode)
+    public void visit(ConstBoolNode constBoolNode)
     {
-        boolConstNode.setLeftValue(false);
-        boolConstNode.setType(boolType);
+        constBoolNode.setLeftValue(false);
+        constBoolNode.setType(boolType);
     }
 
     @Override
-    public void visit(StringConstNode stringConstNode)
+    public void visit(ConstStringNode constStringNode)
     {
-        stringConstNode.setLeftValue(false);
-        stringConstNode.setType(stringType);
+        constStringNode.setLeftValue(false);
+        constStringNode.setType(stringType);
     }
 
     @Override
-    public void visit(NullConstNode nullConstNode)
+    public void visit(ConstNullNode constNullNode)
     {
-        nullConstNode.setLeftValue(false);
-        nullConstNode.setType(nullType);
+        constNullNode.setLeftValue(false);
+        constNullNode.setType(nullType);
     }
 
     @Override

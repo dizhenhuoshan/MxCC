@@ -1,14 +1,10 @@
 package princeYang.mxcc.frontend;
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
 import princeYang.mxcc.ast.*;
 import princeYang.mxcc.errors.MxError;
 import princeYang.mxcc.parser.*;
 
-import javax.swing.*;
-import javax.swing.plaf.nimbus.State;
-import java.nio.file.LinkOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -470,7 +466,7 @@ public class AstBuilder extends MxBaseVisitor<Node>
         {
             throw new MxError(location, "AstBuilder: const int value parser ERROR! \n");
         }
-        return new IntConstNode(location, value);
+        return new ConstIntNode(location, value);
     }
 
     @Override
@@ -484,7 +480,7 @@ public class AstBuilder extends MxBaseVisitor<Node>
             case "false": value = false; break;
             default: throw new MxError(location, "AstBuilder: const boolean value parser ERROR! \n");
         }
-        return new BoolConstNode(location, value);
+        return new ConstBoolNode(location, value);
     }
 
     @Override
@@ -496,14 +492,14 @@ public class AstBuilder extends MxBaseVisitor<Node>
         buffer = buffer.replace("\\\\", "\\");
         buffer = buffer.replace("\\n", "\n");
         value = buffer.replace("\\\"", "\"");
-        return new StringConstNode(location, value);
+        return new ConstStringNode(location, value);
     }
 
     @Override
     public Node visitConstNull(MxParser.ConstNullContext ctx)
     {
         Location location = new Location(ctx);
-        return new NullConstNode(location);
+        return new ConstNullNode(location);
     }
 
     @Override

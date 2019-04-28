@@ -2,24 +2,92 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4b03eb3-534e-4446-9710-ad24d9f97fba" name="Default Changelist" comment="Scope building">
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/GlobalVarInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRBinaryOp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFuncType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRReg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/Immediate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/RealReg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayAccessExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayAccessExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AssocType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AssocType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AstVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/AstVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BaseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BinaryExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BinaryExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolConstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolConstNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BreakStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/BreakStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassDeclNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstructType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstructType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ContinueStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ContinueStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclarationsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclarationsNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ForStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ForStateNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FunctionCallExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/FunctionCallExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IdentExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IdentExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IfStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IfStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntConstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntConstNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/MemoryAccessExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/MemoryAccessExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/MxProgNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/MxProgNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NewExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NewExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullConstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullConstNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Operators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Operators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/PostFixExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/PostFixExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/PreFixExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/PreFixExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringConstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringConstNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ThisExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/ThisExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/TypeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/TypeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VoidType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/VoidType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/errors/MxError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/errors/MxError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/parser/MxVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/scope/ClassEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/scope/ClassEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/scope/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/scope/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/scope/FuncEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/scope/FuncEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.mx" beforeDir="false" afterPath="$PROJECT_DIR$/test.mx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MxListener.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,162 +96,192 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="MxCompiler" />
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.77055705">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="54" column="46" lean-forward="true" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="104">
-                  <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="122">
-                  <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#274#275#0" expanded="true" />
-                    <element signature="e#308#309#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="155">
-                  <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="494">
-                  <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="605">
-                  <caret line="132" column="30" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#3507#3508#0" expanded="true" />
-                    <element signature="e#3614#3615#0" expanded="true" />
-                    <element signature="e#3723#3724#0" expanded="true" />
-                    <element signature="e#4145#4146#0" expanded="true" />
-                    <element signature="e#4207#4208#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="22" selection-start-line="22" selection-end-line="22" />
-                  <folding>
-                    <element signature="e#357#358#0" expanded="true" />
-                    <element signature="e#383#384#0" expanded="true" />
-                    <element signature="e#445#446#0" expanded="true" />
-                    <element signature="e#509#510#0" expanded="true" />
-                    <element signature="e#544#545#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/ClassEntity.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="215">
-                  <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.8249641">
-          <split-first>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-465">
-                      <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md">
-                  <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                    <state split_layout="SECOND">
-                      <first_editor relative-caret-position="217">
-                        <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-                      </first_editor>
-                      <second_editor />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2528">
+              <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#337#346#0" expanded="true" />
+                <element signature="e#398#405#0" expanded="true" />
+                <element signature="e#3010#3011#0" expanded="true" />
+                <element signature="e#3037#3038#0" expanded="true" />
+                <element signature="e#3079#3080#0" expanded="true" />
+                <element signature="e#3106#3107#0" expanded="true" />
+                <element signature="e#3155#3156#0" expanded="true" />
+                <element signature="e#3189#3190#0" expanded="true" />
+                <element signature="e#3151#3152#0" expanded="true" />
+                <element signature="e#3183#3184#0" expanded="true" />
+                <element signature="e#3332#3333#0" expanded="true" />
+                <element signature="e#3365#3366#0" expanded="true" />
+                <element signature="e#3307#3308#0" expanded="true" />
+                <element signature="e#3340#3341#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/GlobalVarInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <folding>
+                <element signature="e#338#339#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#438#439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Immediate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#110#111#0" expanded="true" />
+                <element signature="e#143#144#0" expanded="true" />
+                <element signature="e#177#178#0" expanded="true" />
+                <element signature="e#205#206#0" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+                <element signature="e#365#366#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#489#490#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#1189#1190#0" expanded="true" />
+                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#1629#1630#0" expanded="true" />
+                <element signature="e#1655#1656#0" expanded="true" />
+                <element signature="e#1693#1694#0" expanded="true" />
+                <element signature="e#1719#1720#0" expanded="true" />
+                <element signature="e#1754#1755#0" expanded="true" />
+                <element signature="e#1780#1781#0" expanded="true" />
+                <element signature="e#1816#1817#0" expanded="true" />
+                <element signature="e#1845#1846#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="672">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+              <folding>
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#514#515#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRBinaryOp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFuncType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="e#172#173#0" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#261#262#0" expanded="true" />
+                <element signature="e#286#287#0" expanded="true" />
+                <element signature="e#344#345#0" expanded="true" />
+                <element signature="e#371#372#0" expanded="true" />
+                <element signature="e#438#439#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRValue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Kotlin File" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -226,24 +324,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/IntConstNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/MxProgNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringConstNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/ThisExprNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/errors/MxError.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclarationsNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/VoidType.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/TypeNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/StringType.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/BoolType.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/NullType.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/MemoryAccessExprNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayAccessExprNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/PreFixExprNode.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/PostFixExprNode.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/NewExprNode.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/BinaryExprNode.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java" />
@@ -264,7 +344,6 @@
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprNode.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/FunctionCallExprNode.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassType.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/scope/FuncEntity.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeScanner.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" />
@@ -274,13 +353,38 @@
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java" />
-        <option value="$PROJECT_DIR$/test.mx" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" />
         <option value="$PROJECT_DIR$/../Submit/src/princeYang/mxcc/MxCC.java" />
+        <option value="$PROJECT_DIR$/test.mx" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFuncType.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncType.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/scope/FuncEntity.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRBaseReg.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRValue.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRReg.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/RealReg.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/GlobalVarInit.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/ConstInt.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Immediate.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRBinaryOp.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/InstBinary.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRVisitor.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="293" />
     <option name="y" value="53" />
     <option name="width" value="1390" />
@@ -296,8 +400,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,14 +439,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="princeYang" type="462c0819:PsiDirectoryNode" />
               <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-              <item name="errors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-              <item name="mxcc" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -353,7 +447,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="princeYang" type="462c0819:PsiDirectoryNode" />
               <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
+              <item name="ir" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
@@ -367,6 +461,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,7 +505,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -487,6 +583,22 @@
       <workItem from="1553849009481" duration="14996000" />
       <workItem from="1553868082695" duration="6789000" />
       <workItem from="1553876021779" duration="5529000" />
+      <workItem from="1553911728603" duration="2738000" />
+      <workItem from="1554014466700" duration="16000" />
+      <workItem from="1554015336681" duration="962000" />
+      <workItem from="1555579668031" duration="617000" />
+      <workItem from="1555581131547" duration="1407000" />
+      <workItem from="1555764305516" duration="632000" />
+      <workItem from="1555933138553" duration="2424000" />
+      <workItem from="1556016188928" duration="2038000" />
+      <workItem from="1556026510365" duration="599000" />
+      <workItem from="1556103463029" duration="638000" />
+      <workItem from="1556245596179" duration="603000" />
+      <workItem from="1556270077815" duration="888000" />
+      <workItem from="1556277777676" duration="39000" />
+      <workItem from="1556417716780" duration="4170000" />
+      <workItem from="1556442171568" duration="2907000" />
+      <workItem from="1556452373922" duration="10577000" />
     </task>
     <task id="LOCAL-00001" summary="g4 passed">
       <created>1553357310099</created>
@@ -513,7 +625,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195210000" />
+    <option name="totallyTimeSpent" value="226465000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,13 +640,13 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49675325" visible="true" weight="0.16546762" />
-      <window_info id="Structure" order="1" sideWeight="0.5032467" side_tool="true" visible="true" weight="0.16546762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.478355" visible="true" weight="0.19756502" />
+      <window_info id="Structure" order="1" sideWeight="0.521645" side_tool="true" visible="true" weight="0.19756502" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" sideWeight="0.5119048" side_tool="true" weight="0.1776425" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32792208" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.22186147" />
@@ -556,10 +668,10 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.32982844" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32982844" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
@@ -632,186 +744,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/semantic/testcase_112.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/parser/MxParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="626" column="48" selection-start-line="626" selection-start-column="48" selection-end-line="626" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/semantic/testcase_111.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/semantic/testcase_110.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/semantic/testcase_108.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/semantic/testcase_109.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ForStateNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/TypeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/VoidType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayAccessExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/IfStateNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/WhileStateNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/IntType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding>
-            <element signature="e#91#92#0" expanded="true" />
-            <element signature="e#141#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/PostFixExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/Operators.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AstVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/PreFixExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding>
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#535#536#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ReturnStateNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ArrayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#254#255#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/VarDeclNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -868,18 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#969#970#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -927,16 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor relative-caret-position="217">
-            <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/MemoryAccessExprNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -947,10 +857,253 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FunctionCallExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="323" column="9" lean-forward="true" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5840#5846#0" expanded="true" />
+            <element signature="e#10896#10906#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Submit/src/princeYang/mxcc/MxCC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2945">
+          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/ClassEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AST_struct.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor relative-caret-position="147">
+            <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstBoolNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MIdTerm.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstructType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2650">
+          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3507#3508#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3614#3615#0" expanded="true" />
+            <element signature="e#3666#3667#0" expanded="true" />
+            <element signature="e#3723#3724#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4145#4146#0" expanded="true" />
+            <element signature="e#4179#4180#0" expanded="true" />
+            <element signature="e#4207#4208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding>
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/BaseType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/FuncEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-899">
-          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
+        <state relative-caret-position="-1625">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1061#1062#0" expanded="true" />
@@ -983,145 +1136,179 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FunctionCallExprNode.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="547">
+          <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#548#560#0" expanded="true" />
+            <element signature="e#619#631#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/ClassEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRReg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="100">
+          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/Operators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/RealReg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#134#135#0" expanded="true" />
+            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/GlobalVarInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#172#173#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#286#287#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFuncType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Immediate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#110#111#0" expanded="true" />
+            <element signature="e#143#144#0" expanded="true" />
+            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRBinaryOp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+            <element signature="e#1655#1656#0" expanded="true" />
+            <element signature="e#1693#1694#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1816#1817#0" expanded="true" />
+            <element signature="e#1845#1846#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/AssignExprNode.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#544#545#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/parser/Mx.g4">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-465">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="323" column="9" lean-forward="true" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="9" />
+        <state relative-caret-position="-2528">
+          <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5840#5846#0" expanded="true" />
-            <element signature="e#10896#10906#0" expanded="true" />
+            <element signature="e#337#346#0" expanded="true" />
+            <element signature="e#398#405#0" expanded="true" />
+            <element signature="e#3010#3011#0" expanded="true" />
+            <element signature="e#3037#3038#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3106#3107#0" expanded="true" />
+            <element signature="e#3155#3156#0" expanded="true" />
+            <element signature="e#3189#3190#0" expanded="true" />
+            <element signature="e#3151#3152#0" expanded="true" />
+            <element signature="e#3183#3184#0" expanded="true" />
+            <element signature="e#3332#3333#0" expanded="true" />
+            <element signature="e#3365#3366#0" expanded="true" />
+            <element signature="e#3307#3308#0" expanded="true" />
+            <element signature="e#3340#3341#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/Scope.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="132" column="30" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
+        <state relative-caret-position="672">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3507#3508#0" expanded="true" />
-            <element signature="e#3614#3615#0" expanded="true" />
-            <element signature="e#3723#3724#0" expanded="true" />
-            <element signature="e#4145#4146#0" expanded="true" />
-            <element signature="e#4207#4208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#308#309#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/GlobalPreUseScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Submit/src/princeYang/mxcc/MxCC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="54" column="46" lean-forward="true" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
           </folding>
         </state>
       </provider>

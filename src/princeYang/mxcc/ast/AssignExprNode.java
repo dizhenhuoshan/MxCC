@@ -2,8 +2,8 @@ package princeYang.mxcc.ast;
 
 public class AssignExprNode extends ExprNode
 {
-    ExprNode lhs;
-    ExprNode rhs;
+    private ExprNode lhs;
+    private ExprNode rhs;
 
     public AssignExprNode(Location location, ExprNode lhs, ExprNode rhs)
     {

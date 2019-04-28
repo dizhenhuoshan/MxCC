@@ -2,7 +2,7 @@ package princeYang.mxcc.ast;
 
 public class ReturnStateNode extends StateNode
 {
-    ExprNode retExpr;
+    private ExprNode retExpr;
 
     public ReturnStateNode(Location location, ExprNode retExpr)
     {

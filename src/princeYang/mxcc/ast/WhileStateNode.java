@@ -2,8 +2,8 @@ package princeYang.mxcc.ast;
 
 public class WhileStateNode extends StateNode
 {
-    ExprNode conditionExpr;
-    StateNode loopState;
+    private ExprNode conditionExpr;
+    private StateNode loopState;
 
     public WhileStateNode(Location location, ExprNode conditionExpr, StateNode loopState)
     {
