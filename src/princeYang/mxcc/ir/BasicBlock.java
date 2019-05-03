@@ -46,4 +46,10 @@ public class BasicBlock
     {
         this.tailInst = tailInst;
     }
+
+    public void appendInst(IRInstruction newTail)
+    {
+        tailInst.append(newTail);
+        this.tailInst = newTail;
+    }
 }

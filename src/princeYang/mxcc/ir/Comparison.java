@@ -2,22 +2,20 @@ package princeYang.mxcc.ir;
 
 import java.util.Map;
 
-import static princeYang.mxcc.ir.IRBinaryOp.*;
-
-public class BinaryOperation extends IRInstruction
+public class Comparison extends IRInstruction
 {
 
-    private IRValue lhs, rhs;
-    private IRBinaryOp bop;
+    private ComparisonOp comparisonOp;
     private IRReg resReg;
+    private IRValue lhs, rhs;
 
-    public BinaryOperation(BasicBlock basicBlock, IRValue lhs, IRValue rhs, IRBinaryOp bop, IRReg resReg)
+    public Comparison(BasicBlock basicBlock, ComparisonOp comparisonOp, IRReg resReg, IRValue lhs, IRValue rhs)
     {
         super(basicBlock);
+        this.comparisonOp = comparisonOp;
+        this.resReg = resReg;
         this.lhs = lhs;
         this.rhs = rhs;
-        this.bop = bop;
-        this.resReg = resReg;
         reloadUsedRV();
     }
 
@@ -45,7 +43,7 @@ public class BinaryOperation extends IRInstruction
     {
         if (lhs instanceof IRReg)
             lhs = renameMap.get(lhs);
-        if (rhs instanceof  IRReg)
+        if (rhs instanceof IRReg)
             rhs = renameMap.get(rhs);
         reloadUsedRV();
     }
@@ -53,9 +51,9 @@ public class BinaryOperation extends IRInstruction
     @Override
     public IRInstruction copyAndRename(Map<Object, Object> renameMap)
     {
-        return new BinaryOperation((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
-                (IRValue) renameMap.getOrDefault(lhs, lhs), (IRValue) renameMap.getOrDefault(rhs, rhs),
-                bop, (IRReg) renameMap.getOrDefault(resReg, resReg));
+        return new Comparison((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
+                comparisonOp, (IRReg) renameMap.getOrDefault(resReg, resReg),
+                (IRValue) renameMap.getOrDefault(lhs, lhs), (IRValue) renameMap.getOrDefault(rhs, rhs));
     }
 
     @Override
@@ -70,14 +68,14 @@ public class BinaryOperation extends IRInstruction
         this.resReg = vIRReg;
     }
 
+    public IRReg getResReg()
+    {
+        return resReg;
+    }
+
     public IRValue getLhs()
     {
         return lhs;
-    }
-
-    public IRBinaryOp getBop()
-    {
-        return bop;
     }
 
     public IRValue getRhs()
@@ -85,25 +83,8 @@ public class BinaryOperation extends IRInstruction
         return rhs;
     }
 
-    public IRReg getResReg()
+    public ComparisonOp getComparisonOp()
     {
-        return resReg;
-    }
-
-    public void setLhs(IRValue lhs)
-    {
-        this.lhs = lhs;
-        reloadUsedRV();
-    }
-
-    public void setRhs(IRValue rhs)
-    {
-        this.rhs = rhs;
-        reloadUsedRV();
-    }
-
-    public boolean isExchangeable()
-    {
-        return bop == ADD || bop == MUL || bop == BITWISE_AND || bop == BITWISE_OR || bop == BITWISE_XOR;
+        return comparisonOp;
     }
 }

@@ -2,9 +2,7 @@ package princeYang.mxcc.ir;
 
 import princeYang.mxcc.scope.FuncEntity;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class IRFunction
 {
@@ -16,8 +14,15 @@ public class IRFunction
     private boolean hasRetValue = false, hasRecursive = false, isInClass = false;
     private String buildInName;
     private FuncEntity funcEntity;
-    public Set<IRFunction> setCallee = new HashSet<IRFunction>();
-    public Set<IRFunction> setRecurCallee = new HashSet<IRFunction>();
+
+    private List<VirtualReg> argvRegList = new ArrayList<VirtualReg>();
+    private List<BasicBlock> reversePreOrder = null, reversePostOrder = null;
+    private List<StackSlot> stackSlots = new ArrayList<StackSlot>();
+
+    public List<Return> returnInstList = new ArrayList<Return>();
+    public Set<IRFunction> calleeSet = new HashSet<IRFunction>();
+    public Set<IRFunction> recurCalleeSet = new HashSet<IRFunction>();
+
 
     public IRFunction() {}
 
@@ -35,7 +40,7 @@ public class IRFunction
         this.funcEntity = funcEntity;
         if (funcEntity.isInClass())
         {
-            // TODO: function name in class.
+            funcName = "__class__" + funcEntity.getIdent();
             this.isInClass = true;
         }
     }
@@ -43,6 +48,34 @@ public class IRFunction
     public LinkedList<BasicBlock> getBasicBlocks()
     {
         return basicBlocks;
+    }
+
+    public List<StackSlot> getStackSlots()
+    {
+        return stackSlots;
+    }
+
+    public String getFuncName()
+    {
+        return funcName;
+    }
+
+    public void updateCalleeSet()
+    {
+        calleeSet.clear();
+        for (BasicBlock basicBlock : reversePostOrder)
+        {
+            IRInstruction instruction = null;
+            for (instruction = basicBlock.getHeadInst(); instruction != null;
+                 instruction = instruction.getNext())
+                if (instruction instanceof FuncCall)
+                    calleeSet.add(((FuncCall) instruction).getFunction());
+        }
+    }
+
+    public void insertArgReg(VirtualReg virtualReg)
+    {
+        argvRegList.add(virtualReg);
     }
 
 }

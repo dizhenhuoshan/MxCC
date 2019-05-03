@@ -2,7 +2,7 @@ package princeYang.mxcc.ir;
 
 import java.util.Map;
 
-public class Branch extends IRInstruction
+public class Branch extends BranchBaseInst
 {
 
     private IRValue cond;
@@ -42,7 +42,7 @@ public class Branch extends IRInstruction
     }
 
     @Override
-    public IRInstruction copyAndRename(Map<Object, Object> renameMap)
+    public Branch copyAndRename(Map<Object, Object> renameMap)
     {
         return new Branch((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
                 (IRValue) renameMap.getOrDefault(cond, cond),
@@ -51,8 +51,44 @@ public class Branch extends IRInstruction
     }
 
     @Override
+    public IRReg getDefinedReg()
+    {
+        return null;
+    }
+
+    @Override
     public void setDefinedReg(IRReg vIRReg)
     {
+        return;
+    }
 
+    public IRValue getCond()
+    {
+        return cond;
+    }
+
+    public BasicBlock getThenBlock()
+    {
+        return thenBlock;
+    }
+
+    public BasicBlock getElseBlock()
+    {
+        return elseBlock;
+    }
+
+    public void setCond(IRValue cond)
+    {
+        this.cond = cond;
+    }
+
+    public void setThenBlock(BasicBlock thenBlock)
+    {
+        this.thenBlock = thenBlock;
+    }
+
+    public void setElseBlock(BasicBlock elseBlock)
+    {
+        this.elseBlock = elseBlock;
     }
 }

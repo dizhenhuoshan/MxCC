@@ -33,7 +33,7 @@ public class GlobalPreUseScanner extends ScopeScanner
         funcEntity.setRetType(retType);
         funcEntity.setFuncParas(funcParas);
         funcEntity.setBuildIn(true);
-        if (!scope.isTop())
+        if (!scope.isGlobalScope())
             funcEntity.setInClass(true);
         scope.insertFunc(funcEntity);
     }

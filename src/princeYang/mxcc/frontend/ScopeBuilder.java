@@ -99,7 +99,7 @@ public class ScopeBuilder extends ScopeScanner
         if (varDeclNode.getInitValue() != null)
             varInitCheck(varDeclNode);
         VarEntity entity = new VarEntity(varDeclNode);
-        if (currentScope.isTop())
+        if (currentScope.isGlobalScope())
             entity.setInGlobal(true);
         currentScope.insertVar(entity);
     }
@@ -234,8 +234,6 @@ public class ScopeBuilder extends ScopeScanner
     {
         memoryAccessExprNode.getHostExpr().accept(this);
         String hostID;
-//        VarEntity varEntity;
-//        FuncEntity funcEntity;
         Entity entity;
         ClassEntity classEntity;
         if (memoryAccessExprNode.getHostExpr().getType() instanceof ArrayType)
@@ -249,8 +247,6 @@ public class ScopeBuilder extends ScopeScanner
         classEntity = currentScope.getClass(hostID);
         if (classEntity == null)
             throw new MxError(memoryAccessExprNode.getLocation(), "hostExpr class is not defined! (PACNIC)! \n");
-//        varEntity = (VarEntity) classEntity.getClassScope().getSelfVar(memoryAccessExprNode.getMemberStr());
-//        funcEntity = (FuncEntity) classEntity.getClassScope().getSelfFunc(memoryAccessExprNode.getMemberStr());
         entity = classEntity.getClassScope().getSelfVarOrFunc(memoryAccessExprNode.getMemberStr());
         if (entity instanceof VarEntity)
             memoryAccessExprNode.setType(entity.getType());
@@ -273,8 +269,6 @@ public class ScopeBuilder extends ScopeScanner
             throw new MxError(functionCallExprNode.getLocation(), "Function expression invalid!\n");
         FuncEntity funcEntity = currentFuncCallEntity;
         functionCallExprNode.setFuncEntity(funcEntity);
-        // Args type check
-        // Caution: last para in class function is "this"
         int paraNum;
         Type requiredType;
         if (funcEntity.getFuncParas() != null)
@@ -505,8 +499,6 @@ public class ScopeBuilder extends ScopeScanner
     public void visit(IdentExprNode identExprNode)
     {
         String ident = identExprNode.getIdentName();
-//        FuncEntity funcEntity = currentScope.getFunc(ident);
-//        VarEntity varEntity = currentScope.getVar(ident);
         Entity entity = currentScope.getVarOrFunc(ident);
         if (entity instanceof FuncEntity)
         {

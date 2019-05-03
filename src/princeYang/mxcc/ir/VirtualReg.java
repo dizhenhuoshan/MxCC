@@ -1,6 +1,6 @@
 package princeYang.mxcc.ir;
 
-public class VirtualReg extends IRValue
+public class VirtualReg extends IRReg
 {
     private String vRegName;
     private RealReg enforcedReg = null;

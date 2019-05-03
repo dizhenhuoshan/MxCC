@@ -21,6 +21,13 @@ public abstract class IRInstruction
         this.fatherBlock = fatherBlock;
     }
 
+    public IRInstruction(BasicBlock fatherBlock, IRInstruction prev, IRInstruction next)
+    {
+        this.fatherBlock = fatherBlock;
+        this.prev = prev;
+        this.next = next;
+    }
+
     public void append(IRInstruction nextInst)
     {
         if (next == null)
@@ -151,6 +158,8 @@ public abstract class IRInstruction
     public abstract void setUsedIRReg(Map<IRReg, IRReg> renameMap);
 
     public abstract IRInstruction copyAndRename(Map<Object, Object> renameMap);
+
+    public abstract IRReg getDefinedReg();
 
     public abstract void setDefinedReg(IRReg vIRReg);
 }

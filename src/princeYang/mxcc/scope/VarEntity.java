@@ -1,13 +1,16 @@
 package princeYang.mxcc.scope;
 
 import princeYang.mxcc.ast.*;
+import princeYang.mxcc.ir.IRReg;
 
 public class VarEntity extends Entity
 {
     private Location location;
-    String classIdent = null;
-    boolean inClass = false;
-    boolean inGlobal = false;
+    private String classIdent = null;
+    private boolean inClass = false;
+    private boolean inGlobal = false;
+    private boolean unUsed = false;
+    private IRReg irReg = null;
 
     public VarEntity(String ident, Type type)
     {
@@ -54,5 +57,23 @@ public class VarEntity extends Entity
         this.inGlobal = inGlobal;
     }
 
+    public boolean isUnUsed()
+    {
+        return unUsed;
+    }
 
+    public void setUnUsed(boolean unUsed)
+    {
+        this.unUsed = unUsed;
+    }
+
+    public IRReg getIrReg()
+    {
+        return irReg;
+    }
+
+    public void setIrReg(IRReg irReg)
+    {
+        this.irReg = irReg;
+    }
 }

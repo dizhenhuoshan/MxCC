@@ -1,8 +1,8 @@
 package princeYang.mxcc.ir;
 
-public class Immediate
+public class Immediate extends IRValue
 {
-    int value;
+    private int value;
 
     public Immediate(int value)
     {
@@ -22,5 +22,11 @@ public class Immediate
     public void accept(IRVisitor visitor)
     {
         visitor.visit(this);
+    }
+
+    @Override
+    public IRValue copy()
+    {
+        return new Immediate(value);
     }
 }
