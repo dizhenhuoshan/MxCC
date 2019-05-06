@@ -1,9 +1,9 @@
-int b = "hello";
+int b = 1;
 
 
 int main() {
 	int c = b;
-
+    print(1);
 	return c;
 }
 

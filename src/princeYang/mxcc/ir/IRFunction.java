@@ -9,8 +9,8 @@ public class IRFunction
     private String funcName;
     private IRFuncType funcType;
     private LinkedList<BasicBlock> basicBlocks;
-    private BasicBlock bbEnter;
-    private BasicBlock bbLeave;
+    private BasicBlock blockEnter;
+    private BasicBlock blockLeave;
     private boolean hasRetValue = false, hasRecursive = false, isInClass = false;
     private String buildInName;
     private FuncEntity funcEntity;
@@ -78,4 +78,33 @@ public class IRFunction
         argvRegList.add(virtualReg);
     }
 
+    public void generateEntry()
+    {
+        this.blockEnter = new BasicBlock(this, "__entry__" + funcName);
+    }
+
+    public BasicBlock getBlockEnter()
+    {
+        return blockEnter;
+    }
+
+    public BasicBlock getBlockLeave()
+    {
+        return blockLeave;
+    }
+
+    public void setBlockEnter(BasicBlock blockEnter)
+    {
+        this.blockEnter = blockEnter;
+    }
+
+    public void setBlockLeave(BasicBlock blockLeave)
+    {
+        this.blockLeave = blockLeave;
+    }
+
+    public List<Return> getReturnInstList()
+    {
+        return returnInstList;
+    }
 }

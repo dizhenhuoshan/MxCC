@@ -6,6 +6,7 @@ public class IdentExprNode extends ExprNode
 {
     private String identName;
     private VarEntity varEntity;
+    private boolean memAccessChecked, memAccessing;
 
     public IdentExprNode(Location location, String identName)
     {
@@ -27,6 +28,26 @@ public class IdentExprNode extends ExprNode
     public void setVarEntity(VarEntity varEntity)
     {
         this.varEntity = varEntity;
+    }
+
+    public boolean hasMemAccessChecked()
+    {
+        return memAccessChecked;
+    }
+
+    public void setMemAccessChecked(boolean memAccessChecked)
+    {
+        this.memAccessChecked = memAccessChecked;
+    }
+
+    public boolean isMemAccessing()
+    {
+        return memAccessing;
+    }
+
+    public void setMemAccessing(boolean memAccessing)
+    {
+        this.memAccessing = memAccessing;
     }
 
     @Override

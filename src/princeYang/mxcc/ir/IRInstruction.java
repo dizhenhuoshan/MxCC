@@ -99,6 +99,8 @@ public abstract class IRInstruction
     {
         if (hasRemoved)
             throw new MxError("Trying to remove a removed inst!\n");
+        if (this instanceof BranchBaseInst)
+            this.fatherBlock.deleteJumpInst();
         if (prev == null && next == null)
         {
             this.fatherBlock.setHeadInst(null);

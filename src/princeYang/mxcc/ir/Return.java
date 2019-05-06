@@ -2,7 +2,7 @@ package princeYang.mxcc.ir;
 
 import java.util.Map;
 
-public class Return extends IRInstruction
+public class Return extends BranchBaseInst
 {
     private IRValue retValue;
 
@@ -39,7 +39,7 @@ public class Return extends IRInstruction
     }
 
     @Override
-    public IRInstruction copyAndRename(Map<Object, Object> renameMap)
+    public BranchBaseInst copyAndRename(Map<Object, Object> renameMap)
     {
         return new Return((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
                 (IRValue) renameMap.getOrDefault(retValue, retValue));

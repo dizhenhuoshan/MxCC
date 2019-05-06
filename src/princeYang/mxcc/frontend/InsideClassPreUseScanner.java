@@ -2,15 +2,13 @@ package princeYang.mxcc.frontend;
 
 import princeYang.mxcc.ast.*;
 import princeYang.mxcc.errors.MxError;
-import princeYang.mxcc.scope.Entity;
-import princeYang.mxcc.scope.FuncEntity;
-import princeYang.mxcc.scope.Scope;
-import princeYang.mxcc.scope.VarEntity;
+import princeYang.mxcc.scope.*;
 
 public class InsideClassPreUseScanner extends ScopeScanner
 {
     private Scope globalScope, currentScope;
     private ClassType classType;
+    private int currentMemOffset = 0;
 
     public InsideClassPreUseScanner(Scope globalScope)
     {
@@ -31,16 +29,19 @@ public class InsideClassPreUseScanner extends ScopeScanner
     @Override
     public void visit(ClassDeclNode classDeclNode)
     {
-        currentScope = (globalScope.getClass(classDeclNode.getIdentName())).getClassScope();
-        classType = (ClassType) (globalScope.getClass(classDeclNode.getIdentName())).getType();
+        ClassEntity classEntity = (ClassEntity) globalScope.getClass(classDeclNode.getIdentName());
+        currentScope = classEntity.getClassScope();
+        classType = (ClassType) classEntity.getType();
         for (FuncDeclNode funcDeclNode : classDeclNode.getFuncDeclList())
         {
             funcDeclNode.accept(this);
         }
+        currentMemOffset = 0;
         for(VarDeclNode varDeclNode : classDeclNode.getVarDeclList())
         {
             varDeclNode.accept(this);
         }
+        classEntity.setMemSize(currentMemOffset);
         currentScope = currentScope.getFather();
         classType = null;
     }
@@ -67,7 +68,9 @@ public class InsideClassPreUseScanner extends ScopeScanner
                 throw new MxError(varDeclNode.getLocation(), String.format("Scope: class %s is not defined\n",
                         ((ClassType)varDeclNode.getVarType().getType()).getClassIdent()));
         }
-        Entity entity = new VarEntity(classType.getClassIdent() ,varDeclNode);
+        VarEntity entity = new VarEntity(classType.getClassIdent() ,varDeclNode);
+        entity.setMemOffset(currentMemOffset);
+        currentMemOffset += varDeclNode.getVarType().getType().getSize();
         currentScope.insertVar(entity);
     }
 }

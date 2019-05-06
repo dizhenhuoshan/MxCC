@@ -10,6 +10,7 @@ abstract public class ExprNode extends Node
     private boolean isLeftValue;
     private BasicBlock boolTrueBlock = null, boolFalseBlock = null;
     private IRValue addrValue = null, regValue = null;
+    private int addrOffset;
 
     public Type getType()
     {
@@ -74,5 +75,15 @@ abstract public class ExprNode extends Node
     public void setRegValue(IRValue regValue)
     {
         this.regValue = regValue;
+    }
+
+    public int getAddrOffset()
+    {
+        return addrOffset;
+    }
+
+    public void setAddrOffset(int addrOffset)
+    {
+        this.addrOffset = addrOffset;
     }
 }

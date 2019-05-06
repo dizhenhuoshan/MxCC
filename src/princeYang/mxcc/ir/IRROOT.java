@@ -1,5 +1,8 @@
 package princeYang.mxcc.ir;
 
+import princeYang.mxcc.ast.ForStateNode;
+import princeYang.mxcc.ast.StateNode;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -11,11 +14,10 @@ public class IRROOT
     private Map<String, IRFunction> buildInFuncMap = new LinkedHashMap<String, IRFunction>();
     private Map<String, StaticStr> staticStrMap = new LinkedHashMap<String, StaticStr>();
     private List<StaticData> staticDataList = new ArrayList<StaticData>();
+    private Map<ForStateNode, IRFor> IRForMap = new LinkedHashMap<ForStateNode, IRFor>();
 
     static public final String buildInPrint = "print";
     static public final String buildInPrintln = "println";
-    static public final String buildInPrintInt = "printInt";
-    static public final String buildInPrintlnInt = "printlnInt";
     static public final String buildInGetString = "getString";
     static public final String buildInGetInt = "getInt";
     static public final String buildInToString = "toString";
@@ -30,14 +32,16 @@ public class IRROOT
     static public final String buildInClassStringOrd = "__class__string__ord";
     static public final String buildInClassArraySize = "__class____array__size";
 
+    // for spot optim
+    static public final String buildInPrintForInt = "printForInt";
+    static public final String buildInPrintlnForInt = "printlnForInt";
+
     private List<String> buildInList = new ArrayList<String>();
 
     public IRROOT()
     {
         buildInList.add(buildInPrint);
         buildInList.add(buildInPrintln);
-        buildInList.add(buildInPrintInt);
-        buildInList.add(buildInPrintlnInt);
         buildInList.add(buildInGetString);
         buildInList.add(buildInGetInt);
         buildInList.add(buildInToString);
@@ -49,6 +53,9 @@ public class IRROOT
         buildInList.add(buildInClassStringParseInt);
         buildInList.add(buildInClassStringOrd);
         buildInList.add(buildInClassArraySize);
+        // for spot optim
+        buildInList.add(buildInPrintForInt);
+        buildInList.add(buildInPrintlnForInt);
 
         IRFunction buildInFunc;
 
@@ -72,6 +79,16 @@ public class IRROOT
     public Map<String, IRFunction> getFunctionMap()
     {
         return functionMap;
+    }
+
+    public Map<String, IRFunction> getBuildInFuncMap()
+    {
+        return buildInFuncMap;
+    }
+
+    public Map<ForStateNode, IRFor> getIRForMap()
+    {
+        return IRForMap;
     }
 
     public void addStaticData(StaticData staticData)

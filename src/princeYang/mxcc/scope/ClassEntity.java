@@ -8,6 +8,7 @@ import princeYang.mxcc.ast.Type;
 public class ClassEntity extends Entity
 {
     private Scope classScope;
+    private int memSize = 0;
 
     public ClassEntity(String ident, Type type, Scope father)
     {
@@ -29,5 +30,15 @@ public class ClassEntity extends Entity
     public Scope getClassScope()
     {
         return classScope;
+    }
+
+    public int getMemSize()
+    {
+        return memSize;
+    }
+
+    public void setMemSize(int memSize)
+    {
+        this.memSize = memSize;
     }
 }

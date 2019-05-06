@@ -105,19 +105,19 @@ public class Scope
     }
 
 
-    public Entity getSelfVar(String ident)
+    public VarEntity getSelfVar(String ident)
     {
-        return entityMap.get(varPrefix + ident);
+        return (VarEntity) entityMap.get(varPrefix + ident);
     }
 
-    public Entity getSelfFunc(String ident)
+    public FuncEntity getSelfFunc(String ident)
     {
-        return entityMap.get(funcPrefix + ident);
+        return (FuncEntity) entityMap.get(funcPrefix + ident);
     }
 
-    public Entity getSelfClass(String ident)
+    public ClassEntity getSelfClass(String ident)
     {
-        return entityMap.get(classPrefix + ident);
+        return (ClassEntity) entityMap.get(classPrefix + ident);
     }
 
     public Entity getSelfVarOrFunc(String ident)

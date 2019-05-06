@@ -8,6 +8,7 @@ public interface IRVisitor
     void visit(Pop IRNode);
     void visit(Push IRNode);
     void visit(Return IRNode);
+    void visit(BinaryOperation IRNode);
     void visit(UnaryOperation IRNode);
     void visit(HeapAllocate IRNode);
     void visit(Jump IRNode);
