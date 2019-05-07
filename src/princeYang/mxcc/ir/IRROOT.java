@@ -15,6 +15,7 @@ public class IRROOT
     private Map<String, StaticStr> staticStrMap = new LinkedHashMap<String, StaticStr>();
     private List<StaticData> staticDataList = new ArrayList<StaticData>();
     private Map<ForStateNode, IRFor> IRForMap = new LinkedHashMap<ForStateNode, IRFor>();
+    private boolean containShiftDiv = false;
 
     static public final String buildInPrint = "print";
     static public final String buildInPrintln = "println";
@@ -94,5 +95,15 @@ public class IRROOT
     public void addStaticData(StaticData staticData)
     {
         this.staticDataList.add(staticData);
+    }
+
+    public boolean isContainShiftDiv()
+    {
+        return containShiftDiv;
+    }
+
+    public void setContainShiftDiv(boolean containShiftDiv)
+    {
+        this.containShiftDiv = containShiftDiv;
     }
 }
