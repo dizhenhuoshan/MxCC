@@ -231,7 +231,7 @@ public class LLIRInterpreter
     private Map<String, Register> registers;
     private Map<String, Integer> tmpRegister = new HashMap<>(); // for phi node
     private Map<Integer, Byte> memory = new HashMap<>();
-    private int heapTop = (int)(Math.random() * 4096);
+    private int heapTop = (int)(Math.random() * 40960000);
     private int retValue;
     private boolean ret;
     private int cntInst = 0;
@@ -305,7 +305,7 @@ public class LLIRInterpreter
                 int size = readSrc(curInst.op1);
                 registerWrite(curInst.dest, heapTop);
                 for (int i = 0; i < size; ++i) memory.put(heapTop+i, (byte)(Math.random() * 256));
-                heapTop += (int)(Math.random() * 4096);
+                heapTop += (int)(Math.random() * 40960000);
                 return;
 
             case "ret":
@@ -481,6 +481,7 @@ public class LLIRInterpreter
             exitcode = retValue;
             exception = false;
         } catch (RuntimeError e) {
+            e.printStackTrace();
             System.err.println("Runtime Error");
             System.err.println("    " + e.getMessage());
             exitcode = -1;

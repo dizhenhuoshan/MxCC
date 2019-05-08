@@ -2,7 +2,9 @@ package princeYang.mxcc.ir;
 
 public interface IRVisitor
 {
-    void visit(RealReg IRNode);
+    void visit(IRROOT IRNode);
+    void visit(IRFunction IRNode);
+    void visit(BasicBlock IRNode);
     void visit(VirtualReg IRNode);
     void visit(Immediate IRNode);
     void visit(Pop IRNode);
@@ -16,9 +18,9 @@ public interface IRVisitor
     void visit(Store IRNode);
     void visit(Move IRNode);
     void visit(PhysicalReg IRNode);
-    void visit(Branch branch);
-    void visit(Comparison comparison);
-    void visit(FuncCall funcCall);
-    void visit(StaticStr staticStr);
-    void visit(StaticVar staticVar);
+    void visit(Branch IRNode);
+    void visit(Comparison IRNode);
+    void visit(FuncCall IRNode);
+    void visit(StaticStr IRNode);
+    void visit(StaticVar IRNode);
 }

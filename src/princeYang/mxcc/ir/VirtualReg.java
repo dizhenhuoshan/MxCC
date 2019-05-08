@@ -3,7 +3,7 @@ package princeYang.mxcc.ir;
 public class VirtualReg extends IRReg
 {
     private String vRegName;
-    private RealReg enforcedReg = null;
+    private PhysicalReg enforcedReg = null;
 
     public VirtualReg(String vRegName)
     {
@@ -27,12 +27,12 @@ public class VirtualReg extends IRReg
         return vRegName;
     }
 
-    public RealReg getEnforcedReg()
+    public PhysicalReg getEnforcedReg()
     {
         return enforcedReg;
     }
 
-    public void setEnforcedReg(RealReg enforcedReg)
+    public void setEnforcedReg(PhysicalReg enforcedReg)
     {
         this.enforcedReg = enforcedReg;
     }

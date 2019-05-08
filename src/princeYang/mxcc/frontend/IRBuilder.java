@@ -65,7 +65,7 @@ public class IRBuilder extends ScopeScanner
             else if (!(declNode instanceof VarDeclNode))
                 throw new MxError("IRBuilder: declNode Type is invalid in visiting MxProgNode!\n");
         }
-//        updateRecursiveCalleeSet();
+        updateRecursiveCalleeSet();
     }
 
     @Override
@@ -88,7 +88,7 @@ public class IRBuilder extends ScopeScanner
             }
             else
             {
-                if (node.getInitValue() instanceof ConstBoolNode || node.getInitValue().getType() instanceof BoolType)
+                if (!(node.getInitValue() instanceof ConstBoolNode) && node.getInitValue().getType() instanceof BoolType)
                 {
                     node.getInitValue().setBoolTrueBlock(new BasicBlock(currentFunc, "boolTrueBlock"));
                     node.getInitValue().setBoolFalseBlock(new BasicBlock(currentFunc, "boolFalseBlock"));
@@ -117,7 +117,7 @@ public class IRBuilder extends ScopeScanner
     {
         String funcIdent = node.getIdentName();
         if (currentClass != null)
-            funcIdent = "__class__" + funcIdent;
+            funcIdent = genClassFuncName(currentClass, funcIdent);
         currentFunc = irRoot.getFunctionMap().get(funcIdent);
         currentFunc.generateEntry();
         currentBlock = currentFunc.getBlockEnter();
@@ -528,6 +528,7 @@ public class IRBuilder extends ScopeScanner
         boolean memAccessingOp = checkMemAccessing(node.getLhs());
         this.memAccessing = memAccessingOp;
         node.getLhs().accept(this);
+        this.memAccessing = false;
 
         if (node.getRhs().getType() instanceof BoolType && !(node.getRhs() instanceof ConstBoolNode))
         {
@@ -538,14 +539,14 @@ public class IRBuilder extends ScopeScanner
 
         int memOffset = 0;
         IRValue destValue;
-        if (memAccessing)
+        if (memAccessingOp)
         {
             memOffset = node.getLhs().getAddrOffset();
             destValue = node.getLhs().getAddrValue();
         }
         else
             destValue = node.getLhs().getRegValue();
-        assignProcessor(destValue, node.getRhs(), memOffset, Config.regSize,  memAccessing);
+        assignProcessor(destValue, node.getRhs(), memOffset, Config.regSize,  memAccessingOp);
         node.setRegValue(node.getRhs().getRegValue());
     }
 
@@ -699,8 +700,9 @@ public class IRBuilder extends ScopeScanner
             node.setRegValue(constString);
         else
         {
-            constString = new StaticStr(node.getValue());
+            constString = new StaticStr(node.getValue(), Config.regSize);
             irRoot.getStaticStrMap().put(node.getValue(), constString);
+            node.setRegValue(constString);
         }
     }
 
@@ -714,7 +716,7 @@ public class IRBuilder extends ScopeScanner
         return irRoot;
     }
 
-    public String genClassFuncName(String className, String funcName)
+    public static String genClassFuncName(String className, String funcName)
     {
         return "__class__" + className + "__" + funcName;
     }
@@ -872,7 +874,7 @@ public class IRBuilder extends ScopeScanner
                 para0.accept(this);
                 paras.add(thisExpr.getRegValue());
                 paras.add(para0.getRegValue());
-                calleeFunc = irRoot.getFunctionMap().get(targetFuncName);
+                calleeFunc = irRoot.getBuildInFuncMap().get(targetFuncName);
                 currentBlock.appendInst(new FuncCall(currentBlock, calleeFunc, destVReg, paras));
                 callExprNode.setRegValue(destVReg);
                 break;
@@ -898,23 +900,23 @@ public class IRBuilder extends ScopeScanner
         }
         else
         {
-            List<IRValue> args = new ArrayList<IRValue>();
+            List<IRValue> paras = new ArrayList<IRValue>();
             IRFunction calleeFunc;
             // print(toString(i)) -> printInt(i)
             if (printValue instanceof FunctionCallExprNode && ((FunctionCallExprNode) printValue).getFuncEntity().getIdent() == "toString")
             {
                 ExprNode intValue = ((FunctionCallExprNode) printValue).getParaList().get(0);
                 intValue.accept(this);
-                args.add(intValue.getRegValue());
+                paras.add(intValue.getRegValue());
                 calleeFunc = irRoot.getBuildInFuncMap().get(funcName + "ForInt");
             }
             else
             {
                 printValue.accept(this);
-                args.add(printValue.getRegValue());
+                paras.add(printValue.getRegValue());
                 calleeFunc = irRoot.getBuildInFuncMap().get(funcName);
             }
-            currentBlock.appendInst(new FuncCall(currentBlock, calleeFunc, null, args));
+            currentBlock.appendInst(new FuncCall(currentBlock, calleeFunc, null, paras));
         }
     }
 

@@ -10,6 +10,8 @@ public class BinaryOperation extends IRInstruction
     private IRValue lhs, rhs;
     private IRBinaryOp bop;
     private IRReg resReg;
+    private boolean exchangeable;
+    private boolean diverUsed;
 
     public BinaryOperation(BasicBlock basicBlock, IRValue lhs, IRValue rhs, IRBinaryOp bop, IRReg resReg)
     {
@@ -18,6 +20,8 @@ public class BinaryOperation extends IRInstruction
         this.rhs = rhs;
         this.bop = bop;
         this.resReg = resReg;
+        this.exchangeable = ((bop == ADD) || (bop == MUL) || (bop == BITWISE_AND) || (bop == BITWISE_OR) || (bop == BITWISE_XOR));
+        this.diverUsed = ((bop == DIV) || (bop == MOD));
         reloadUsedRV();
     }
 
@@ -104,6 +108,11 @@ public class BinaryOperation extends IRInstruction
 
     public boolean isExchangeable()
     {
-        return bop == ADD || bop == MUL || bop == BITWISE_AND || bop == BITWISE_OR || bop == BITWISE_XOR;
+        return exchangeable;
+    }
+
+    public boolean isDiverUsed()
+    {
+        return diverUsed;
     }
 }

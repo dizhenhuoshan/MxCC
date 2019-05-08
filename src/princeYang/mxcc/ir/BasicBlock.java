@@ -19,6 +19,8 @@ public class BasicBlock
     private static int globalBlockID = 0;
     private int localBlockID;
 
+    private int preOrderIndex, postOrderIndex;
+
     public BasicBlock(IRFunction parentFunction, String blockName)
     {
         this.parentFunction = parentFunction;
@@ -30,6 +32,11 @@ public class BasicBlock
     public int getLocalBlockID()
     {
         return localBlockID;
+    }
+
+    public String getBlockName()
+    {
+        return blockName;
     }
 
     public IRInstruction getHeadInst()
@@ -86,6 +93,26 @@ public class BasicBlock
         this.forStateNode = forStateNode;
     }
 
+    public int getPostOrderIndex()
+    {
+        return postOrderIndex;
+    }
+
+    public void setPostOrderIndex(int postOrderIndex)
+    {
+        this.postOrderIndex = postOrderIndex;
+    }
+
+    public int getPreOrderIndex()
+    {
+        return preOrderIndex;
+    }
+
+    public void setPreOrderIndex(int preOrderIndex)
+    {
+        this.preOrderIndex = preOrderIndex;
+    }
+
     public void addNextBlock(BasicBlock nextBlock)
     {
         if (nextBlock != null)
@@ -135,5 +162,10 @@ public class BasicBlock
         }
         else
             throw new MxError("IR BasicBlock: jumpInst is invalid in deleteJumpInst!\n");
+    }
+
+    public void accept(IRVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

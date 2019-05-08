@@ -489,6 +489,7 @@ public class AstBuilder extends MxBaseVisitor<Node>
         Location location = new Location(ctx);
         String buffer, value;
         buffer = ctx.ConstString().getText();
+        buffer = buffer.substring(1, buffer.length() - 1);
         buffer = buffer.replace("\\\\", "\\");
         buffer = buffer.replace("\\n", "\n");
         value = buffer.replace("\\\"", "\"");

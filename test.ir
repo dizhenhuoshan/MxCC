@@ -1,0 +1,230 @@
+
+func main {
+%__entry__main:
+    call __globalVarInit 
+    $vreg = move 10000
+    $vreg = mul $vreg 8
+    $vreg = add $vreg 8
+    $vreg = alloc $vreg
+    store 8 $vreg 10000 0
+    $vreg_2 = move $vreg
+    $dp = move $vreg_2
+    $n = move 0
+    $n = move 11
+    $i = move 0
+    $vreg_3 = move $n
+    $vreg_3 = add $vreg_3 10
+    $vreg_4 = move $vreg_3
+    $vreg_4 = mul $vreg_4 8
+    $vreg_4 = add $vreg_4 8
+    $vreg_4 = alloc $vreg_4
+    store 8 $vreg_4 $vreg_3 0
+    $vreg_5 = move $vreg_4
+    $a = move $vreg_5
+    $i = move 0
+    jump %__loop__for_stop
+
+%__loop__for_stop:
+    $vreg_6 = slt $i 10000
+    br $vreg_6 %__loop__for_body %__loop__for_after
+
+%__loop__for_body:
+    $vreg_7 = move $i
+    $vreg_7 = mul $vreg_7 8
+    $vreg_7 = add $vreg_7 $dp
+    store 8 $vreg_7 0 8
+    jump %__loop__for_step
+
+%__loop__for_step:
+    $i = add $i 1
+    jump %__loop__for_stop
+
+%__loop__for_after:
+    $vreg_8 = move 0
+    $vreg_8 = mul $vreg_8 8
+    $vreg_8 = add $vreg_8 $a
+    store 8 $vreg_8 0 8
+    $vreg_9 = move 1
+    $vreg_9 = mul $vreg_9 8
+    $vreg_9 = add $vreg_9 $a
+    store 8 $vreg_9 3 8
+    $i = move 3
+    jump %__loop__for_stop_2
+
+%__loop__for_stop_2:
+    $vreg_10 = sle $i 5
+    br $vreg_10 %__loop__for_body_2 %__loop__for_after_2
+
+%__loop__for_after_2:
+    $vreg_11 = move 6
+    $vreg_11 = mul $vreg_11 8
+    $vreg_11 = add $vreg_11 $a
+    store 8 $vreg_11 0 8
+    $vreg_12 = move 7
+    $vreg_12 = mul $vreg_12 8
+    $vreg_12 = add $vreg_12 $a
+    store 8 $vreg_12 0 8
+    $vreg_13 = move 8
+    $vreg_13 = mul $vreg_13 8
+    $vreg_13 = add $vreg_13 $a
+    store 8 $vreg_13 1 8
+    $vreg_14 = move 9
+    $vreg_14 = mul $vreg_14 8
+    $vreg_14 = add $vreg_14 $a
+    store 8 $vreg_14 2 8
+    $vreg_15 = move 10
+    $vreg_15 = mul $vreg_15 8
+    $vreg_15 = add $vreg_15 $a
+    store 8 $vreg_15 3 8
+    $i = move 0
+    $j = move 1
+    jump %__loop__while_cond
+
+%__loop__while_cond:
+    $vreg_16 = slt $j $n
+    br $vreg_16 %__loop__while_body %__loop__while_after
+
+%__loop__while_body:
+    $vreg_17 = move $i
+    $vreg_17 = mul $vreg_17 8
+    $vreg_17 = add $vreg_17 $dp
+    $vreg_17 = load 8 $vreg_17 8
+    $vreg_18 = seq $vreg_17 1
+    br $vreg_18 %__branch__if_then %__branch_if_after
+
+%__branch__if_then:
+    jump %__loop__while_cond_2
+
+%__loop__while_cond_2:
+    $vreg_19 = move $i
+    $vreg_19 = mul $vreg_19 8
+    $vreg_19 = add $vreg_19 $dp
+    $vreg_19 = load 8 $vreg_19 8
+    $vreg_20 = seq $vreg_19 1
+    br $vreg_20 %__loop__while_body_2 %__loop__while_after_2
+
+%__loop__while_after_2:
+    jump %__branch_if_after
+
+%__branch_if_after:
+    $vreg_21 = move $i
+    $vreg_21 = mul $vreg_21 8
+    $vreg_21 = add $vreg_21 $a
+    $vreg_21 = load 8 $vreg_21 8
+    $vreg_22 = move $j
+    $vreg_22 = mul $vreg_22 8
+    $vreg_22 = add $vreg_22 $a
+    $vreg_22 = load 8 $vreg_22 8
+    $vreg_23 = sne $vreg_21 $vreg_22
+    br $vreg_23 %__branch__if_then_2 %__branch__if_else
+
+%__branch__if_then_2:
+    $ = move $i
+    $i = add $i 1
+    $_2 = move $j
+    $j = add $j 1
+    $vreg_24 = move $_2
+    $vreg_24 = mul $vreg_24 8
+    $vreg_24 = add $vreg_24 $dp
+    store 8 $vreg_24 1 8
+    jump %__branch_if_after_2
+
+%__branch__if_else:
+    $vreg_25 = move $i
+    $vreg_25 = mul $vreg_25 8
+    $vreg_25 = add $vreg_25 $a
+    $vreg_25 = load 8 $vreg_25 8
+    $vreg_26 = move $j
+    $vreg_26 = mul $vreg_26 8
+    $vreg_26 = add $vreg_26 $a
+    $vreg_26 = load 8 $vreg_26 8
+    $vreg_27 = seq $vreg_25 $vreg_26
+    br $vreg_27 %__branch__if_then_3 %__branch_if_after_3
+
+%__branch__if_then_3:
+    jump %__loop__for_stop_3
+
+%__loop__for_stop_3:
+    $vreg_28 = move $i
+    $vreg_28 = mul $vreg_28 8
+    $vreg_28 = add $vreg_28 $a
+    $vreg_28 = load 8 $vreg_28 8
+    $vreg_29 = move $j
+    $vreg_29 = mul $vreg_29 8
+    $vreg_29 = add $vreg_29 $a
+    $vreg_29 = load 8 $vreg_29 8
+    $vreg_30 = seq $vreg_28 $vreg_29
+    br $vreg_30 %__loop__for_body_3 %__loop__for_after_3
+
+%__loop__for_body_3:
+    jump %__loop__for_step_2
+
+%__loop__for_step_2:
+    $j = add $j 1
+    jump %__loop__for_stop_3
+
+%__loop__for_after_3:
+    jump %__branch_if_after_3
+
+%__branch_if_after_3:
+    jump %__branch_if_after_2
+
+%__branch_if_after_2:
+    jump %__loop__while_cond
+
+%__loop__while_body_2:
+    $_3 = move $i
+    $i = add $i 1
+    jump %__loop__while_cond_2
+
+%__loop__while_after:
+    jump %__loop__for_stop_4
+
+%__loop__for_stop_4:
+    $vreg_31 = move $i
+    $vreg_31 = mul $vreg_31 8
+    $vreg_31 = add $vreg_31 $dp
+    $vreg_31 = load 8 $vreg_31 8
+    $vreg_32 = seq $vreg_31 1
+    br $vreg_32 %__loop__for_body_4 %__loop__for_after_4
+
+%__loop__for_body_4:
+    jump %__loop__for_step_3
+
+%__loop__for_step_3:
+    $i = add $i 1
+    jump %__loop__for_stop_4
+
+%__loop__for_after_4:
+    $vreg_33 = move $i
+    $vreg_33 = mul $vreg_33 8
+    $vreg_33 = add $vreg_33 $a
+    $vreg_33 = load 8 $vreg_33 8
+    ret $vreg_33
+
+%__loop__for_body_2:
+    $vreg_34 = move $i
+    $vreg_34 = mul $vreg_34 8
+    $vreg_34 = add $vreg_34 $a
+    $vreg_35 = move $i
+    $vreg_35 = sub $vreg_35 1
+    $vreg_36 = move $vreg_35
+    $vreg_36 = mul $vreg_36 8
+    $vreg_36 = add $vreg_36 $a
+    $vreg_36 = load 8 $vreg_36 8
+    store 8 $vreg_34 $vreg_36 8
+    jump %__loop__for_step_4
+
+%__loop__for_step_4:
+    $_4 = move $i
+    $i = add $i 1
+    jump %__loop__for_stop_2
+
+}
+
+func __globalVarInit {
+%__entry____globalVarInit:
+    ret 0
+
+}
+

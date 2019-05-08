@@ -115,4 +115,9 @@ public class IRROOT
     {
         this.containShiftDiv = containShiftDiv;
     }
+
+    public List<StaticData> getStaticDataList()
+    {
+        return staticDataList;
+    }
 }

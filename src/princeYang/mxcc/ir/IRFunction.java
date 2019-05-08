@@ -1,5 +1,6 @@
 package princeYang.mxcc.ir;
 
+import princeYang.mxcc.frontend.IRBuilder;
 import princeYang.mxcc.scope.FuncEntity;
 
 import java.util.*;
@@ -18,6 +19,7 @@ public class IRFunction
     private List<VirtualReg> argvRegList = new ArrayList<VirtualReg>();
     private List<BasicBlock> reversePreOrder = null, reversePostOrder = null;
     private List<StackSlot> stackSlots = new ArrayList<StackSlot>();
+    private Set<BasicBlock> dfsVisitedBlock;
 
     public List<Return> returnInstList = new ArrayList<Return>();
     public Set<IRFunction> calleeSet = new HashSet<IRFunction>();
@@ -40,7 +42,7 @@ public class IRFunction
         this.funcEntity = funcEntity;
         if (funcEntity.isInClass())
         {
-            funcName = "__class__" + funcEntity.getIdent();
+            funcName = IRBuilder.genClassFuncName(funcEntity.getClassIdent(), funcName);
             this.isInClass = true;
         }
     }
@@ -68,7 +70,7 @@ public class IRFunction
     public void updateCalleeSet()
     {
         calleeSet.clear();
-        for (BasicBlock basicBlock : reversePostOrder)
+        for (BasicBlock basicBlock : getReversePostOrder())
         {
             IRInstruction instruction = null;
             for (instruction = basicBlock.getHeadInst(); instruction != null;
@@ -108,8 +110,82 @@ public class IRFunction
         this.blockLeave = blockLeave;
     }
 
+    public List<VirtualReg> getArgvRegList()
+    {
+        return argvRegList;
+    }
+
     public List<Return> getReturnInstList()
     {
         return returnInstList;
+    }
+
+    private void dfsPostBlock(BasicBlock basicBlock)
+    {
+        if (dfsVisitedBlock.contains(basicBlock))
+            return;
+        dfsVisitedBlock.add(basicBlock);
+        for (BasicBlock block : basicBlock.getNextBlocks())
+            dfsPostBlock(block);
+        reversePostOrder.add(basicBlock);
+    }
+
+    private void postOrderProcessor()
+    {
+        dfsVisitedBlock = new HashSet<BasicBlock>();
+        reversePostOrder = new ArrayList<BasicBlock>();
+        dfsPostBlock(blockEnter);
+        dfsVisitedBlock = null;
+        for (int i = 0; i < reversePostOrder.size(); i++)
+            reversePostOrder.get(i).setPostOrderIndex(i);
+        Collections.reverse(reversePostOrder);
+    }
+
+    public List<BasicBlock> getReversePostOrder()
+    {
+        if (reversePostOrder == null)
+            postOrderProcessor();
+        return reversePostOrder;
+    }
+
+    private void dfsPreBlock(BasicBlock basicBlock)
+    {
+        if (dfsVisitedBlock.contains(basicBlock))
+            return;
+        dfsVisitedBlock.add(basicBlock);
+        reversePreOrder.add(basicBlock);
+        for (BasicBlock block : basicBlock.getNextBlocks())
+            dfsPreBlock(block);
+    }
+
+    private void preOrderProcessor()
+    {
+        dfsVisitedBlock = new HashSet<BasicBlock>();
+        reversePreOrder = new ArrayList<BasicBlock>();
+        dfsPreBlock(blockEnter);
+        dfsVisitedBlock = null;
+        for (int i = 0; i < reversePreOrder.size(); i++)
+            reversePreOrder.get(i).setPreOrderIndex(i);
+        Collections.reverse(reversePreOrder);
+    }
+
+    public List<BasicBlock> getReversePreOrder()
+    {
+        if (reversePreOrder == null)
+            preOrderProcessor();
+        return reversePreOrder;
+    }
+
+    public void refreshCFG(BasicBlock newBlockEnter, BasicBlock newBlockLeave)
+    {
+        reversePostOrder = null;
+        reversePreOrder = null;
+        this.blockEnter = newBlockEnter;
+        this.blockLeave = newBlockLeave;
+    }
+
+    public void accept(IRVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

@@ -1,12 +1,14 @@
 package princeYang.mxcc.ir;
 
+import princeYang.mxcc.Config;
+
 public class StaticStr extends StaticData
 {
     private String staticValue;
 
-    public StaticStr(String staticValue)
+    public StaticStr(String staticValue, int size)
     {
-        super("static_string", 4);
+        super(staticValue, size);
         this.staticValue = staticValue;
     }
 
