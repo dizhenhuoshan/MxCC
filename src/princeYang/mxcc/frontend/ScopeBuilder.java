@@ -123,13 +123,11 @@ public class ScopeBuilder extends ScopeScanner
                 throw new MxError(forStateNode.getLocation(), "stop condition type should be bool!\n");
         }
         if (forStateNode.getStepExpr() != null)
-            forStateNode.getStopExpr().accept(this);
+            forStateNode.getStepExpr().accept(this);
         if (forStateNode.getLoopState() != null)
         {
             forStateNode.getLoopState().accept(this);
         }
-        else
-            throw new MxError(forStateNode.getLocation(), "for LoopStatement is empty\n");
         loopLevel--;
     }
 
@@ -223,6 +221,7 @@ public class ScopeBuilder extends ScopeScanner
     public void visit(FuncBlockNode funcBlockNode)
     {
         Scope blockScope = new Scope(currentScope);
+        funcBlockNode.setScope(blockScope);
         currentScope = blockScope;
         for (Node funcState : funcBlockNode.getStateList())
             funcState.accept(this);
@@ -507,6 +506,7 @@ public class ScopeBuilder extends ScopeScanner
         }
         else if (entity instanceof VarEntity)
         {
+            identExprNode.setVarEntity((VarEntity) entity);
             identExprNode.setLeftValue(true);
         }
         else

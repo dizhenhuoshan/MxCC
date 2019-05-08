@@ -25,7 +25,9 @@ public class IRROOT
 
     static public final String buildInStringConcat = "string.concat";
     static public final String buildInStringEqual = "string.equal";
+    static public final String buildInStringNequal = "string.nequal";
     static public final String buildInStringLess = "string.less";
+    static public final String buildInStringLessEqual = "string.lessEqual";
 
     static public final String buildInClassStringLength = "__class__string__length";
     static public final String buildInClassStringSubString = "__class__string__substring";
@@ -48,7 +50,9 @@ public class IRROOT
         buildInList.add(buildInToString);
         buildInList.add(buildInStringConcat);
         buildInList.add(buildInStringEqual);
+        buildInList.add(buildInStringNequal);
         buildInList.add(buildInStringLess);
+        buildInList.add(buildInStringLessEqual);
         buildInList.add(buildInClassStringLength);
         buildInList.add(buildInClassStringSubString);
         buildInList.add(buildInClassStringParseInt);
@@ -90,6 +94,11 @@ public class IRROOT
     public Map<ForStateNode, IRFor> getIRForMap()
     {
         return IRForMap;
+    }
+
+    public Map<String, StaticStr> getStaticStrMap()
+    {
+        return staticStrMap;
     }
 
     public void addStaticData(StaticData staticData)

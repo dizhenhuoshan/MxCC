@@ -46,7 +46,7 @@ public class IRBuilder extends ScopeScanner
                 currentScope = classEntity.getClassScope();
                 for (FuncDeclNode classFuncDecl : ((ClassDeclNode) declNode).getFuncDeclList())
                 {
-                    FuncEntity funcEntity = currentScope.getFunc(declNode.getIdentName());
+                    FuncEntity funcEntity = currentScope.getFunc(classFuncDecl.getIdentName());
                     irRoot.addFunction(new IRFunction(funcEntity));
                 }
                 currentScope = currentScope.getFather();
@@ -65,7 +65,7 @@ public class IRBuilder extends ScopeScanner
             else if (!(declNode instanceof VarDeclNode))
                 throw new MxError("IRBuilder: declNode Type is invalid in visiting MxProgNode!\n");
         }
-        updateRecursiveCalleeSet();
+//        updateRecursiveCalleeSet();
     }
 
     @Override
@@ -197,6 +197,8 @@ public class IRBuilder extends ScopeScanner
                 subNode.accept(this);
             else
                 throw new MxError("IR FuncBlockNode: node in StateList is invalid!\n");
+            if (currentBlock.isContainJump())
+                break;
         }
         currentScope = currentScope.getFather();
     }
@@ -346,10 +348,10 @@ public class IRBuilder extends ScopeScanner
     @Override
     public void visit(ReturnStateNode node)
     {
-        Type returnType = node.getRetExpr().getType();
+        Type returnType = currentFunc.getFuncEntity().getRetType();
         // void return
         if (returnType == null || returnType instanceof VoidType)
-            currentBlock.setJumpInst(new Jump(currentBlock, null));
+            currentBlock.setJumpInst(new Return(currentBlock, null));
         else if (!(node.getRetExpr() instanceof ConstBoolNode) && returnType instanceof BoolType)
         {
             // bool return type
@@ -438,6 +440,32 @@ public class IRBuilder extends ScopeScanner
     }
 
     @Override
+    public void visit(NewExprNode node)
+    {
+        Type newType = node.getNewType();
+        VirtualReg destReg = new VirtualReg(null);
+        if (newType instanceof ArrayType)
+            arrayNewProcessor(node, null, destReg, 0);
+        else if (newType instanceof ClassType)
+        {
+            String classIdent = ((ClassType) newType).getClassIdent();
+            ClassEntity classEntity = globalScope.getClass(classIdent);
+            currentBlock.appendInst(new HeapAllocate(currentBlock, destReg, new Immediate(classEntity.getMemSize())));
+            String constructFunc = genClassFuncName(classIdent, classIdent);
+            IRFunction consFunc = irRoot.getFunctionMap().get(constructFunc);
+            if (consFunc != null)
+            {
+                List<IRValue> consArgs = new ArrayList<IRValue>();
+                consArgs.add(destReg);
+                currentBlock.appendInst(new FuncCall(currentBlock, consFunc, null, consArgs));
+            }
+        }
+        else
+            throw new MxError("IR Builder: in NewExpr newType is not invalid\n");
+        node.setRegValue(destReg);
+    }
+
+    @Override
     public void visit(MemoryAccessExprNode node)
     {
         boolean prevMemAccessing = memAccessing;
@@ -487,6 +515,7 @@ public class IRBuilder extends ScopeScanner
         else
         {
             node.setRegValue(destReg);
+            // WRANING: first 8 bytes are array size, skip it.
             currentBlock.appendInst(new Load(currentBlock, destReg, destReg, node.getArrExpr().getType().getSize(), Config.regSize));
             if (node.getBoolFalseBlock() != null)
                 currentBlock.setJumpInst(new Branch(currentBlock, destReg, node.getBoolTrueBlock(), node.getBoolFalseBlock()));
@@ -549,32 +578,6 @@ public class IRBuilder extends ScopeScanner
             }
             node.setMemAccessing(true); // It's actually this.identifier
         }
-    }
-
-    @Override
-    public void visit(NewExprNode node)
-    {
-        Type newType = node.getNewType();
-        VirtualReg destReg = new VirtualReg(null);
-        if (newType instanceof ArrayType)
-            arrayNewProcessor(node, null, destReg, 0);
-        else if (newType instanceof ClassType)
-        {
-            String classIdent = ((ClassType) newType).getClassIdent();
-            ClassEntity classEntity = globalScope.getClass(classIdent);
-            currentBlock.appendInst(new HeapAllocate(currentBlock, destReg, new Immediate(classEntity.getMemSize())));
-            String constructFunc = genClassFuncName(classIdent, classIdent);
-            IRFunction consFunc = irRoot.getFunctionMap().get(constructFunc);
-            if (consFunc != null)
-            {
-                List<IRValue> consArgs = new ArrayList<IRValue>();
-                consArgs.add(destReg);
-                currentBlock.appendInst(new FuncCall(currentBlock, consFunc, null, consArgs));
-            }
-        }
-        else
-            throw new MxError("IR Builder: in NewExpr newType is not invalid\n");
-        node.setRegValue(destReg);
     }
 
     @Override
@@ -642,8 +645,68 @@ public class IRBuilder extends ScopeScanner
             case BITWISE_AND:
             case BITWISE_OR:
             case BITWISE_XOR:
-
+                binaryArithStringProcessor(node);
+                break;
+            case EQUAL:
+            case NEQUAL:
+            case LESS:
+            case LESS_EQUAL:
+            case GREATER:
+            case GREATER_EQUAL:
+                binaryCompareStringProcessor(node);
+                break;
+            case LOGIC_OR:
+            case LOGIC_AND:
+                binaryLogicProcessor(node);
         }
+    }
+
+    @Override
+    public void visit(ThisExprNode node)
+    {
+        VarEntity thisEntity = currentScope.getVar("this");
+        node.setRegValue(thisEntity.getIrReg());
+        if (node.getBoolFalseBlock() != null)
+            currentBlock.setJumpInst(new Branch(currentBlock, thisEntity.getIrReg(), node.getBoolTrueBlock(), node.getBoolFalseBlock()));
+    }
+
+    @Override
+    public void visit(ConstIntNode node)
+    {
+        node.setRegValue(new Immediate(node.getValue()));
+    }
+
+    @Override
+    public void visit(ConstBoolNode node)
+    {
+        if (node.getValue())
+            node.setRegValue(new Immediate(1));
+        else
+            node.setRegValue(new Immediate(0));
+    }
+
+    @Override
+    public void visit(ConstNullNode node)
+    {
+        node.setRegValue(new Immediate(0));
+    }
+
+    @Override
+    public void visit(ConstStringNode node)
+    {
+        StaticStr constString = irRoot.getStaticStrMap().get(node.getValue());
+        if (constString != null)
+            node.setRegValue(constString);
+        else
+        {
+            constString = new StaticStr(node.getValue());
+            irRoot.getStaticStrMap().put(node.getValue(), constString);
+        }
+    }
+
+    @Override
+    public void visit(TypeNode node)
+    {
     }
 
     public IRROOT getIrRoot()
@@ -665,13 +728,13 @@ public class IRBuilder extends ScopeScanner
             IdentExprNode lhs = new IdentExprNode(null, globalVarInit.getVarName());
             VarEntity varEntity = globalScope.getVar(globalVarInit.getVarName());
             lhs.setVarEntity(varEntity);
-            varInitStateList.add(new AssignExprNode(null, lhs, globalVarInit.getInitValue()));
+            varInitStateList.add(new ExprStateNode(null, new AssignExprNode(null, lhs, globalVarInit.getInitValue())));
         }
 
         FuncBlockNode globalInitBlock = new FuncBlockNode(null, varInitStateList);
         globalInitBlock.setScope(new Scope(globalScope));
         FuncDeclNode globalVarInitFunc = new FuncDeclNode(null, globalInitName,
-                new TypeNode(null, nullType), new ArrayList<VarDeclNode>(), globalInitBlock);
+                new TypeNode(null, voidType), new ArrayList<VarDeclNode>(), globalInitBlock);
         FuncEntity funcEntity = new FuncEntity(globalVarInitFunc, globalInitBlock.getScope());
         globalScope.insertFunc(funcEntity);
         IRFunction irGlobalInitFunc = new IRFunction(funcEntity);
@@ -735,6 +798,7 @@ public class IRBuilder extends ScopeScanner
                 src.getBoolFalseBlock().setJumpInst(new Jump(src.getBoolFalseBlock(), mergeBlock));
             if (!src.getBoolTrueBlock().isContainJump())
                 src.getBoolTrueBlock().setJumpInst(new Jump(src.getBoolTrueBlock(), mergeBlock));
+            currentBlock = mergeBlock;
         }
     }
 
@@ -775,7 +839,9 @@ public class IRBuilder extends ScopeScanner
                 break;
 
             case IRROOT.buildInClassStringLength:
-                // TODO: string length
+                destVReg = new VirtualReg("stringLengthRes");
+                currentBlock.appendInst(new Load(currentBlock, destVReg, thisExpr.getRegValue(), Config.regSize, 0));
+                callExprNode.setRegValue(destVReg);
                 break;
 
             case IRROOT.buildInClassStringSubString:
@@ -812,7 +878,9 @@ public class IRBuilder extends ScopeScanner
                 break;
 
             case IRROOT.buildInClassArraySize:
-                //TODO: Array size
+                destVReg = new VirtualReg("arraySizeRes");
+                currentBlock.appendInst(new Load(currentBlock, destVReg, thisExpr.getRegValue(), Config.regSize, 0));
+                callExprNode.setRegValue(destVReg);
                 break;
         }
         this.memAccessing = prevMemAccessing;
@@ -887,7 +955,7 @@ public class IRBuilder extends ScopeScanner
         currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, new Immediate(newExprNode.getNewType().getSize()), IRBinaryOp.ADD, destReg));
         // allocate memory
         currentBlock.appendInst(new HeapAllocate(currentBlock, destReg, destReg));
-        // save each dim address to memory
+        // save each dim size to memory
         currentBlock.appendInst(new Store(currentBlock, nowDim.getRegValue(), destReg, Config.regSize, 0));
 
         // for each dims, allocate memory using a loop
@@ -923,7 +991,7 @@ public class IRBuilder extends ScopeScanner
             // escape the allocate loop
             currentBlock = afterBlock;
         }
-        if (index != 0) // not the first dim
+        if (index != 0)
             currentBlock.appendInst(new Store(currentBlock, destReg, addr, Config.regSize, 0));
         else
             currentBlock.appendInst(new Move(currentBlock, prevDestReg, destReg));
@@ -973,129 +1041,348 @@ public class IRBuilder extends ScopeScanner
         this.memAccessing = prevmemAccessing;
     }
 
-    private void binaryArithProcessor(BinaryExprNode exprNode)
+    private void binaryArithStringProcessor(BinaryExprNode exprNode)
     {
         if (exprNode.getLhs().getType() instanceof StringType)
             binaryStringProcessor(exprNode);
         else
-        {
-            // visit lhs & rhs
-            exprNode.getLhs().accept(this);
-            exprNode.getRhs().accept(this);
-            IRValue lhsValue = exprNode.getLhs().getRegValue();
-            IRValue rhsValue = exprNode.getRhs().getRegValue();
+            binaryArithProcessor(exprNode);
+    }
 
-            // TODO: could be optim
-            int immLhs = 0, immRhs = 0;
-            if (lhsValue instanceof Immediate)
-                immLhs = ((Immediate) lhsValue).getValue();
-            if (rhsValue instanceof Immediate)
-                immRhs = ((Immediate) rhsValue).getValue();
-            // For const folding
-            boolean constRes = (lhsValue instanceof Immediate) && (rhsValue instanceof Immediate);
-            IRBinaryOp irBop = null;
-            switch (exprNode.getBop())
-            {
-                case ADD:
-                    irBop = IRBinaryOp.ADD;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs + immRhs));
-                        return;
-                    }
-                    break;
-                case SUB:
-                    irBop = IRBinaryOp.SUB;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs - immRhs));
-                        return;
-                    }
-                    break;
-                case MUL:
-                    irBop = IRBinaryOp.MUL;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs * immRhs));
-                        return;
-                    }
-                    break;
-                case DIV:
-                    irBop = IRBinaryOp.DIV;
-                    if (constRes)
-                    {
-                        if (immRhs == 0)
-                            throw new MxError(exprNode.getLocation(), "Div by 0 is invalid!\n");
-                        exprNode.setRegValue(new Immediate(immLhs / immRhs));
-                        return;
-                    }
-                    irRoot.setContainShiftDiv(true);
-                    break;
-                case MOD:
-                    irBop = IRBinaryOp.MOD;
-                    if (constRes)
-                    {
-                        if (immRhs == 0)
-                            throw new MxError(exprNode.getLocation(), "Mod by 0 is invalid!\n");
-                        exprNode.setRegValue(new Immediate(immLhs % immRhs));
-                        return;
-                    }
-                    irRoot.setContainShiftDiv(true);
-                    break;
-                case SHL:
-                    irBop = IRBinaryOp.SHL;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs << immRhs));
-                        return;
-                    }
-                    irRoot.setContainShiftDiv(true);
-                    break;
-                case SHR:
-                    irBop = IRBinaryOp.SHR;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs >> immRhs));
-                        return;
-                    }
-                    irRoot.setContainShiftDiv(true);
-                    break;
-                case BITWISE_AND:
-                    irBop = IRBinaryOp.BITWISE_AND;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs & immRhs));
-                        return;
-                    }
-                    break;
-                case BITWISE_OR:
-                    irBop = IRBinaryOp.BITWISE_OR;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs | immRhs));
-                        return;
-                    }
-                    break;
-                case BITWISE_XOR:
-                    irBop = IRBinaryOp.BITWISE_XOR;
-                    if (constRes)
-                    {
-                        exprNode.setRegValue(new Immediate(immLhs ^ immRhs));
-                        return;
-                    }
-                    break;
-                default:
-                    throw new MxError("IR Builder: binaryArithProcessor Op is invalid\n");
-            }
-            VirtualReg destReg = new VirtualReg(null);
-            currentBlock.appendInst(new BinaryOperation(currentBlock, lhsValue, rhsValue, irBop, destReg));
-            exprNode.setRegValue(destReg);
+    private void binaryCompareStringProcessor(BinaryExprNode exprNode)
+    {
+        if (exprNode.getLhs().getType() instanceof StringType)
+            binaryStringProcessor(exprNode);
+        else
+            binaryCompareProcessor(exprNode);
+    }
+
+    private void binaryArithProcessor(BinaryExprNode exprNode)
+    {
+        // visit lhs & rhs
+        exprNode.getLhs().accept(this);
+        exprNode.getRhs().accept(this);
+        IRValue lhsValue = exprNode.getLhs().getRegValue();
+        IRValue rhsValue = exprNode.getRhs().getRegValue();
+
+        // TODO: could be optim
+        int immLhs = 0, immRhs = 0;
+        if (lhsValue instanceof Immediate)
+            immLhs = ((Immediate) lhsValue).getValue();
+        if (rhsValue instanceof Immediate)
+            immRhs = ((Immediate) rhsValue).getValue();
+        // For const folding
+        boolean constRes = (lhsValue instanceof Immediate) && (rhsValue instanceof Immediate);
+        IRBinaryOp irBop = null;
+        switch (exprNode.getBop())
+        {
+            case ADD:
+                irBop = IRBinaryOp.ADD;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs + immRhs));
+                    return;
+                }
+                break;
+            case SUB:
+                irBop = IRBinaryOp.SUB;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs - immRhs));
+                    return;
+                }
+                break;
+            case MUL:
+                irBop = IRBinaryOp.MUL;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs * immRhs));
+                    return;
+                }
+                break;
+            case DIV:
+                irBop = IRBinaryOp.DIV;
+                if (constRes)
+                {
+                    if (immRhs == 0)
+                        throw new MxError(exprNode.getLocation(), "Div by 0 is invalid!\n");
+                    exprNode.setRegValue(new Immediate(immLhs / immRhs));
+                    return;
+                }
+                irRoot.setContainShiftDiv(true);
+                break;
+            case MOD:
+                irBop = IRBinaryOp.MOD;
+                if (constRes)
+                {
+                    if (immRhs == 0)
+                        throw new MxError(exprNode.getLocation(), "Mod by 0 is invalid!\n");
+                    exprNode.setRegValue(new Immediate(immLhs % immRhs));
+                    return;
+                }
+                irRoot.setContainShiftDiv(true);
+                break;
+            case SHL:
+                irBop = IRBinaryOp.SHL;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs << immRhs));
+                    return;
+                }
+                irRoot.setContainShiftDiv(true);
+                break;
+            case SHR:
+                irBop = IRBinaryOp.SHR;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs >> immRhs));
+                    return;
+                }
+                irRoot.setContainShiftDiv(true);
+                break;
+            case BITWISE_AND:
+                irBop = IRBinaryOp.BITWISE_AND;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs & immRhs));
+                    return;
+                }
+                break;
+            case BITWISE_OR:
+                irBop = IRBinaryOp.BITWISE_OR;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs | immRhs));
+                    return;
+                }
+                break;
+            case BITWISE_XOR:
+                irBop = IRBinaryOp.BITWISE_XOR;
+                if (constRes)
+                {
+                    exprNode.setRegValue(new Immediate(immLhs ^ immRhs));
+                    return;
+                }
+                break;
+            default:
+                throw new MxError("IR Builder: binaryArithProcessor Op is invalid\n");
         }
+        VirtualReg destReg = new VirtualReg(null);
+        currentBlock.appendInst(new BinaryOperation(currentBlock, lhsValue, rhsValue, irBop, destReg));
+        exprNode.setRegValue(destReg);
     }
 
     private void binaryStringProcessor(BinaryExprNode exprNode)
     {
+        if (exprNode.getLhs().getType() instanceof StringType)
+        {
+            exprNode.getLhs().accept(this);
+            exprNode.getRhs().accept(this);
+            ExprNode tmp = null;
+            IRFunction stringProcessFunc = null;
+            switch (exprNode.getBop())
+            {
+                case ADD:
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringConcat);
+                    break;
+                case EQUAL:
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringEqual);
+                    break;
+                case NEQUAL:
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringNequal);
+                case LESS:
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringLess);
+                    break;
+                case GREATER:
+                    tmp = exprNode.getLhs();
+                    exprNode.setLhs(exprNode.getRhs());
+                    exprNode.setBop(Operators.BinaryOp.LESS);
+                    exprNode.setRhs(tmp);
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringLess);
+                    break;
+                case LESS_EQUAL:
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringLessEqual);
+                    break;
+                case GREATER_EQUAL:
+                    tmp = exprNode.getLhs();
+                    exprNode.setLhs(exprNode.getRhs());
+                    exprNode.setBop(Operators.BinaryOp.LESS_EQUAL);
+                    exprNode.setRhs(tmp);
+                    stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringLessEqual);
+                    break;
+                default:
+                    throw new MxError("IR Builder: binary String Operation node op is invalid\n");
+            }
 
+            VirtualReg destReg = new VirtualReg(null);
+            List<IRValue> funcArgs = new ArrayList<IRValue>();
+            funcArgs.add(exprNode.getLhs().getRegValue());
+            funcArgs.add(exprNode.getRhs().getRegValue());
+            currentBlock.appendInst(new FuncCall(currentBlock, stringProcessFunc, destReg, funcArgs));
+
+            if (exprNode.getBoolFalseBlock() != null)
+                currentBlock.setJumpInst(new Branch(currentBlock, destReg, exprNode.getBoolTrueBlock(), exprNode.getBoolFalseBlock()));
+            else
+                exprNode.setRegValue(destReg);
+        }
+        else
+            throw new MxError("IR Builder: binary String Operation node type invalid\n");
+    }
+
+    private void binaryCompareProcessor(BinaryExprNode exprNode)
+    {
+        exprNode.getLhs().accept(this);
+        exprNode.getRhs().accept(this);
+        IRValue lhsValue = exprNode.getLhs().getRegValue();
+        IRValue rhsValue = exprNode.getRhs().getRegValue();
+        IRValue tmp;
+        int immLhs = 0, immRhs = 0;
+        if (lhsValue instanceof Immediate)
+            immLhs = ((Immediate) lhsValue).getValue();
+        if (rhsValue instanceof Immediate)
+            immRhs = ((Immediate) rhsValue).getValue();
+        boolean constRes = (lhsValue instanceof Immediate) && (rhsValue instanceof Immediate);
+        ComparisonOp cop = null;
+        switch (exprNode.getBop())
+        {
+            case EQUAL:
+                cop = ComparisonOp.E;
+                if (constRes)
+                {
+                    if (immLhs == immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                // Extra Optim, WARNING might be wrong!
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                }
+                break;
+            case NEQUAL:
+                cop = ComparisonOp.NE;
+                if (constRes)
+                {
+                    if (immLhs != immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                }
+                break;
+            case LESS:
+                cop = ComparisonOp.L;
+                if (constRes)
+                {
+                    if (immLhs < immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                    cop = ComparisonOp.G;
+                }
+                break;
+            case GREATER:
+                cop = ComparisonOp.G;
+                if (constRes)
+                {
+                    if (immLhs > immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                    cop = ComparisonOp.L;
+                }
+                break;
+            case LESS_EQUAL:
+                cop = ComparisonOp.LE;
+                if (constRes)
+                {
+                    if (immLhs <= immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                    cop = ComparisonOp.GE;
+                }
+                break;
+            case GREATER_EQUAL:
+                cop = ComparisonOp.GE;
+                if (constRes)
+                {
+                    if (immLhs >= immRhs)
+                        exprNode.setRegValue(new Immediate(1));
+                    else
+                        exprNode.setRegValue(new Immediate(0));
+                    return;
+                }
+                else if (lhsValue instanceof Immediate)
+                {
+                    tmp = rhsValue;
+                    rhsValue = lhsValue;
+                    lhsValue  = tmp;
+                    cop = ComparisonOp.LE;
+                }
+                break;
+        }
+        VirtualReg destReg = new VirtualReg(null);
+        currentBlock.appendInst(new Comparison(currentBlock, cop, destReg, lhsValue, rhsValue));
+        if (exprNode.getBoolFalseBlock() != null)
+            currentBlock.setJumpInst(new Branch(currentBlock, destReg, exprNode.getBoolTrueBlock(), exprNode.getBoolFalseBlock()));
+        else
+            exprNode.setRegValue(destReg);
+    }
+
+    private void binaryLogicProcessor(BinaryExprNode exprNode)
+    {
+        // short circuit optim
+        if (exprNode.getBop() == Operators.BinaryOp.LOGIC_OR)
+        {
+            exprNode.getLhs().setBoolTrueBlock(exprNode.getBoolTrueBlock());
+            exprNode.getLhs().setBoolFalseBlock(new BasicBlock(currentFunc, "logic_or_lhs_false"));
+            exprNode.getLhs().accept(this);
+            currentBlock = exprNode.getLhs().getBoolFalseBlock();
+        }
+        else if (exprNode.getBop() == Operators.BinaryOp.LOGIC_AND)
+        {
+            exprNode.getLhs().setBoolFalseBlock(exprNode.getBoolFalseBlock());
+            exprNode.getLhs().setBoolTrueBlock(new BasicBlock(currentFunc, "logic_and_lhs_true"));
+            exprNode.getLhs().accept(this);
+            currentBlock = exprNode.getLhs().getBoolTrueBlock();
+        }
+        else
+            throw new MxError("IR Builder: binary Logic node bop invalid\n");
+        exprNode.getRhs().setBoolTrueBlock(exprNode.getBoolTrueBlock());
+        exprNode.getRhs().setBoolFalseBlock(exprNode.getBoolFalseBlock());
+        exprNode.getRhs().accept(this);
     }
 
 

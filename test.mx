@@ -1,21 +1,21 @@
-int b = 1;
-
-
 int main() {
-	int c = b;
-    print(1);
-	return c;
+    {
+        return 0;
+    }
+    return 0;
 }
+
+
 
 /*!! metadata:
 === comment ===
-陈伟哲 type check
+丁尧尧 测试内置函数和类 最新版
 === is_public ===
 True
 === assert ===
-failure_compile
+success_compile
 === timeout ===
-1.0
+0
 === input ===
 
 === phase ===
@@ -26,3 +26,4 @@ semantic pretest
 0
 
 !!*/
+

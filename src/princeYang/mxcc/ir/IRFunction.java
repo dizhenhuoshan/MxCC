@@ -8,7 +8,7 @@ public class IRFunction
 {
     private String funcName;
     private IRFuncType funcType;
-    private LinkedList<BasicBlock> basicBlocks;
+    private LinkedList<BasicBlock> basicBlocks = new LinkedList<BasicBlock>();
     private BasicBlock blockEnter;
     private BasicBlock blockLeave;
     private boolean hasRetValue = false, hasRecursive = false, isInClass = false;
@@ -58,6 +58,11 @@ public class IRFunction
     public String getFuncName()
     {
         return funcName;
+    }
+
+    public FuncEntity getFuncEntity()
+    {
+        return funcEntity;
     }
 
     public void updateCalleeSet()

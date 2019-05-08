@@ -11,26 +11,25 @@ public class BasicBlock
     private IRFunction parentFunction;
     private String blockName;
     private IRInstruction headInst = null, tailInst = null;
-    private Set<BasicBlock> prevBlock, nextBlock;
+    private Set<BasicBlock> prevBlocks = new HashSet<BasicBlock>();
+    private Set<BasicBlock> nextBlocks = new HashSet<BasicBlock>();
     private boolean containJump = false;
     private ForStateNode forStateNode;
 
-    private static int globalBBID = 0;
-    private int localBBID;
+    private static int globalBlockID = 0;
+    private int localBlockID;
 
     public BasicBlock(IRFunction parentFunction, String blockName)
     {
         this.parentFunction = parentFunction;
         this.blockName = blockName;
-        this.localBBID = globalBBID++;
+        this.localBlockID = globalBlockID++;
         parentFunction.getBasicBlocks().add(this);
-        prevBlock = new HashSet<BasicBlock>();
-        nextBlock = new HashSet<BasicBlock>();
     }
 
-    public int getLocalBBID()
+    public int getLocalBlockID()
     {
-        return localBBID;
+        return localBlockID;
     }
 
     public IRInstruction getHeadInst()
@@ -55,18 +54,26 @@ public class BasicBlock
 
     public void appendInst(IRInstruction newTail)
     {
-        tailInst.append(newTail);
-        this.tailInst = newTail;
+        if (containJump)
+            throw new MxError("IR BasicBlock: this block is finished, don't accept inst any more :)\n");
+//            return;
+        if (headInst == null)
+            headInst = tailInst = newTail;
+        else
+        {
+            tailInst.append(newTail);
+            this.tailInst = newTail;
+        }
     }
 
-    public Set<BasicBlock> getPrevBlock()
+    public Set<BasicBlock> getPrevBlocks()
     {
-        return prevBlock;
+        return prevBlocks;
     }
 
-    public Set<BasicBlock> getNextBlock()
+    public Set<BasicBlock> getNextBlocks()
     {
-        return nextBlock;
+        return nextBlocks;
     }
 
     public ForStateNode getForStateNode()
@@ -82,15 +89,15 @@ public class BasicBlock
     public void addNextBlock(BasicBlock nextBlock)
     {
         if (nextBlock != null)
-            nextBlock.getPrevBlock().add(this);
-        this.nextBlock.add(nextBlock);
+            nextBlock.getPrevBlocks().add(this);
+        this.nextBlocks.add(nextBlock);
     }
 
     public void deleteNextBlock(BasicBlock nextBlock)
     {
         if (nextBlock != null)
-            nextBlock.getPrevBlock().remove(this);
-        this.nextBlock.remove(nextBlock);
+            nextBlock.getPrevBlocks().remove(this);
+        this.nextBlocks.remove(nextBlock);
     }
 
     public boolean isContainJump()
@@ -116,6 +123,7 @@ public class BasicBlock
 
     public void deleteJumpInst()
     {
+        this.containJump = false;
         if (tailInst instanceof Return)
             parentFunction.getReturnInstList().remove((Return) tailInst);
         else if (tailInst instanceof Jump)
