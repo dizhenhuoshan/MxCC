@@ -2,6 +2,7 @@ package princeYang.mxcc.ir;
 
 import princeYang.mxcc.ast.ForStateNode;
 import princeYang.mxcc.ast.StateNode;
+import princeYang.mxcc.backend.NASMRegSet;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -67,6 +68,7 @@ public class IRROOT
         for (String buildInName : buildInList)
         {
             buildInFunc = new IRFunction(buildInName, buildInName);
+            buildInFunc.getUsedGeneralPReg().addAll(NASMRegSet.generalRegs);
             processBuildIn(buildInFunc);
         }
     }

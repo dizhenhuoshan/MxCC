@@ -20,6 +20,8 @@ public class IRFunction
     private List<BasicBlock> reversePreOrder = null, reversePostOrder = null;
     private List<StackSlot> stackSlots = new ArrayList<StackSlot>();
     private Set<BasicBlock> dfsVisitedBlock;
+    private Map<VirtualReg, StackSlot> argSlotMap;
+    private Set<PhysicalReg> usedGeneralPReg = new HashSet<PhysicalReg>();
 
     public List<Return> returnInstList = new ArrayList<Return>();
     public Set<IRFunction> calleeSet = new HashSet<IRFunction>();
@@ -118,6 +120,16 @@ public class IRFunction
     public List<Return> getReturnInstList()
     {
         return returnInstList;
+    }
+
+    public Map<VirtualReg, StackSlot> getArgSlotMap()
+    {
+        return argSlotMap;
+    }
+
+    public Set<PhysicalReg> getUsedGeneralPReg()
+    {
+        return usedGeneralPReg;
     }
 
     private void dfsPostBlock(BasicBlock basicBlock)
