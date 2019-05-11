@@ -2,9 +2,7 @@ package princeYang.mxcc.ir;
 
 import princeYang.mxcc.errors.MxError;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class IRInstruction
 {
@@ -13,6 +11,8 @@ public abstract class IRInstruction
     boolean hasRemoved = false;
     public List<IRValue> usedIRValue = new ArrayList<IRValue>();
     public List<IRReg> usedIRReg = new ArrayList<IRReg>();
+    public Set<IRReg> liveIn = new HashSet<IRReg>();
+    public Set<IRReg> liveOut = new HashSet<IRReg>();
 
     public IRInstruction() {}
 

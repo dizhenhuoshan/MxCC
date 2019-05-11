@@ -57,13 +57,15 @@ public class MxCC
             IRPrinter irPrinter = new IRPrinter(irPrint);
 //            IRPrinter irPrinter = new IRPrinter(System.out);
             irPrinter.visit(irRoot);
+            GlobalVarProcessor globalVarProcessor = new GlobalVarProcessor(irRoot);
+            globalVarProcessor.process();
             OnTheFlyAllocator onTheFlyAllocator = new OnTheFlyAllocator(irRoot);
             onTheFlyAllocator.allocateReg();
             NASMFormProcessor nasmFormProcessor = new NASMFormProcessor(irRoot);
             nasmFormProcessor.processNASM();
             PrintStream nasmPrint = new PrintStream("test.asm");
-//            NASMPrinter nasmPrinter = new NASMPrinter(nasmPrint);
-            NASMPrinter nasmPrinter = new NASMPrinter(System.out);
+            NASMPrinter nasmPrinter = new NASMPrinter(nasmPrint);
+//            NASMPrinter nasmPrinter = new NASMPrinter(System.out);
             nasmPrinter.visit(irRoot);
             System.err.print("baka\n");
         }

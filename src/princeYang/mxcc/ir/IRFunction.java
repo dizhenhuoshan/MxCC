@@ -17,11 +17,11 @@ public class IRFunction
     private boolean isBuildIn = false;
     private FuncEntity funcEntity;
 
-    private List<VirtualReg> argvRegList = new ArrayList<VirtualReg>();
+    private List<VirtualReg> paravRegList = new ArrayList<VirtualReg>();
     private List<BasicBlock> reversePreOrder = null, reversePostOrder = null;
-    private List<StackSlot> stackSlots = new ArrayList<StackSlot>();
+    private List<StackSlot> stackSlotList = new ArrayList<StackSlot>();
     private Set<BasicBlock> dfsVisitedBlock;
-    private Map<VirtualReg, StackSlot> argSlotMap = new HashMap<VirtualReg, StackSlot>();
+    private Map<VirtualReg, StackSlot> paraSlotMap = new HashMap<VirtualReg, StackSlot>();
     private Set<PhysicalReg> usedGeneralPReg = new HashSet<PhysicalReg>();
 
     public List<Return> returnInstList = new ArrayList<Return>();
@@ -56,9 +56,9 @@ public class IRFunction
         return basicBlocks;
     }
 
-    public List<StackSlot> getStackSlots()
+    public List<StackSlot> getStackSlotList()
     {
-        return stackSlots;
+        return stackSlotList;
     }
 
     public String getFuncName()
@@ -96,7 +96,7 @@ public class IRFunction
 
     public void insertArgReg(VirtualReg virtualReg)
     {
-        argvRegList.add(virtualReg);
+        paravRegList.add(virtualReg);
     }
 
     public void generateEntry()
@@ -124,9 +124,9 @@ public class IRFunction
         this.blockLeave = blockLeave;
     }
 
-    public List<VirtualReg> getArgvRegList()
+    public List<VirtualReg> getParavRegList()
     {
-        return argvRegList;
+        return paravRegList;
     }
 
     public List<Return> getReturnInstList()
@@ -134,9 +134,9 @@ public class IRFunction
         return returnInstList;
     }
 
-    public Map<VirtualReg, StackSlot> getArgSlotMap()
+    public Map<VirtualReg, StackSlot> getParaSlotMap()
     {
-        return argSlotMap;
+        return paraSlotMap;
     }
 
     public Set<PhysicalReg> getUsedGeneralPReg()

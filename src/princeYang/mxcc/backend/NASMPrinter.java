@@ -89,15 +89,15 @@ public class NASMPrinter implements IRVisitor
         preg1 = IRNode.getPreg1();
         identMap.put(IRNode.getFunctionMap().get("main").getBlockEnter(), "main");
 
-        out.println("global\tmain");
+        out.println("\t\tglobal\tmain");
         out.println();
-        out.println("extern\tmalloc");
+        out.println("\t\textern\tmalloc");
         out.println();
 
         if (IRNode.getStaticDataList().size() > 0)
         {
             inBSS = true;
-            out.println("section\t.bss");
+            out.println("\t\tsection\t.bss");
             for (StaticData data : IRNode.getStaticDataList())
                 data.accept(this);
             out.println();
@@ -107,14 +107,14 @@ public class NASMPrinter implements IRVisitor
         if (IRNode.getStaticStrMap().values().size() > 0)
         {
             inData = true;
-            out.println("section\t.data");
+            out.println("\t\tsection\t.data");
             for (StaticStr staticStr : IRNode.getStaticStrMap().values())
                 staticStr.accept(this);
             out.println();
             inData = false;
         }
 
-        out.println("section\t.text");
+        out.println("\t\tsection\t.text");
         out.println();
 
         for (IRFunction function : IRNode.getFunctionMap().values())
@@ -487,16 +487,16 @@ public class NASMPrinter implements IRVisitor
             switch (IRNode.getSize())
             {
                 case 1:
-                    lengthOp = "byte";
+                    lengthOp = "resb";
                     break;
                 case 2:
-                    lengthOp = "word";
+                    lengthOp = "resw";
                     break;
                 case 4:
-                    lengthOp = "dword";
+                    lengthOp = "resd";
                     break;
                 case 8:
-                    lengthOp = "qword";
+                    lengthOp = "resq";
                     break;
                 default:
                     throw new MxError("NASM Printer: Global Var size invalid\n");

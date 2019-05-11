@@ -8,7 +8,7 @@ public class StaticStr extends StaticData
 
     public StaticStr(String staticValue, int size)
     {
-        super(staticValue, size);
+        super("static_str", size);
         this.staticValue = staticValue;
     }
 

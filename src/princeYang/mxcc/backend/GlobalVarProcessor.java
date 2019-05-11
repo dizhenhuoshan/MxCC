@@ -3,10 +3,7 @@ package princeYang.mxcc.backend;
 import princeYang.mxcc.Config;
 import princeYang.mxcc.ir.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class GlobalVarProcessor
 {
@@ -31,6 +28,11 @@ public class GlobalVarProcessor
         if (instruction instanceof Store)
             return ((Store) instruction).isStaticData();
         return false;
+    }
+
+    public GlobalVarProcessor(IRROOT irRoot)
+    {
+        this.irRoot = irRoot;
     }
 
     public void process()
@@ -61,7 +63,7 @@ public class GlobalVarProcessor
                             instruction.setUsedIRReg(renameMap);
                         }
                         IRReg definedReg = instruction.getDefinedReg();
-                        if (definedReg != null && definedReg instanceof StaticData)
+                        if (definedReg instanceof StaticData)
                         {
                             VirtualReg vReg = genVreg(globalVarFuncInfo, (StaticData) definedReg);
                             instruction.setDefinedReg(vReg);
@@ -93,9 +95,10 @@ public class GlobalVarProcessor
             funcInfo.recurUsedGlobalVar.addAll(funcInfo.globalVarRegMap.keySet());
             for (IRFunction calleFunc : function.recurCalleeSet)
             {
-                
+                GlobalVarFuncInfo calleeFuncInfo = globalVarFuncInfoMap.get(calleFunc);
+                funcInfo.recurUsedGlobalVar.addAll(calleeFuncInfo.globalVarRegMap.keySet());
+                funcInfo.recurDefinedGlobalVar.addAll(calleeFuncInfo.recurDefinedGlobalVar);
             }
-
         }
 
 
@@ -109,10 +112,43 @@ public class GlobalVarProcessor
                 {
                     for (IRInstruction instruction = basicBlock.getHeadInst(); instruction != null; instruction = instruction.getNext())
                     {
-                        if ()
+                        if (instruction instanceof FuncCall)
+                        {
+                            IRFunction calleeFunc = ((FuncCall) instruction).getFunction();
+                            GlobalVarFuncInfo  calleeFuncInfo = globalVarFuncInfoMap.get(calleeFunc);
+
+                            // save defined globalVar before function call
+                            for (StaticData globalDefinedVar : funcInfo.definedGlobalVar)
+                            {
+                                if (!(globalDefinedVar instanceof StaticStr))
+                                    instruction.prepend(new Store(basicBlock, funcInfo.globalVarRegMap.get(globalDefinedVar), globalDefinedVar, Config.regSize));
+                            }
+
+                            // load recurDefined globalVar after function call
+                            if (!calleeFuncInfo.recurDefinedGlobalVar.isEmpty())
+                            {
+                                Set<StaticData> changedVarSet =
+                                        new HashSet<StaticData>(calleeFuncInfo.recurDefinedGlobalVar);
+                                changedVarSet.retainAll(usedGlobalVar);
+                                for (StaticData globalVar : changedVarSet)
+                                {
+                                    if (!(globalVar instanceof StaticStr))
+                                        instruction.append(new Load(basicBlock, funcInfo.globalVarRegMap.get(globalVar), globalVar, Config.regSize, false));
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+
+        // store Global Var before function end
+        for (IRFunction function : irRoot.getFunctionMap().values())
+        {
+            GlobalVarFuncInfo funcInfo = globalVarFuncInfoMap.get(function);
+            Return returnInst = function.getReturnInstList().get(0);
+            for (StaticData globalVar : funcInfo.definedGlobalVar)
+                returnInst.prepend(new Store(returnInst.getFatherBlock(), funcInfo.globalVarRegMap.get(globalVar), globalVar, Config.regSize));
         }
 
     }

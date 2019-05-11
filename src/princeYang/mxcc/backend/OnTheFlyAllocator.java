@@ -9,7 +9,7 @@ public class OnTheFlyAllocator
 {
     private IRROOT irRoot;
     private IRFunction function;
-    private Map<VirtualReg, StackSlot> stackSlots = new HashMap<VirtualReg, StackSlot>();
+    private Map<VirtualReg, StackSlot> stackSlotMap = new HashMap<VirtualReg, StackSlot>();
     private List<PhysicalReg> physicalRegList = new ArrayList<PhysicalReg>();
     private PhysicalReg preg0, preg1;
 
@@ -40,38 +40,37 @@ public class OnTheFlyAllocator
         for (IRFunction irFunction : irRoot.getFunctionMap().values())
         {
             IRInstruction headInst = irFunction.getBlockEnter().getHeadInst();
-            // if args > 6, get them from stack
-            for (int i = 0; i < irFunction.getArgvRegList().size(); i++)
+//             if args > 6, get them from stack
+            for (int i = 6; i < irFunction.getParavRegList().size(); i++)
             {
-                VirtualReg virtualArgReg = irFunction.getArgvRegList().get(i);
-                StackSlot argSlot = new StackSlot(String.format("arg%d", i), irFunction, true);
-                irFunction.getArgSlotMap().put(virtualArgReg, argSlot);
-                if (i >= 6)
-                    headInst.prepend(new Load(irFunction.getBlockEnter(), virtualArgReg, argSlot, Config.regSize, 0));
+                VirtualReg virtualArgReg = irFunction.getParavRegList().get(i);
+                StackSlot paraSlot = new StackSlot(String.format("arg%d", i), irFunction, true);
+                irFunction.getParaSlotMap().put(virtualArgReg, paraSlot);
+                headInst.prepend(new Load(irFunction.getBlockEnter(), virtualArgReg, paraSlot, Config.regSize, 0));
             }
             // for args less than 6, get them from the register
-            if (irFunction.getArgvRegList().size() >= 1)
-                irFunction.getArgvRegList().get(0).setEnforcedReg(NASMRegSet.rdi);
-            if (irFunction.getArgvRegList().size() >= 2)
-                irFunction.getArgvRegList().get(1).setEnforcedReg(NASMRegSet.rsi);
-            if (irFunction.getArgvRegList().size() >= 3)
-                irFunction.getArgvRegList().get(2).setEnforcedReg(NASMRegSet.rdx);
-            if (irFunction.getArgvRegList().size() >= 4)
-                irFunction.getArgvRegList().get(3).setEnforcedReg(NASMRegSet.rcx);
-            if (irFunction.getArgvRegList().size() >= 5)
-                irFunction.getArgvRegList().get(4).setEnforcedReg(NASMRegSet.r8);
-            if (irFunction.getArgvRegList().size() >= 6)
-                irFunction.getArgvRegList().get(5).setEnforcedReg(NASMRegSet.r9);
+            if (irFunction.getParavRegList().size() >= 1)
+                irFunction.getParavRegList().get(0).setEnforcedReg(NASMRegSet.rdi);
+            if (irFunction.getParavRegList().size() >= 2)
+                irFunction.getParavRegList().get(1).setEnforcedReg(NASMRegSet.rsi);
+            if (irFunction.getParavRegList().size() >= 3)
+                irFunction.getParavRegList().get(2).setEnforcedReg(NASMRegSet.rdx);
+            if (irFunction.getParavRegList().size() >= 4)
+                irFunction.getParavRegList().get(3).setEnforcedReg(NASMRegSet.rcx);
+            if (irFunction.getParavRegList().size() >= 5)
+                irFunction.getParavRegList().get(4).setEnforcedReg(NASMRegSet.r8);
+            if (irFunction.getParavRegList().size() >= 6)
+                irFunction.getParavRegList().get(5).setEnforcedReg(NASMRegSet.r9);
         }
     }
 
     private StackSlot getStackSlot(VirtualReg virtualReg)
     {
-        StackSlot slot = stackSlots.get(virtualReg);
+        StackSlot slot = stackSlotMap.get(virtualReg);
         if (slot == null)
         {
             slot = new StackSlot(virtualReg.getvRegName(), function, false);
-            stackSlots.put(virtualReg, slot);
+            stackSlotMap.put(virtualReg, slot);
         }
         return slot;
     }
@@ -82,17 +81,15 @@ public class OnTheFlyAllocator
         for (IRFunction func : irRoot.getFunctionMap().values())
         {
             Map<IRReg, IRReg> regRenameMap = new HashMap<IRReg, IRReg>();
-            Map<VirtualReg, PhysicalReg> physicalRegMap = new HashMap<VirtualReg, PhysicalReg>();
             function = func;
-            stackSlots.clear();
-            stackSlots.putAll(func.getArgSlotMap());
+            stackSlotMap.clear();
+            stackSlotMap.putAll(func.getParaSlotMap());
 
             for (BasicBlock basicBlock : function.getReversePostOrder())
             {
                 for (IRInstruction instruction = basicBlock.getHeadInst(); instruction != null; instruction = instruction.getNext())
                 {
                     int cnt = 0;
-                    physicalRegMap.clear();
                     if (instruction instanceof FuncCall)
                     {
                         List<IRValue> funcArgs = ((FuncCall) instruction).getArgs();
@@ -114,24 +111,30 @@ public class OnTheFlyAllocator
                         {
                             regRenameMap.clear();
                             for (IRReg reg : usedReg)
+                                regRenameMap.put(reg, reg);
+                            for (IRReg reg : usedReg)
                             {
                                 if (reg instanceof VirtualReg)
                                 {
+                                    boolean needLoad = false;
                                     PhysicalReg pReg = ((VirtualReg) reg).getEnforcedReg();
                                     if (pReg == null)
                                     {
-                                        pReg = physicalRegMap.get((VirtualReg) reg);
-                                            if (pReg == null)
-                                            {
-                                                pReg = physicalRegList.get(cnt++);
-                                                physicalRegMap.put((VirtualReg) reg, pReg);
-                                            }
+                                        needLoad = true;
+                                        if (regRenameMap.get(reg) instanceof VirtualReg)
+                                        {
+                                            pReg = physicalRegList.get(cnt++);
+                                        }
+                                        else
+                                            pReg = (PhysicalReg) regRenameMap.get(reg);
                                     }
                                     regRenameMap.put(reg, pReg);
-                                    if (pReg.isGeneral())
-                                        function.getUsedGeneralPReg().add(pReg);
-                                    IRReg addr = getStackSlot((VirtualReg) reg);
-                                    instruction.prepend(new Load(basicBlock, pReg, addr, Config.regSize, 0));
+                                    function.getUsedGeneralPReg().add(pReg);
+                                    if(needLoad)
+                                    {
+                                        IRReg addr = getStackSlot((VirtualReg) reg);
+                                        instruction.prepend(new Load(basicBlock, pReg, addr, Config.regSize, 0));
+                                    }
                                 }
                             }
                             instruction.setUsedIRReg(regRenameMap);
@@ -144,12 +147,14 @@ public class OnTheFlyAllocator
                         PhysicalReg pReg = ((VirtualReg) definedReg).getEnforcedReg();
                         if (pReg == null)
                         {
-                            pReg = physicalRegMap.get((VirtualReg) definedReg);
-                                if (pReg == null)
-                                    pReg = physicalRegList.get(cnt++);
+                            if (regRenameMap.get(definedReg) == null || regRenameMap.get(definedReg) instanceof VirtualReg)
+                            {
+                                pReg = physicalRegList.get(cnt++);
+                            }
+                            else
+                                pReg = (PhysicalReg) regRenameMap.get(definedReg);
                         }
-                        if (pReg.isGeneral())
-                            function.getUsedGeneralPReg().add(pReg);
+                        function.getUsedGeneralPReg().add(pReg);
                         instruction.setDefinedReg(pReg);
                         IRReg addr = getStackSlot((VirtualReg) definedReg);
                         instruction.append(new Store(basicBlock, pReg, addr, Config.regSize, 0));

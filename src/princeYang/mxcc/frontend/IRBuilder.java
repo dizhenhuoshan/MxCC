@@ -783,7 +783,7 @@ public class IRBuilder extends ScopeScanner
         }
         else
         {
-            BasicBlock mergeBlock = new BasicBlock(currentFunc, "merge BasicBlock");
+            BasicBlock mergeBlock = new BasicBlock(currentFunc, "merge_block");
             if (accessMem)
             {
                 src.getBoolFalseBlock().appendInst(new Store(src.getBoolFalseBlock(), new Immediate(0),
@@ -978,7 +978,7 @@ public class IRBuilder extends ScopeScanner
             currentBlock = condBlock;
             VirtualReg condReg = new VirtualReg(null);
             currentBlock.appendInst(new Comparison(currentBlock, ComparisonOp.G, condReg, nowDim.getRegValue(), loopIndex));
-            currentBlock.appendInst(new Branch(currentBlock, condReg, bodyBlock, afterBlock));
+            currentBlock.setJumpInst(new Branch(currentBlock, condReg, bodyBlock, afterBlock));
 
             // construct body
             currentBlock = bodyBlock;

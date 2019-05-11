@@ -54,21 +54,24 @@ public class NASMFormProcessor
             }
 
             // stacks
-            funcInfo.stackSlotNum = irFunction.getStackSlots().size();
+            funcInfo.stackSlotNum = irFunction.getStackSlotList().size();
             for (int i = 0; i < funcInfo.stackSlotNum; i++)
-                funcInfo.stackSlotOffsetMap.put(irFunction.getStackSlots().get(i), i * Config.regSize);
+                funcInfo.stackSlotOffsetMap.put(irFunction.getStackSlotList().get(i), i * Config.regSize);
+
             // WARNING: Align rsp !!!
             // 8 bytes for a reg, stack need align to 16 bytes
 
             if ((funcInfo.usedCalleeSaveRegs.size() + funcInfo.stackSlotNum) % 2 == 0)
                 funcInfo.stackSlotNum++;
 
-            funcInfo.extraParasNum = max(0, irFunction.getArgvRegList().size() - 6);
-            // push return address into stack
+            // all paras are pushed to stack for stupid allocator
+            funcInfo.extraParasNum = max(0, irFunction.getParavRegList().size() - 6);
+
             int extraArgsOffset = (funcInfo.usedCalleeSaveRegs.size() + funcInfo.stackSlotNum + 1) * Config.regSize;
-            for (int i = 6; i < irFunction.getArgvRegList().size(); i++)
+
+            for (int i = 6; i < irFunction.getParavRegList().size(); i++)
             {
-                funcInfo.stackSlotOffsetMap.put(irFunction.getArgSlotMap().get(irFunction.getArgvRegList().get(i)), extraArgsOffset);
+                funcInfo.stackSlotOffsetMap.put(irFunction.getParaSlotMap().get(irFunction.getParavRegList().get(i)), extraArgsOffset);
                 extraArgsOffset += Config.regSize;
             }
             targetFuncInfoMap.put(irFunction, funcInfo);
@@ -103,7 +106,7 @@ public class NASMFormProcessor
             // modify instructions
             for (BasicBlock basicBlock : irFunction.getReversePostOrder())
             {
-                for (IRInstruction instruction = basicBlock.getHeadInst(); instruction != basicBlock.getTailInst(); instruction = instruction.getNext())
+                for (IRInstruction instruction = basicBlock.getHeadInst(); instruction != null; instruction = instruction.getNext())
                 {
                     if (instruction instanceof Load)
                     {
@@ -160,7 +163,7 @@ public class NASMFormProcessor
                         for (PhysicalReg pReg : funcInfo.usedCallerSaveRegs)
                         {
                             // save the caller save regs who will be changed in the callee function :)
-                            if (!(pReg.isArgForced() && pReg.getFuncArgIndex() < irFunction.getArgvRegList().size()) && calleeInfo.recursiveUsedRegSet.contains(pReg))
+                            if (!(pReg.isArgForced() && pReg.getFuncArgIndex() < irFunction.getParavRegList().size()) && calleeInfo.recursiveUsedRegSet.contains(pReg))
                             {
                                 callerSaveNum++;
                                 instruction.prepend(new Push(instruction.getFatherBlock(), pReg));
@@ -168,7 +171,7 @@ public class NASMFormProcessor
                         }
 
                         // save parament reg values
-                        int regParaNum = min(irFunction.getArgvRegList().size(), 6);
+                        int regParaNum = min(irFunction.getParavRegList().size(), 6);
                         // push 6 5 4 3 2 1
                         for (int i = 0; i < regParaNum; i++)
                             instruction.prepend(new Push(instruction.getFatherBlock(), funcParaRegs.get(i)));
@@ -187,7 +190,7 @@ public class NASMFormProcessor
                             alignPush = true;
                             instruction.prepend(new Push(instruction.getFatherBlock(), new Immediate(0)));
                         }
-                        for (int i = paras.size(); i >= 6; i--)
+                        for (int i = paras.size() - 1; i >= 6; i--)
                         {
                             if(paras.get(i) instanceof StackSlot)
                             {
@@ -211,8 +214,9 @@ public class NASMFormProcessor
                                 if (!stackParasBackOffsetMap.containsKey(paraPReg))
                                 {
                                     stackParasBackOffset.add(paraBackOffset);
-                                    stackParasBackOffsetMap.put(paraPReg, paraBackOffset++);
+                                    stackParasBackOffsetMap.put(paraPReg, paraBackOffset);
                                     instruction.prepend(new Push(instruction.getFatherBlock(), paraPReg));
+                                    paraBackOffset++;
                                 }
                                 else
                                     stackParasBackOffset.add(stackParasBackOffsetMap.get(paraPReg));
@@ -251,7 +255,7 @@ public class NASMFormProcessor
                         // restore caller save
                         for (PhysicalReg pReg : funcInfo.usedCallerSaveRegs)
                         {
-                            if (!(pReg.isArgForced() && pReg.getFuncArgIndex() < irFunction.getArgvRegList().size()) && calleeInfo.recursiveUsedRegSet.contains(pReg))
+                            if (!(pReg.isArgForced() && pReg.getFuncArgIndex() < irFunction.getParavRegList().size()) && calleeInfo.recursiveUsedRegSet.contains(pReg))
                                 instruction.append(new Pop(instruction.getFatherBlock(), pReg));
                         }
 

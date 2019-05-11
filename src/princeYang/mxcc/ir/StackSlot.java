@@ -10,7 +10,7 @@ public class StackSlot extends IRReg
         this.ident = ident;
         this.parentFunc = parentFunc;
         if(!isArg)
-            parentFunc.getStackSlots().add(this);
+            parentFunc.getStackSlotList().add(this);
     }
 
     @Override

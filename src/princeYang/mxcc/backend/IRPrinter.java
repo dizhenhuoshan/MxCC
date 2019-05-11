@@ -97,7 +97,7 @@ public class IRPrinter implements IRVisitor
         virtualRegMap = new IdentityHashMap<>();
         vRegCnt = new HashMap<>();
         out.printf("func %s ", IRNode.getFuncName());
-        for (VirtualReg paraVReg : IRNode.getArgvRegList())
+        for (VirtualReg paraVReg : IRNode.getParavRegList())
             out.printf("$%s ", getVRegID(paraVReg));
         out.print("{\n");
         for (BasicBlock bb : IRNode.getReversePostOrder())
