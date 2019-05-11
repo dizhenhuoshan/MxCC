@@ -13,7 +13,7 @@ public class NASMRegSet
     public static final Collection<PhysicalReg> callerSaveRegs;
     public static final Collection<PhysicalReg> calleeSaveRegs;
     public static final Collection<PhysicalReg> generalRegs;
-    public static final List<PhysicalReg> funcArgRegs = new ArrayList<PhysicalReg>();
+    public static final List<PhysicalReg> funcParaRegs = new ArrayList<PhysicalReg>();
 
     public static NASMReg rax, rcx, rdx, rbx, rsp, rbp, rsi, rdi, r8, r9, r10, r11, r12, r13, r14, r15;
 
@@ -58,12 +58,12 @@ public class NASMRegSet
         allReg.add(r14);
         allReg.add(r15);
 
-        funcArgRegs.add(rdi);
-        funcArgRegs.add(rsi);
-        funcArgRegs.add(rdx);
-        funcArgRegs.add(rcx);
-        funcArgRegs.add(r8);
-        funcArgRegs.add(r9);
+        funcParaRegs.add(rdi);
+        funcParaRegs.add(rsi);
+        funcParaRegs.add(rdx);
+        funcParaRegs.add(rcx);
+        funcParaRegs.add(r8);
+        funcParaRegs.add(r9);
 
         for(NASMReg nasmReg : allReg)
         {

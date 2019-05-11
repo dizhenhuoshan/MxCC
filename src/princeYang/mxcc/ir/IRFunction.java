@@ -14,13 +14,14 @@ public class IRFunction
     private BasicBlock blockLeave;
     private boolean hasRetValue = false, hasRecursive = false, isInClass = false;
     private String buildInName;
+    private boolean isBuildIn = false;
     private FuncEntity funcEntity;
 
     private List<VirtualReg> argvRegList = new ArrayList<VirtualReg>();
     private List<BasicBlock> reversePreOrder = null, reversePostOrder = null;
     private List<StackSlot> stackSlots = new ArrayList<StackSlot>();
     private Set<BasicBlock> dfsVisitedBlock;
-    private Map<VirtualReg, StackSlot> argSlotMap;
+    private Map<VirtualReg, StackSlot> argSlotMap = new HashMap<VirtualReg, StackSlot>();
     private Set<PhysicalReg> usedGeneralPReg = new HashSet<PhysicalReg>();
 
     public List<Return> returnInstList = new ArrayList<Return>();
@@ -34,6 +35,7 @@ public class IRFunction
     {
         this.funcName = funcName;
         this.buildInName = buildInName;
+        this.isBuildIn = true;
         this.funcEntity = null;
         this.funcType = IRFuncType.BuildIn;
     }
@@ -62,6 +64,16 @@ public class IRFunction
     public String getFuncName()
     {
         return funcName;
+    }
+
+    public boolean isBuildIn()
+    {
+        return isBuildIn;
+    }
+
+    public String getBuildInName()
+    {
+        return buildInName;
     }
 
     public FuncEntity getFuncEntity()

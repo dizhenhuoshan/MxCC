@@ -18,7 +18,7 @@ public class NASMRegFormProcessor
         {
             for (BasicBlock basicBlock : function.getReversePostOrder())
             {
-                for (IRInstruction inst = basicBlock.getHeadInst(); inst != basicBlock.getTailInst(); inst = inst.getNext())
+                for (IRInstruction inst = basicBlock.getHeadInst(); inst != null; inst = inst.getNext())
                 {
                     if (inst instanceof BinaryOperation)
                     {

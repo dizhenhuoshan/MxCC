@@ -10,7 +10,7 @@ public class Load extends IRInstruction
     private IRReg destReg;
     private IRValue addr;
     private int size, offset;
-    private boolean isLoadAddr, isStaticData;
+    private boolean isLoadAddr = false, isStaticData = false;
 
     public Load(BasicBlock basicBlock, IRReg destReg, IRValue addr, int size, int offset)
     {
@@ -21,6 +21,20 @@ public class Load extends IRInstruction
             throw new MxError("IR Load constructor get a bad size 0 \n");
         this.size = size;
         this.offset = offset;
+        reloadUsedRV();
+    }
+
+    public Load(BasicBlock basicBlock, IRReg destReg, StaticData addr, int size, boolean isLoadAddr)
+    {
+        super(basicBlock);
+        this.destReg = destReg;
+        this.addr = addr;
+        if (size == 0)
+            throw new MxError("IR Load constructor get a bad size 0 \n");
+        this.size = size;
+        this.offset = 0;
+        this.isStaticData = true;
+        this.isLoadAddr = isLoadAddr;
         reloadUsedRV();
     }
 

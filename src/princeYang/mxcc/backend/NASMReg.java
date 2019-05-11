@@ -5,7 +5,7 @@ import princeYang.mxcc.ir.PhysicalReg;
 public class NASMReg extends PhysicalReg
 {
 
-    private String  regName;
+    private String regName;
     private int funcArgIndex;
     private boolean isCallerSave;
     private boolean isCalleeSave;
@@ -41,6 +41,11 @@ public class NASMReg extends PhysicalReg
     public boolean isArgForced()
     {
         return funcArgIndex != -1;
+    }
+
+    public int getFuncArgIndex()
+    {
+        return funcArgIndex;
     }
 
     @Override

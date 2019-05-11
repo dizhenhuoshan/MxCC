@@ -8,7 +8,7 @@ public class Store extends IRInstruction
     private IRValue src;
     private IRValue addr;
     private int size, offset;
-    private boolean isLoadAddr, isStaticData;
+    private boolean isLoadAddr = false, isStaticData = false;
 
     public Store(BasicBlock basicBlock, IRValue src, IRValue addr, int size, int offset)
     {
@@ -17,6 +17,18 @@ public class Store extends IRInstruction
         this.addr = addr;
         this.size = size;
         this.offset = offset;
+        reloadUsedRV();
+    }
+
+    public Store(BasicBlock basicBlock, IRValue src, StaticData addr, int size, boolean isLoadAddr)
+    {
+        super(basicBlock);
+        this.src = src;
+        this.addr = addr;
+        this.size = size;
+        this.offset = 0;
+        this.isStaticData = true;
+        this.isLoadAddr = isLoadAddr;
         reloadUsedRV();
     }
 

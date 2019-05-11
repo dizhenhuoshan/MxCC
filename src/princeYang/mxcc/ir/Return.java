@@ -54,7 +54,7 @@ public class Return extends BranchBaseInst
     @Override
     public void setDefinedReg(IRReg vIRReg)
     {
-
+        this.retValue = vIRReg;
     }
 
     public IRValue getRetValue()

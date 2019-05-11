@@ -13,7 +13,7 @@ public class BinaryOperation extends IRInstruction
     private boolean exchangeable;
     private boolean diverUsed;
 
-    public BinaryOperation(BasicBlock basicBlock, IRValue lhs, IRValue rhs, IRBinaryOp bop, IRReg resReg)
+    public BinaryOperation(BasicBlock basicBlock, IRReg resReg, IRValue lhs, IRBinaryOp bop, IRValue rhs)
     {
         super(basicBlock);
         this.lhs = lhs;
@@ -57,9 +57,7 @@ public class BinaryOperation extends IRInstruction
     @Override
     public IRInstruction copyAndRename(Map<Object, Object> renameMap)
     {
-        return new BinaryOperation((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
-                (IRValue) renameMap.getOrDefault(lhs, lhs), (IRValue) renameMap.getOrDefault(rhs, rhs),
-                bop, (IRReg) renameMap.getOrDefault(resReg, resReg));
+        return new BinaryOperation((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()), (IRReg) renameMap.getOrDefault(resReg, resReg), (IRValue) renameMap.getOrDefault(lhs, lhs), bop, (IRValue) renameMap.getOrDefault(rhs, rhs));
     }
 
     @Override

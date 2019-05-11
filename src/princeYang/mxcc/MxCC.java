@@ -9,8 +9,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
 import org.antlr.v4.runtime.tree.ParseTree;
 import princeYang.mxcc.ast.MxProgNode;
-import princeYang.mxcc.backend.IRPrinter;
-import princeYang.mxcc.backend.NASMRegFormProcessor;
+import princeYang.mxcc.backend.*;
 import princeYang.mxcc.errors.MxError;
 import princeYang.mxcc.frontend.*;
 import princeYang.mxcc.ir.IRROOT;
@@ -58,6 +57,14 @@ public class MxCC
             IRPrinter irPrinter = new IRPrinter(irPrint);
 //            IRPrinter irPrinter = new IRPrinter(System.out);
             irPrinter.visit(irRoot);
+            OnTheFlyAllocator onTheFlyAllocator = new OnTheFlyAllocator(irRoot);
+            onTheFlyAllocator.allocateReg();
+            NASMFormProcessor nasmFormProcessor = new NASMFormProcessor(irRoot);
+            nasmFormProcessor.processNASM();
+            PrintStream nasmPrint = new PrintStream("test.asm");
+//            NASMPrinter nasmPrinter = new NASMPrinter(nasmPrint);
+            NASMPrinter nasmPrinter = new NASMPrinter(System.out);
+            nasmPrinter.visit(irRoot);
             System.err.print("baka\n");
         }
         catch (Throwable th)

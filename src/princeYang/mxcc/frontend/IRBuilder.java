@@ -505,8 +505,8 @@ public class IRBuilder extends ScopeScanner
         VirtualReg destReg = new VirtualReg(null);
         Immediate elemSize = new Immediate(node.getArrExpr().getType().getSize());
         // TODO: MUL can be replaced with shift
-        currentBlock.appendInst(new BinaryOperation(currentBlock, node.getSubExpr().getRegValue(), elemSize, IRBinaryOp.MUL, destReg));
-        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, node.getArrExpr().getRegValue(), IRBinaryOp.ADD, destReg));
+        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, node.getSubExpr().getRegValue(), IRBinaryOp.MUL, elemSize));
+        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.ADD, node.getArrExpr().getRegValue()));
         if (memAccessing)
         {
             node.setAddrValue(destReg);
@@ -953,8 +953,8 @@ public class IRBuilder extends ScopeScanner
         nowDim.accept(this);
         this.memAccessing = prevMemAccessing;
         // calculate the memory size
-        currentBlock.appendInst(new BinaryOperation(currentBlock, nowDim.getRegValue(), new Immediate(newExprNode.getNewType().getSize()), IRBinaryOp.MUL, destReg));
-        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, new Immediate(newExprNode.getNewType().getSize()), IRBinaryOp.ADD, destReg));
+        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, nowDim.getRegValue(), IRBinaryOp.MUL, new Immediate(newExprNode.getNewType().getSize())));
+        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.ADD, new Immediate(newExprNode.getNewType().getSize())));
         // allocate memory
         currentBlock.appendInst(new HeapAllocate(currentBlock, destReg, destReg));
         // save each dim size to memory
@@ -983,10 +983,10 @@ public class IRBuilder extends ScopeScanner
             // construct body
             currentBlock = bodyBlock;
             // move nowAddr to the beginning of next dim
-            currentBlock.appendInst(new BinaryOperation(currentBlock, nowAddr, new Immediate(newExprNode.getNewType().getSize()), IRBinaryOp.ADD, nowAddr));
+            currentBlock.appendInst(new BinaryOperation(currentBlock, nowAddr, nowAddr, IRBinaryOp.ADD, new Immediate(newExprNode.getNewType().getSize())));
             // use recursive to allocate next dim memory
             arrayNewProcessor(newExprNode, nowAddr, null, index + 1);
-            currentBlock.appendInst(new BinaryOperation(currentBlock, loopIndex, new Immediate(1), IRBinaryOp.ADD, loopIndex));
+            currentBlock.appendInst(new BinaryOperation(currentBlock, loopIndex, loopIndex, IRBinaryOp.ADD, new Immediate(1)));
 
             // Jump to check cond
             currentBlock.setJumpInst(new Jump(currentBlock, condBlock));
@@ -1032,14 +1032,14 @@ public class IRBuilder extends ScopeScanner
             this.memAccessing = true;
             expr.accept(this);
             // for prefix expr
-            currentBlock.appendInst(new BinaryOperation(currentBlock, expr.getRegValue(), tmpNum1, selfOp, destReg));
+            currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, expr.getRegValue(), selfOp, tmpNum1));
             currentBlock.appendInst(new Store(currentBlock, destReg, expr.getAddrValue(), Config.regSize, expr.getAddrOffset()));
             // for postfix expr, correct it's regValue
             if (exprNode instanceof PostFixExprNode)
                 expr.setRegValue(destReg);
         }
         else
-            currentBlock.appendInst(new BinaryOperation(currentBlock, expr.getRegValue(), tmpNum1, selfOp, (IRReg)expr.getRegValue()));
+            currentBlock.appendInst(new BinaryOperation(currentBlock, (IRReg)expr.getRegValue(), expr.getRegValue(), selfOp, tmpNum1));
         this.memAccessing = prevmemAccessing;
     }
 
@@ -1170,7 +1170,7 @@ public class IRBuilder extends ScopeScanner
                 throw new MxError("IR Builder: binaryArithProcessor Op is invalid\n");
         }
         VirtualReg destReg = new VirtualReg(null);
-        currentBlock.appendInst(new BinaryOperation(currentBlock, lhsValue, rhsValue, irBop, destReg));
+        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, irBop, rhsValue));
         exprNode.setRegValue(destReg);
     }
 
