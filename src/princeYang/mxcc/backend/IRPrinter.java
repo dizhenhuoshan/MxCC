@@ -322,7 +322,7 @@ public class IRPrinter implements IRVisitor
             out.print(" = ");
         }
         out.printf("call %s ", IRNode.getFunction().getFuncName());
-        for (IRValue arg : IRNode.getArgs())
+        for (IRValue arg : IRNode.getParas())
         {
             arg.accept(this);
             out.print(" ");

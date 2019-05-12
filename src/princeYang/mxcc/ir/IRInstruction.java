@@ -11,8 +11,8 @@ public abstract class IRInstruction
     boolean hasRemoved = false;
     public List<IRValue> usedIRValue = new ArrayList<IRValue>();
     public List<IRReg> usedIRReg = new ArrayList<IRReg>();
-    public Set<IRReg> liveIn = new HashSet<IRReg>();
-    public Set<IRReg> liveOut = new HashSet<IRReg>();
+    public Set<VirtualReg> liveIn = new HashSet<VirtualReg>();
+    public Set<VirtualReg> liveOut = new HashSet<VirtualReg>();
 
     public IRInstruction() {}
 

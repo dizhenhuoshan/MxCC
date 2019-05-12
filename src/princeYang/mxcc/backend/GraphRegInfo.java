@@ -12,4 +12,5 @@ public class GraphRegInfo
     public IRReg colorReg;
     boolean removed = false;
     public Set<VirtualReg> neighbors = new HashSet<VirtualReg>();
+    public Set<VirtualReg> suggestSame = new HashSet<VirtualReg>();
 }

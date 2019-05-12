@@ -8,14 +8,14 @@ public class FuncCall extends IRInstruction
 {
     private IRFunction function;
     private IRReg retReg;
-    private List<IRValue> args;
+    private List<IRValue> paras;
 
-    public FuncCall(BasicBlock basicBlock, IRFunction function, IRReg retReg, List<IRValue> args)
+    public FuncCall(BasicBlock basicBlock, IRFunction function, IRReg retReg, List<IRValue> paras)
     {
         super(basicBlock);
         this.function = function;
         this.retReg = retReg;
-        this.args = args;
+        this.paras = paras;
         reloadUsedRV();
     }
 
@@ -30,7 +30,7 @@ public class FuncCall extends IRInstruction
     {
         usedIRReg.clear();
         usedIRValue.clear();
-        for (IRValue arg : args)
+        for (IRValue arg : paras)
         {
             usedIRValue.add(arg);
             if (arg instanceof IRReg)
@@ -41,10 +41,10 @@ public class FuncCall extends IRInstruction
     @Override
     public void setUsedIRReg(Map<IRReg, IRReg> renameMap)
     {
-        for (IRValue arg : args)
+        for (IRValue arg : paras)
         {
             if (arg instanceof IRReg)
-                if (!Collections.replaceAll(args, arg, renameMap.get(arg)))
+                if (!Collections.replaceAll(paras, arg, renameMap.get(arg)))
                     throw new MxError("IRFuncCall setUsedIRReg Error! arg not found in renameMap\n");
 
         }
@@ -55,7 +55,7 @@ public class FuncCall extends IRInstruction
     public IRInstruction copyAndRename(Map<Object, Object> renameMap)
     {
         List<IRValue> newArgs = new ArrayList<IRValue>();
-        for (IRValue arg : args)
+        for (IRValue arg : paras)
             newArgs.add((IRValue) renameMap.getOrDefault(arg, arg));
         return new FuncCall((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
                 function, (IRReg) renameMap.getOrDefault(retReg, retReg), newArgs);
@@ -74,9 +74,9 @@ public class FuncCall extends IRInstruction
         this.retReg = vIRReg;
     }
 
-    public List<IRValue> getArgs()
+    public List<IRValue> getParas()
     {
-        return args;
+        return paras;
     }
 
     public IRFunction getFunction()

@@ -1,37 +1,140 @@
-
-func gcd $x $y {
-%__entry__gcd:
-    $vreg = rem $x $y
-    $vreg_2 = seq $vreg 0
-    br $vreg_2 %__branch__if_then %__branch__if_else
-
-%__branch__if_else:
-    $vreg_3 = rem $x $y
-    $vreg_4 = call gcd $y $vreg_3 
-    $returnReg = move $vreg_4
-    jump %__mergeReturn__gcd
-
-%__branch__if_then:
-    $returnReg = move $y
-    jump %__mergeReturn__gcd
-
-%__mergeReturn__gcd:
-    ret $returnReg
-
-}
-
+space @a 8
+space @str 8
+@static_str@static_str_2@static_str_3@static_str_4@static_str_5@static_str_6@static_str_7@static_str_8@static_str_9@static_str_10
 func main {
 %__entry__main:
     call __globalVarInit 
-    $vreg = call gcd 10 4 
-    call printForInt $vreg 
+    $i = move 0
+    $j = move 0
+    $i = move 0
+    jump %__loop__for_stop
+
+%__loop__for_stop:
+    $vreg = sle $i 29
+    br $vreg %__loop__for_body %__loop__for_after
+
+%__loop__for_after:
     ret 0
+
+%__loop__for_body:
+    $sum = move 0
+    $vreg_2 = move $i
+    $vreg_2 = mul $vreg_2 8
+    $vreg_2 = add $vreg_2 @str
+    $toStringRes = call toString 
+    store 8 $vreg_2 $toStringRes 8
+    $j = move 0
+    jump %__loop__for_stop_2
+
+%__loop__for_stop_2:
+    $vreg_3 = slt $j $i
+    br $vreg_3 %__loop__for_body_2 %__loop__for_after_2
+
+%__loop__for_body_2:
+    $vreg_4 = move $j
+    $vreg_4 = and $vreg_4 1
+    $vreg_5 = seq $vreg_4 0
+    br $vreg_5 %__branch__if_then %__branch_if_after
+
+%__branch__if_then:
+    $vreg_6 = move $i
+    $vreg_6 = mul $vreg_6 8
+    $vreg_6 = add $vreg_6 @a
+    $vreg_6 = load 8 $vreg_6 8
+    $vreg_7 = move 0
+    $vreg_7 = mul $vreg_7 8
+    $vreg_7 = add $vreg_7 $vreg_6
+    $vreg_7 = load 8 $vreg_7 8
+    $vreg_8 = move $sum
+    $vreg_8 = add $vreg_8 $vreg_7
+    $sum = move $vreg_8
+    jump %__branch_if_after
+
+%__branch_if_after:
+    $vreg_9 = move $j
+    $vreg_9 = and $vreg_9 1
+    $vreg_10 = seq $vreg_9 1
+    br $vreg_10 %__branch__if_then_2 %__branch_if_after_2
+
+%__branch__if_then_2:
+    $vreg_11 = move $i
+    $vreg_11 = mul $vreg_11 8
+    $vreg_11 = add $vreg_11 @a
+    $vreg_11 = load 8 $vreg_11 8
+    $vreg_12 = move 29
+    $vreg_12 = mul $vreg_12 8
+    $vreg_12 = add $vreg_12 $vreg_11
+    $vreg_12 = load 8 $vreg_12 8
+    $vreg_13 = move $sum
+    $vreg_13 = add $vreg_13 $vreg_12
+    $sum = move $vreg_13
+    jump %__branch_if_after_2
+
+%__branch_if_after_2:
+    jump %__loop__for_step
+
+%__loop__for_step:
+    $ = move $j
+    $j = add $j 1
+    jump %__loop__for_stop_2
+
+%__loop__for_after_2:
+    call print @static_str 
+    call print @static_str_2 
+    call print @static_str_3 
+    call print @static_str_4 
+    call print @static_str_5 
+    call print @static_str_6 
+    call print @static_str_7 
+    call print @static_str_8 
+    call print @static_str_9 
+    call println @static_str_10 
+    jump %__loop__for_step_2
+
+%__loop__for_step_2:
+    $_2 = move $i
+    $i = add $i 1
+    jump %__loop__for_stop
 
 }
 
 func __globalVarInit {
 %__entry____globalVarInit:
+    $vreg = move 30
+    $vreg = mul $vreg 8
+    $vreg = add $vreg 8
+    $vreg = alloc $vreg
+    store 8 $vreg 30 0
+    $vreg_2 = move 0
+    $vreg_3 = move $vreg
+    jump %new_loop_cond
+
+%new_loop_cond:
+    $vreg_4 = sgt 30 $vreg_2
+    br $vreg_4 %new_loop_body %new_loop_after
+
+%new_loop_after:
+    $vreg_5 = move $vreg
+    @a = move $vreg_5
+    $vreg_6 = move 30
+    $vreg_6 = mul $vreg_6 8
+    $vreg_6 = add $vreg_6 8
+    $vreg_6 = alloc $vreg_6
+    store 8 $vreg_6 30 0
+    $vreg_7 = move $vreg_6
+    @str = move $vreg_7
     ret 0
+
+%new_loop_body:
+    $vreg_3 = add $vreg_3 8
+    $vreg_8 = move 30
+    $vreg_8 = mul $vreg_8 8
+    $vreg_8 = add $vreg_8 8
+    $vreg_8 = alloc $vreg_8
+    store 8 $vreg_8 30 0
+    store 8 $vreg_3 $vreg_8 0
+    $vreg_2 = add $vreg_2 1
+    jump %new_loop_cond
 
 }
 

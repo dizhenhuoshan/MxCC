@@ -59,8 +59,10 @@ public class MxCC
             irPrinter.visit(irRoot);
             GlobalVarProcessor globalVarProcessor = new GlobalVarProcessor(irRoot);
             globalVarProcessor.process();
-            OnTheFlyAllocator onTheFlyAllocator = new OnTheFlyAllocator(irRoot);
-            onTheFlyAllocator.allocateReg();
+//            OnTheFlyAllocator onTheFlyAllocator = new OnTheFlyAllocator(irRoot);
+//            onTheFlyAllocator.allocateReg();
+            GraphAllocator graphAllocator = new GraphAllocator(irRoot);
+            graphAllocator.allocateReg();
             NASMFormProcessor nasmFormProcessor = new NASMFormProcessor(irRoot);
             nasmFormProcessor.processNASM();
             PrintStream nasmPrint = new PrintStream("test.asm");

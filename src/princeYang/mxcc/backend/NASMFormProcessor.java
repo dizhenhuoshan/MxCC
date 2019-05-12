@@ -179,7 +179,7 @@ public class NASMFormProcessor
                         callerSaveNum += regParaNum;
 
                         // prepare function paraments
-                        List<IRValue> paras = ((FuncCall) instruction).getArgs();
+                        List<IRValue> paras = ((FuncCall) instruction).getParas();
                         int paraBackOffset = 0;
                         List<Integer> stackParasBackOffset = new ArrayList<Integer>();
                         Map<PhysicalReg, Integer> stackParasBackOffsetMap = new HashMap<PhysicalReg, Integer>();

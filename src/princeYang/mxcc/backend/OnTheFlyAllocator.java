@@ -92,7 +92,7 @@ public class OnTheFlyAllocator
                     int cnt = 0;
                     if (instruction instanceof FuncCall)
                     {
-                        List<IRValue> funcArgs = ((FuncCall) instruction).getArgs();
+                        List<IRValue> funcArgs = ((FuncCall) instruction).getParas();
                         IRValue nowArg;
                         for (int i = 0; i < funcArgs.size(); i++)
                         {

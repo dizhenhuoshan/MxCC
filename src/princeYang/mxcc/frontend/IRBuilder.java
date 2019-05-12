@@ -977,7 +977,7 @@ public class IRBuilder extends ScopeScanner
             currentBlock.setJumpInst(new Jump(currentBlock, condBlock));
             currentBlock = condBlock;
             VirtualReg condReg = new VirtualReg(null);
-            currentBlock.appendInst(new Comparison(currentBlock, ComparisonOp.G, condReg, nowDim.getRegValue(), loopIndex));
+            currentBlock.appendInst(new Comparison(currentBlock, ComparisonOp.L, condReg, loopIndex, nowDim.getRegValue()));
             currentBlock.setJumpInst(new Branch(currentBlock, condReg, bodyBlock, afterBlock));
 
             // construct body
