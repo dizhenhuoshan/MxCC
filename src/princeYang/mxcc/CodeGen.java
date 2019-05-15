@@ -19,7 +19,7 @@ import princeYang.mxcc.scope.Scope;
 
 import java.io.*;
 
-public class MxCC
+public class CodeGen
 {
     public static void main(String args[])
     {
@@ -42,25 +42,21 @@ public class MxCC
             insideClassPreUseScanner.visit(ast);
             ScopeBuilder scopeBuilder = new ScopeBuilder(globalScope);
             scopeBuilder.visit(ast);
-            StaticUseOptimizer staticUseOptimizer = new StaticUseOptimizer(globalScope);
-            staticUseOptimizer.visit(ast);
             IRBuilder irBuilder = new IRBuilder(globalScope);
             irBuilder.visit(ast);
             IRROOT irRoot = irBuilder.getIrRoot();
 
-            PrintStream irPrint = new PrintStream("test.ir");
-            IRPrinter irPrinter = new IRPrinter(irPrint);
+            //            PrintStream irPrint = new PrintStream("test.ir");
+//            IRPrinter irPrinter = new IRPrinter(irPrint);
+//            IRPrinter irPrinter = new IRPrinter(System.out);
+//            irPrinter.visit(irRoot);
 
             NASMRegFormProcessor regFormProcessor = new NASMRegFormProcessor(irRoot);
             regFormProcessor.transRegToNASMForm();
-            FunctionInlineOptimizer functionInlineOptimizer = new FunctionInlineOptimizer(irRoot);
-            functionInlineOptimizer.processInline();
             GlobalVarProcessor globalVarProcessor = new GlobalVarProcessor(irRoot);
             globalVarProcessor.process();
             FuncParaForcer funcParaForcer = new FuncParaForcer(irRoot);
             funcParaForcer.processForcePara();
-//            IRPrinter irPrinter = new IRPrinter(System.out);
-            irPrinter.visit(irRoot);
             LivenessAnalyst livenessAnalyst = new LivenessAnalyst(irRoot);
             livenessAnalyst.processLivenessWithEliminate();
             GraphAllocator graphAllocator = new GraphAllocator(irRoot);

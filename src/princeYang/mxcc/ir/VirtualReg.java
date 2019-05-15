@@ -19,7 +19,7 @@ public class VirtualReg extends IRReg
     @Override
     public VirtualReg copy()
     {
-        return null;
+        return new VirtualReg(vRegName);
     }
 
     public String getvRegName()

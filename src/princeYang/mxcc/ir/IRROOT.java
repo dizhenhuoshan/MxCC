@@ -4,18 +4,15 @@ import princeYang.mxcc.ast.ForStateNode;
 import princeYang.mxcc.ast.StateNode;
 import princeYang.mxcc.backend.NASMRegSet;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class IRROOT
 {
-    private Map<String, IRFunction> functionMap = new LinkedHashMap<String, IRFunction>();
-    private Map<String, IRFunction> buildInFuncMap = new LinkedHashMap<String, IRFunction>();
-    private Map<String, StaticStr> staticStrMap = new LinkedHashMap<String, StaticStr>();
+    private Map<String, IRFunction> functionMap = new HashMap<String, IRFunction>();
+    private Map<String, IRFunction> buildInFuncMap = new HashMap<String, IRFunction>();
+    private Map<String, StaticStr> staticStrMap = new HashMap<String, StaticStr>();
     private List<StaticData> staticDataList = new ArrayList<StaticData>();
-    private Map<ForStateNode, IRFor> IRForMap = new LinkedHashMap<ForStateNode, IRFor>();
+    private Map<ForStateNode, IRFor> IRForMap = new HashMap<ForStateNode, IRFor>();
     private boolean containShiftDiv = false;
     private PhysicalReg preg0, preg1;
 
@@ -58,40 +55,57 @@ public class IRROOT
 
     public IRROOT()
     {
+        buildInList.clear();
+        buildInLableList.clear();
         buildInList.add(buildInPrint);
         buildInLableList.add(buildInPrintLable);
+
         buildInList.add(buildInPrintln);
         buildInLableList.add(buildInPrintlnLable);
+
         buildInList.add(buildInGetString);
         buildInLableList.add(buildInGetStringLable);
+
         buildInList.add(buildInGetInt);
         buildInLableList.add(buildInGetIntLable);
+
         buildInList.add(buildInToString);
         buildInLableList.add(buildInToStringLable);
+
         buildInList.add(buildInStringConcat);
         buildInLableList.add(buildInStringConcatLable);
+
         buildInList.add(buildInStringEqual);
         buildInLableList.add(buildInStringEqualLable);
+
         buildInList.add(buildInStringNequal);
         buildInLableList.add(buildInStringNequalLable);
+
         buildInList.add(buildInStringLess);
         buildInLableList.add(buildInStringLessLable);
+
         buildInList.add(buildInStringLessEqual);
         buildInLableList.add(buildInStringLessEqualLable);
 
         buildInList.add(buildInClassStringLength);
         buildInLableList.add(buildInClassStringLength);
+
         buildInList.add(buildInClassStringSubString);
         buildInLableList.add(buildInClassStringSubString);
+
         buildInList.add(buildInClassStringParseInt);
         buildInLableList.add(buildInClassStringParseInt);
+
         buildInList.add(buildInClassStringOrd);
         buildInLableList.add(buildInClassStringOrd);
+
         buildInList.add(buildInClassArraySize);
         buildInLableList.add(buildInClassArraySize);
+
         // for spot optim
         buildInList.add(buildInPrintForInt);
         buildInLableList.add(buildInPrintForIntLable);
+
         buildInList.add(buildInPrintlnForInt);
         buildInLableList.add(buildInPrintlnForIntLable);
 

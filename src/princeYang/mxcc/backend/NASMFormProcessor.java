@@ -42,6 +42,12 @@ public class NASMFormProcessor
         {
             RegFormFuncInfo funcInfo = new RegFormFuncInfo();
 
+//            int usedParaRegNum = Math.min(irFunction.getParavRegList().size(), 6);
+//            for (int i = 0; i < usedParaRegNum; i++)
+//            {
+//                irFunction.getUsedGeneralPReg().add(NASMRegSet.funcParaRegs.get(i));
+//            }
+
             // calleeSave & callerSave Regs
             funcInfo.usedCalleeSaveRegs.add(rbx);
             funcInfo.usedCalleeSaveRegs.add(rbp);

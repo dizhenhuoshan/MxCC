@@ -67,9 +67,9 @@ public class Store extends IRInstruction
         if (isStaticData)
             renamedAddr = (StaticData) renameMap.getOrDefault(addr, addr);
         else
-            renamedAddr = (IRReg) renameMap.getOrDefault(addr, addr);
-        return new Load((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
-                (IRReg) renameMap.getOrDefault(src, src), renamedAddr, size, offset);
+            renamedAddr = (IRValue) renameMap.getOrDefault(addr, addr);
+        return new Store((BasicBlock) renameMap.getOrDefault(getFatherBlock(), getFatherBlock()),
+                (IRValue) renameMap.getOrDefault(src, src), renamedAddr, size, offset);
     }
 
     @Override

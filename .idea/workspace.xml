@@ -2,32 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4b03eb3-534e-4446-9710-ad24d9f97fba" name="Default Changelist" comment="Scope building">
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/CodeGen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/FinalInstructionOptimizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/FuncParaForcer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/FunctionInlineOptimizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivenessAnalyst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/StaticUseOptimizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gdb_history" beforeDir="false" afterPath="$PROJECT_DIR$/.gdb_history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__build.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__codegen.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__semantic.bash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/MxCC.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/MxCC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ast/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ast/Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/GlobalVarProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/GlobalVarProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/GraphAllocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/GraphAllocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/IRPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/IRPrinter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/LivelinessAnalyst.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/LivelinessAnalyst.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMFormProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMFormProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMPrinter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMPrinter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/NASMPrinter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/OnTheFlyAllocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/backend/OnTheFlyAllocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/FuncCall.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/FuncCall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/AstBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/AstBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/IRBuilder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/IRBuilder$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/IRBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/frontend/IRBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/BasicBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/BasicBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRInstruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRInstruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRROOT.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/IRROOT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/StackSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/StackSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/Store.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/Store.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/VirtualReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/princeYang/mxcc/ir/VirtualReg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/buildin.asm" beforeDir="false" afterPath="$PROJECT_DIR$/lib/buildin.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/builtin_back.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/c2nasm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lib/c2nasm.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphRegInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphRegInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/IRPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/IRPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/OnTheFlyAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/OnTheFlyAllocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/FuncCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/StackSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/StackSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.ir" beforeDir="false" afterPath="$PROJECT_DIR$/test.ir" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.mx" beforeDir="false" afterPath="$PROJECT_DIR$/test.mx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.o" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,24 +82,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="898">
-              <caret line="319" column="28" selection-start-line="319" selection-start-column="28" selection-end-line="319" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#362#374#0" expanded="true" />
-                <element signature="e#572#586#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="438" column="35" lean-forward="true" selection-start-line="438" selection-start-column="35" selection-end-line="438" selection-end-column="35" />
+            <state relative-caret-position="202">
+              <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,60 +94,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/ComparisonOp.java">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/IRPrinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="299" column="17" selection-start-line="299" selection-start-column="17" selection-end-line="299" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#832#833#0" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="979" column="123" selection-start-line="979" selection-start-column="123" selection-end-line="979" selection-end-column="123" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Comparison.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-381">
-              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1750">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.asm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
+            <state relative-caret-position="190">
+              <caret line="450" column="13" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -146,20 +105,88 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.ir">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="112" column="28" lean-forward="true" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+            <state relative-caret-position="2450">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/StaticUseOptimizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="54" column="50" lean-forward="true" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+            <state relative-caret-position="161">
+              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
-                <marker date="1557632474779" expanded="true" signature="941:1017" ph="..." />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2288#2289#0" expanded="true" />
+                <element signature="e#2336#2337#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.asm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+              <folding>
+                <element signature="e#1916#1917#0" expanded="true" />
+                <element signature="e#1949#1950#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/LivenessAnalyst.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-171">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#248#272#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Jump.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+              <folding>
+                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#1154#1155#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3147">
+              <caret line="132" selection-start-line="132" selection-end-line="132" />
             </state>
           </provider>
         </entry>
@@ -178,18 +205,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>array</find>
-      <find>VarDeclNode</find>
-      <find>(ClassType)</find>
-      <find>PANIC</find>
-      <find>currentFuncCallEntity</find>
-      <find>setLeftValue(true)</find>
-      <find>FuncEntity funcEntity</find>
-      <find>print</find>
-      <find>functionc</find>
-      <find>type not meet the reauired</find>
-      <find>global</find>
-      <find>this</find>
       <find>&quot;this&quot;</find>
       <find>HeapAllocate</find>
       <find>IR FuncBlockNode: node in StateList is invalid!</find>
@@ -208,6 +223,18 @@
       <find>funcParaRegs</find>
       <find>++</find>
       <find>setg</find>
+      <find>break</find>
+      <find>__toString</find>
+      <find>rotto</find>
+      <find>main</find>
+      <find>__class__splay_tree__build</find>
+      <find>build</find>
+      <find>calleeS</find>
+      <find>inc</find>
+      <find>INC</find>
+      <find>36</find>
+      <find>linked</find>
+      <find>__block___loop__for_stop_2</find>
     </findStrings>
     <replaceStrings>
       <replace>identy</replace>
@@ -229,30 +256,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/InsideClassPreUseScanner.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java" />
-        <option value="$PROJECT_DIR$/../compiler-offline-judge/doc/sample_config.json" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRVisitor.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java" />
-        <option value="$PROJECT_DIR$/../compiler-offline-judge/config.json" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NasmRegFormProcessor.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" />
-        <option value="$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_400.txt" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/IRPrinter.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/Config.java" />
-        <option value="$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_17.txt" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/LLIRInterpreter.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/nasm/NASMReg.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/NASMReg.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/NASMRegSet.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/StackSlot.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMReg.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/PhysicalReg.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegSet.java" />
         <option value="$PROJECT_DIR$/lib/builtin.asm" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Return.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVariableProccessor.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/TargetFuncInfo.java" />
@@ -260,26 +270,43 @@
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVariableProcessor.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVarFuncInfo.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Load.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVarProcessor.java" />
         <option value="$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_336.txt" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/StaticStr.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegFormProcessor.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/OnTheFlyAllocator.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/VirtualRegInfo.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphRegInfo.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/FuncCall.java" />
         <option value="$PROJECT_DIR$/test.ir" />
+        <option value="$PROJECT_DIR$/lib/buildin.c" />
+        <option value="$PROJECT_DIR$/T341.mx" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/FinalInstOptim.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/FinalInstructionOptimizer.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/StackSlot.java" />
+        <option value="$PROJECT_DIR$/demo.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java" />
-        <option value="$PROJECT_DIR$/test.mx" />
-        <option value="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" />
         <option value="$PROJECT_DIR$/test.asm" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/FuncParaForcer.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/CodeGen.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/FunctionInlineOptimizer.java" />
         <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/StaticUseOptimizer.java" />
+        <option value="$PROJECT_DIR$/codegen.bash" />
+        <option value="$PROJECT_DIR$/test.mx" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/backend/LivenessAnalyst.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java" />
+        <option value="$PROJECT_DIR$/src/princeYang/mxcc/Config.java" />
       </list>
     </option>
   </component>
@@ -305,8 +332,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,43 +345,6 @@
               <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-              <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-              <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-              <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MxCompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MxCompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="princeYang" type="462c0819:PsiDirectoryNode" />
-              <item name="mxcc" type="462c0819:PsiDirectoryNode" />
-              <item name="ir" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -392,7 +382,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553784718507" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -410,10 +400,11 @@
       <recent name="princeYang.mxcc.ir" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="princeYang.mxcc" />
       <recent name="princeYang.mxcc.backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -559,7 +550,22 @@
       <workItem from="1557533214504" duration="10580000" />
       <workItem from="1557560783349" duration="19264000" />
       <workItem from="1557590489819" duration="3443000" />
-      <workItem from="1557620902782" duration="11444000" />
+      <workItem from="1557620902782" duration="12672000" />
+      <workItem from="1557643502455" duration="23412000" />
+      <workItem from="1557675123944" duration="5138000" />
+      <workItem from="1557706094435" duration="5346000" />
+      <workItem from="1557723675973" duration="3889000" />
+      <workItem from="1557736354322" duration="4310000" />
+      <workItem from="1557749929611" duration="8614000" />
+      <workItem from="1557762930593" duration="5797000" />
+      <workItem from="1557798621372" duration="7800000" />
+      <workItem from="1557820363742" duration="19271000" />
+      <workItem from="1557846355020" duration="3463000" />
+      <workItem from="1557878450940" duration="5835000" />
+      <workItem from="1557892771128" duration="4212000" />
+      <workItem from="1557906742411" duration="5808000" />
+      <workItem from="1557913832735" duration="705000" />
+      <workItem from="1557917656702" duration="10094000" />
     </task>
     <task id="LOCAL-00001" summary="g4 passed">
       <created>1553357310099</created>
@@ -586,7 +592,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="517811000" />
+    <option name="totallyTimeSpent" value="632733000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -598,20 +604,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
+    <frame x="67" y="27" width="1853" height="1053" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48435172" visible="true" weight="0.19811843" />
-      <window_info id="Structure" order="1" sideWeight="0.5156483" side_tool="true" visible="true" weight="0.19811843" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63419914" visible="true" weight="0.21472053" />
+      <window_info id="Structure" order="1" sideWeight="0.36580086" side_tool="true" visible="true" weight="0.21472053" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5119048" side_tool="true" weight="0.1776425" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.27380952" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20454545" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4997233" weight="0.17316018" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.17748918" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5779221" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4997233" weight="0.12987013" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
@@ -625,14 +631,14 @@
       <window_info anchor="bottom" id="Dependency Viewer" order="14" weight="0.32900432" />
       <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="16" weight="0.32792208" />
-      <window_info anchor="bottom" id="Duplicates" order="17" weight="0.32935324" />
+      <window_info anchor="bottom" id="Duplicates" order="17" weight="0.96753246" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32982844" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.32981133" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32927504" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32982844" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
@@ -683,52 +689,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="Scope building" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>281</line>
-          <properties />
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>184</line>
-          <properties />
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>162</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>168</line>
-          <properties />
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>103</line>
-          <properties />
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java</url>
-          <line>40</line>
-          <properties />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="irRoot" language="JAVA" />
+        <watch expression="jumpTargetReplaceMap" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -740,12 +706,27 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>funcParaRegs</expression-string>
+        <expression-string>jumpTargetReplaceMap</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>currentFunc</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>functionBackupMap</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
         <expression-string>irRoot</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>funcParaRegs</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -767,235 +748,76 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/UnaryOperation.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/RegFormFuncInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+        <state relative-caret-position="225">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
           <folding>
-            <element signature="e#1646#1647#0" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="1975">
+          <caret line="90" column="82" selection-start-line="90" selection-start-column="82" selection-end-line="90" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/LLIRInterpreter.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/FinalInstructionOptimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7450">
-          <caret line="304" column="48" selection-start-line="304" selection-start-column="48" selection-end-line="304" selection-end-column="48" />
+        <state relative-caret-position="-17">
+          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Push.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/lib/buildin.asm">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="100">
+          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRReg.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/PhysicalReg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        <state relative-caret-position="200">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMReg.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding>
-            <element signature="e#976#977#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/builtin.asm" />
-    <entry file="file://$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_307.txt" />
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Return.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
-          <folding>
-            <element signature="e#1302#1303#0" expanded="true" />
-            <element signature="e#1340#1341#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/jdk-11.0.2/lib/src.zip!/java.base/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="591" column="6" selection-start-line="591" selection-start-column="6" selection-end-line="591" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_10.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="13" lean-forward="true" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/RegFormFuncInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVariableProcessor.java" />
-    <entry file="file://$PROJECT_DIR$/../compiler-offline-judge/compiler-testcases/newTestCases/testcase_336.txt" />
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVarProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/StaticData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/StaticStr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#661#662#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1650">
+          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/StackSlot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        <state relative-caret-position="575">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2348">
-          <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GlobalVarFuncInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphRegInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#384#396#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/FuncCall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="76" column="32" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
-          <folding>
-            <element signature="e#1906#1907#0" expanded="true" />
-            <element signature="e#1933#1934#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/OnTheFlyAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Load.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.java" />
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Move.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+        <state relative-caret-position="225">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding>
             <element signature="e#1447#1448#0" expanded="true" />
             <element signature="e#1475#1476#0" expanded="true" />
@@ -1003,31 +825,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Pop.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRUnaryOp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Store.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1178">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Jump.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="50">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BinaryOperation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="847">
-          <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
+        <state relative-caret-position="299">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding>
             <element signature="e#2454#2455#0" expanded="true" />
             <element signature="e#2489#2490#0" expanded="true" />
@@ -1037,147 +845,334 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/DeclNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="50">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/HeapAllocate.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/MxProgNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+        <state relative-caret-position="350">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegFormProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="39" column="109" selection-start-line="39" selection-start-column="109" selection-end-line="39" selection-end-column="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="325">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncDeclNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1325">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding>
-            <element signature="e#426#438#0" expanded="true" />
-            <element signature="e#490#502#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/LivelinessAnalyst.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/ScopeScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#451#463#0" expanded="true" />
-            <element signature="e#516#528#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-350">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMPrinter.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ClassDeclNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="438" column="35" lean-forward="true" selection-start-line="438" selection-start-column="35" selection-end-line="438" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/IRPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="299" column="17" selection-start-line="299" selection-start-column="17" selection-end-line="299" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1750">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/ComparisonOp.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/FuncBlockNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.ir">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/scope/VarEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="112" column="28" lean-forward="true" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="54" column="50" lean-forward="true" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+        <state relative-caret-position="100">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <marker date="1557632474779" expanded="true" signature="941:1017" ph="..." />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/NewExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+          <folding>
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ast/ConstIntNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding>
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphRegInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/VirtualReg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRROOT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-875">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding>
+            <element signature="e#256#276#0" expanded="true" />
+            <element signature="e#5525#5526#0" expanded="true" />
+            <element signature="e#5559#5560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/FuncParaForcer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#196#197#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/GraphAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="319" column="28" selection-start-line="319" selection-start-column="28" selection-end-line="319" selection-end-column="28" />
+        <state relative-caret-position="900">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#362#374#0" expanded="true" />
-            <element signature="e#572#586#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMRegFormProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/NASMFormProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/FunctionInlineOptimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="73" column="61" lean-forward="true" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9330#9342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Branch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4675">
+          <caret line="200" column="37" selection-start-line="200" selection-start-column="37" selection-end-line="200" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BranchBaseInst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="73" column="47" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/IRFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-775">
+          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+          <folding>
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3050#3051#0" expanded="true" />
+            <element signature="e#3121#3122#0" expanded="true" />
+            <element signature="e#3149#3150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/BasicBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+          <folding>
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1949#1950#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Jump.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+          <folding>
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1154#1155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
+        <state relative-caret-position="550">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/ir/Comparison.java">
+    <entry file="file://$PROJECT_DIR$/__codegen.bash">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codegen.bash">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        <state relative-caret-position="50">
+          <caret line="2" column="81" lean-forward="true" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/IRBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/StaticUseOptimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="979" column="123" selection-start-line="979" selection-start-column="123" selection-end-line="979" selection-end-column="123" />
+        <state relative-caret-position="161">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2288#2289#0" expanded="true" />
+            <element signature="e#2336#2337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3147">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.ir">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2450">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/backend/LivenessAnalyst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#248#272#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/MxCC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/frontend/AstBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="450" column="13" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princeYang/mxcc/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
         </state>
       </provider>
     </entry>

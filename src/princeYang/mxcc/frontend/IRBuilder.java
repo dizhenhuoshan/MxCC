@@ -10,6 +10,7 @@ import princeYang.mxcc.scope.Scope;
 import princeYang.mxcc.scope.VarEntity;
 
 import java.util.*;
+import java.util.function.UnaryOperator;
 
 public class IRBuilder extends ScopeScanner
 {
@@ -21,6 +22,7 @@ public class IRBuilder extends ScopeScanner
     private IRFunction currentFunc;
     private String currentClass;
     private BasicBlock currentLoopStepBlock = null, currentLoopAfterBlock = null;
+    private boolean uselessVar = false;
 
     public IRBuilder(Scope globalScope)
     {
@@ -65,6 +67,8 @@ public class IRBuilder extends ScopeScanner
             else if (!(declNode instanceof VarDeclNode))
                 throw new MxError("IRBuilder: declNode Type is invalid in visiting MxProgNode!\n");
         }
+        for (IRFunction irFunction : irRoot.getFunctionMap().values())
+            irFunction.updateCalleeSet();
         updateRecursiveCalleeSet();
     }
 
@@ -250,11 +254,13 @@ public class IRBuilder extends ScopeScanner
         if (node.getStepExpr() != null)
             stepBlock = new BasicBlock(currentFunc, "__loop__for_step");
         else stepBlock = stopBlock;
-        irRoot.getIRForMap().put(node, new IRFor(stopBlock, stepBlock, loopBodyBlock, loopAfterBlock));
+
         stopBlock.setForStateNode(node);
         stepBlock.setForStateNode(node);
         loopBodyBlock.setForStateNode(node);
         loopAfterBlock.setForStateNode(node);
+        irRoot.getIRForMap().put(node, new IRFor(stopBlock, stepBlock, loopBodyBlock, loopAfterBlock));
+
         // for multi level for, backup current loop info and enter next level.
         BasicBlock prevLoopStepBlock = currentLoopStepBlock, prevLoopAfterBlock = currentLoopAfterBlock;
         currentLoopStepBlock = stepBlock;
@@ -267,10 +273,10 @@ public class IRBuilder extends ScopeScanner
         if (node.getStopExpr() != null)
         {
             currentBlock = stopBlock;
-            // condition false -> escape loop
-            node.getStopExpr().setBoolFalseBlock(loopAfterBlock);
             // condition true -> continue loop
             node.getStopExpr().setBoolTrueBlock(loopBodyBlock);
+            // condition false -> escape loop
+            node.getStopExpr().setBoolFalseBlock(loopAfterBlock);
             node.getStopExpr().accept(this);
             // for const bool state, simply use if branch escape the loop
             if (node.getStopExpr() instanceof ConstBoolNode)
@@ -318,6 +324,10 @@ public class IRBuilder extends ScopeScanner
             // true -> then  false -> escape if
             node.getConditionExpr().setBoolTrueBlock(thenBlock);
             node.getConditionExpr().setBoolFalseBlock(afterBlock);
+            node.getConditionExpr().accept(this);
+            if (node.getConditionExpr() instanceof ConstBoolNode)
+                currentBlock.setJumpInst(new Branch(currentBlock, node.getConditionExpr().getRegValue(),
+                        node.getConditionExpr().getBoolTrueBlock(), node.getConditionExpr().getBoolFalseBlock()));
         }
         else
         {
@@ -325,11 +335,11 @@ public class IRBuilder extends ScopeScanner
             elseBlock = new BasicBlock(currentFunc, "__branch__if_else");
             node.getConditionExpr().setBoolTrueBlock(thenBlock);
             node.getConditionExpr().setBoolFalseBlock(elseBlock);
+            node.getConditionExpr().accept(this);
+            if (node.getConditionExpr() instanceof ConstBoolNode)
+                currentBlock.setJumpInst(new Branch(currentBlock, node.getConditionExpr().getRegValue(),
+                        node.getConditionExpr().getBoolTrueBlock(), node.getConditionExpr().getBoolFalseBlock()));
         }
-        node.getConditionExpr().accept(this);
-        if (node.getConditionExpr() instanceof ConstBoolNode)
-            currentBlock.setJumpInst(new Branch(currentBlock, node.getConditionExpr().getRegValue(),
-                    node.getConditionExpr().getBoolTrueBlock(), node.getConditionExpr().getBoolFalseBlock()));
 
         currentBlock = thenBlock;
         node.getThenState().accept(this);
@@ -499,12 +509,13 @@ public class IRBuilder extends ScopeScanner
         boolean prevMemAccessing = memAccessing;
         this.memAccessing = false;
         node.getArrExpr().accept(this);
+        if (uselessVar)
+            return;
         node.getSubExpr().accept(this);
         this.memAccessing = prevMemAccessing;
 
         VirtualReg destReg = new VirtualReg(null);
         Immediate elemSize = new Immediate(node.getArrExpr().getType().getSize());
-        // TODO: MUL can be replaced with shift
         currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, node.getSubExpr().getRegValue(), IRBinaryOp.MUL, elemSize));
         currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.ADD, node.getArrExpr().getRegValue()));
         if (memAccessing)
@@ -527,8 +538,15 @@ public class IRBuilder extends ScopeScanner
     {
         boolean memAccessingOp = checkMemAccessing(node.getLhs());
         this.memAccessing = memAccessingOp;
+        uselessVar = false;
         node.getLhs().accept(this);
         this.memAccessing = false;
+
+        if (uselessVar)
+        {
+            uselessVar = false;
+            return;
+        }
 
         if (node.getRhs().getType() instanceof BoolType && !(node.getRhs() instanceof ConstBoolNode))
         {
@@ -554,6 +572,11 @@ public class IRBuilder extends ScopeScanner
     public void visit(IdentExprNode node)
     {
         VarEntity varEntity = node.getVarEntity();
+        if ((varEntity.getType() instanceof ArrayType || varEntity.isInGlobal()) && varEntity.isUnUsed())
+        {
+            uselessVar = true;
+            return;
+        }
         if (varEntity.getIrReg() != null)
         {
             node.setRegValue(varEntity.getIrReg());
@@ -749,10 +772,7 @@ public class IRBuilder extends ScopeScanner
         Set<IRFunction> recursiveCalleeSet = new HashSet<IRFunction>();
         boolean flag = true;
         for (IRFunction irFunction : irRoot.getFunctionMap().values())
-        {
-            irFunction.updateCalleeSet();
             irFunction.recurCalleeSet.clear();
-        }
         while (flag)
         {
             flag = false;
@@ -836,6 +856,9 @@ public class IRBuilder extends ScopeScanner
             case IRROOT.buildInToString:
                 destVReg = new VirtualReg("toStringRes");
                 calleeFunc = irRoot.getBuildInFuncMap().get(targetFuncName);
+                para0 = callExprNode.getParaList().get(0);
+                para0.accept(this);
+                paras.add(para0.getRegValue());
                 currentBlock.appendInst(new FuncCall(currentBlock, calleeFunc, destVReg, paras));
                 callExprNode.setRegValue(destVReg);
                 break;
@@ -1067,7 +1090,6 @@ public class IRBuilder extends ScopeScanner
         IRValue lhsValue = exprNode.getLhs().getRegValue();
         IRValue rhsValue = exprNode.getRhs().getRegValue();
 
-        // TODO: could be optim
         int immLhs = 0, immRhs = 0;
         if (lhsValue instanceof Immediate)
             immLhs = ((Immediate) lhsValue).getValue();
@@ -1169,7 +1191,86 @@ public class IRBuilder extends ScopeScanner
             default:
                 throw new MxError("IR Builder: binaryArithProcessor Op is invalid\n");
         }
+
         VirtualReg destReg = new VirtualReg(null);
+        if (rhsValue instanceof Immediate)
+        {
+            if (immRhs == 1)
+            {
+                if (irBop == IRBinaryOp.MOD)
+                {
+                    currentBlock.appendInst(new Move(currentBlock, destReg, new Immediate(0)));
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+                if (irBop == IRBinaryOp.DIV || irBop == IRBinaryOp.MUL)
+                {
+                    currentBlock.appendInst(new Move(currentBlock, destReg, lhsValue));
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+            }
+
+            // for immRhs = 2^n
+            if (((immRhs & (immRhs - 1)) == 0))
+            {
+                int cnt = 0;
+                long val = (long) immRhs;
+                while (val > 1)
+                {
+                    cnt++;
+                    val = val >> 1;
+                }
+                if (irBop == IRBinaryOp.MOD)
+                {
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, IRBinaryOp.BITWISE_AND, new Immediate(immRhs - 1)));
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+                if (irBop == IRBinaryOp.MUL)
+                {
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, IRBinaryOp.SHL, new Immediate(cnt)));
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+                if (irBop == IRBinaryOp.DIV)
+                {
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, IRBinaryOp.SHR, new Immediate(cnt)));
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+            }
+
+            if ((irBop == IRBinaryOp.MOD || irBop == IRBinaryOp.DIV) && immRhs > 10)
+            {
+                int cnt = 0;
+                long val = (long) immRhs;
+                while (val % 2 == 0)
+                {
+                    cnt++;
+                    val = val / 2;
+                }
+
+                if (val != 1)
+                {
+                    // may be wrong
+                    long mod = 1L << 32;
+                    int o = (int) ((mod - 1) / val + 1);
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, IRBinaryOp.SHR, new Immediate(cnt)));
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.MUL, new Immediate(o)));
+                    currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.SHR, new Immediate(32)));
+                    if (irBop == IRBinaryOp.MOD)
+                    {
+                        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, destReg, IRBinaryOp.MUL, rhsValue));
+                        currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, IRBinaryOp.SUB, destReg));
+                    }
+                    exprNode.setRegValue(destReg);
+                    return;
+                }
+            }
+
+        }
+
         currentBlock.appendInst(new BinaryOperation(currentBlock, destReg, lhsValue, irBop, rhsValue));
         exprNode.setRegValue(destReg);
     }
@@ -1192,6 +1293,7 @@ public class IRBuilder extends ScopeScanner
                     break;
                 case NEQUAL:
                     stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringNequal);
+                    break;
                 case LESS:
                     stringProcessFunc = irRoot.getBuildInFuncMap().get(IRROOT.buildInStringLess);
                     break;

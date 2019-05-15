@@ -1,6 +1,7 @@
 package princeYang.mxcc.frontend;
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import princeYang.mxcc.Config;
 import princeYang.mxcc.ast.*;
 import princeYang.mxcc.errors.MxError;
 import princeYang.mxcc.parser.*;

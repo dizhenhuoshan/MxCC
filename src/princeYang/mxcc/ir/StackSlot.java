@@ -4,11 +4,13 @@ public class StackSlot extends IRReg
 {
     private String ident;
     private IRFunction parentFunc;
+    private boolean isArg;
 
     public StackSlot(String ident, IRFunction parentFunc, boolean isArg)
     {
         this.ident = ident;
         this.parentFunc = parentFunc;
+        this.isArg = isArg;
         if(!isArg)
             parentFunc.getStackSlotList().add(this);
     }

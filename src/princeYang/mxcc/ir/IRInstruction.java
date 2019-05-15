@@ -11,8 +11,8 @@ public abstract class IRInstruction
     boolean hasRemoved = false;
     public List<IRValue> usedIRValue = new ArrayList<IRValue>();
     public List<IRReg> usedIRReg = new ArrayList<IRReg>();
-    public Set<VirtualReg> liveIn = new HashSet<VirtualReg>();
-    public Set<VirtualReg> liveOut = new HashSet<VirtualReg>();
+    public Set<VirtualReg> liveIn = null;
+    public Set<VirtualReg> liveOut = null;
 
     public IRInstruction() {}
 
@@ -66,6 +66,7 @@ public abstract class IRInstruction
     {
         if (hasRemoved)
             throw new MxError("Trying to replace a removed inst!\n");
+        hasRemoved = true;
         if (prev == null && next ==  null)
         {
             this.fatherBlock.setHeadInst(newInst);
@@ -99,6 +100,7 @@ public abstract class IRInstruction
     {
         if (hasRemoved)
             throw new MxError("Trying to remove a removed inst!\n");
+        hasRemoved = true;
         if (this instanceof BranchBaseInst)
             this.fatherBlock.deleteJumpInst();
         if (prev == null && next == null)

@@ -4,6 +4,7 @@ import princeYang.mxcc.ast.ForStateNode;
 import princeYang.mxcc.errors.MxError;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class BasicBlock
@@ -26,7 +27,6 @@ public class BasicBlock
         this.parentFunction = parentFunction;
         this.blockName = blockName;
         this.localBlockID = globalBlockID++;
-        parentFunction.getBasicBlocks().add(this);
     }
 
     public int getLocalBlockID()
@@ -88,6 +88,11 @@ public class BasicBlock
         return forStateNode;
     }
 
+    public IRFunction getParentFunction()
+    {
+        return parentFunction;
+    }
+
     public void setForStateNode(ForStateNode forStateNode)
     {
         this.forStateNode = forStateNode;
@@ -115,16 +120,16 @@ public class BasicBlock
 
     public void addNextBlock(BasicBlock nextBlock)
     {
+        this.nextBlocks.add(nextBlock);
         if (nextBlock != null)
             nextBlock.getPrevBlocks().add(this);
-        this.nextBlocks.add(nextBlock);
     }
 
     public void deleteNextBlock(BasicBlock nextBlock)
     {
+        this.nextBlocks.remove(nextBlock);
         if (nextBlock != null)
             nextBlock.getPrevBlocks().remove(this);
-        this.nextBlocks.remove(nextBlock);
     }
 
     public boolean isContainJump()
@@ -162,6 +167,13 @@ public class BasicBlock
         }
         else
             throw new MxError("IR BasicBlock: jumpInst is invalid in deleteJumpInst!\n");
+    }
+
+    public void reset()
+    {
+        headInst = null;
+        tailInst = null;
+        containJump = false;
     }
 
     public void accept(IRVisitor visitor)
